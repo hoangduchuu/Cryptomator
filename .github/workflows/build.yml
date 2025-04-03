@@ -24,10 +24,10 @@ jobs:
       uses: android-actions/setup-android@v3
 
     - name: Build with Gradle
-      run: ./gradlew assembleDebug
+      run: ./gradlew assembleLiteRelease
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
-        name: app-debug
-        path: presentation/build/outputs/apk/debug/presentation-debug.apk
+        name: app-lite-release
+        path: presentation/build/outputs/apk/lite/release/presentation-lite-release-unsigned.apk 
