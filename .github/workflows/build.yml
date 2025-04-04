@@ -35,6 +35,7 @@ jobs:
         ls -R presentation/build/outputs/apk/
 
     - name: Upload APK
+      id: upload-apk
       uses: actions/upload-artifact@v4
       with:
         name: app-playstore-debug
@@ -69,11 +70,22 @@ jobs:
         git tag -a "v${{ steps.get_version.outputs.next_version }}" -m "Auto release v${{ steps.get_version.outputs.next_version }}"
         git push origin "v${{ steps.get_version.outputs.next_version }}"
 
+    - name: Download APK
+      uses: actions/download-artifact@v4
+      with:
+        name: app-playstore-debug
+        path: .
+
+    - name: List downloaded files
+      run: |
+        echo "Listing downloaded files:"
+        ls -la
+
     - name: Create Release
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
-        files: presentation/build/outputs/apk/playstore/debug/presentation-playstore-debug.apk
+        files: presentation-playstore-debug.apk
         name: Release ${{ github.ref_name }}
         body: |
           Build from branch: ${{ github.ref_name }}
