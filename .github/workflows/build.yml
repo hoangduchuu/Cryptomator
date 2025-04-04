@@ -29,5 +29,5 @@ jobs:
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
-        name: app-playstore-release
-        path: presentation/build/outputs/apk/playstore/deubg/presentation-playstore-debug.apk
+        name: app-playstore-debug
+        path: presentation/build/outputs/apk/playstore/debug/presentation-playstore-debug.apk
