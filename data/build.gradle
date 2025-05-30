@@ -30,11 +30,21 @@ android {
 		release {
 			buildConfigField "String", "ONEDRIVE_API_KEY", "\"" + getApiKey('ONEDRIVE_API_KEY') + "\""
 			buildConfigField "String", "ONEDRIVE_API_REDIRCT_URI", "\"" + getApiKey('ONEDRIVE_API_REDIRCT_URI') + "\""
+			buildConfigField "String", "API_ENDPOINT", "\"" + getApiKey('API_ENDPOINT') + "\""
+			buildConfigField "String", "API_BASE_URL", "\"https://api.ncryptor.com\""
+			buildConfigField "String", "COGNITO_ISSUER", "\"https://cognito-idp.us-east-2.amazonaws.com/\""
+			buildConfigField "String", "COGNITO_CLIENT_ID", "\"!@#!@#!AAADSAD\""
+			buildConfigField "String", "END_SESSION_REDIRECT_URI", "\"https://sample.com/\""
 		}
 
 		debug {
 			buildConfigField "String", "ONEDRIVE_API_KEY", "\"" + getApiKey('ONEDRIVE_API_KEY_DEBUG') + "\""
 			buildConfigField "String", "ONEDRIVE_API_REDIRCT_URI", "\"" + getApiKey('ONEDRIVE_API_REDIRCT_URI_DEBUG') + "\""
+			buildConfigField "String", "API_ENDPOINT", "\"" + getApiKey('API_ENDPOINT') + "\""
+			buildConfigField "String", "API_BASE_URL", "\"https://sample.dev\""
+			buildConfigField "String", "COGNITO_ISSUER", "\"https://cognito-idp.us-east-1.amazonaws.com/\""
+			buildConfigField "String", "COGNITO_CLIENT_ID", "\"d03jd0######alskdsa\""
+			buildConfigField "String", "END_SESSION_REDIRECT_URI", "\"https://sample.dev/\""
 		}
 	}
 
@@ -85,7 +95,7 @@ android {
 	}
 	packagingOptions {
 		resources {
-			excludes += ['META-INF/DEPENDENCIES', 'META-INF/NOTICE.md', 'META-INF/INDEX.LIST']
+			excludes += ['META-INF/DEPENDENCIES', 'META-INF/NOTICE.md', 'META-INF/INDEX.LIST', 'META-INF/versions/9/OSGI-INF/MANIFEST.MF']
 		}
 	}
 
@@ -98,7 +108,7 @@ android {
 }
 
 greendao {
-	schemaVersion 13
+	schemaVersion 23
 }
 
 configurations.all {
@@ -208,6 +218,11 @@ dependencies {
 	implementation dependencies.androidAnnotations
 	compileOnly dependencies.javaxAnnotation
 	implementation dependencies.gson
+
+	// Retrofit
+	implementation dependencies.retrofit
+	implementation dependencies.retrofitGson
+	implementation dependencies.squareupInterceptor
 
 	implementation dependencies.joseJwt
 

@@ -3,12 +3,14 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
 	android:layout_height="72dp"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:background="?android:attr/selectableItemBackground">
 
 	<ImageView
 		android:id="@+id/cloud_image"
 		android:layout_width="@dimen/thumbnail_size"
 		android:layout_height="@dimen/thumbnail_size"
+		app:tint="@color/colorPrimary"
 		android:layout_centerVertical="true"
 		android:layout_marginStart="16dp" />
 
@@ -22,13 +24,34 @@
 		android:layout_toEndOf="@id/cloud_image"
 		android:orientation="vertical">
 
-		<TextView
-			android:id="@+id/vault_name"
-			style="@style/AppTheme.ListItemDarkTextColor"
+		<RelativeLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:singleLine="true"
-			android:textSize="18sp" />
+			android:paddingRight="8dp"
+			android:orientation="horizontal">
+
+			<TextView
+				tools:text="Vault Name"
+				android:id="@+id/vault_name"
+				style="@style/AppTheme.ListItemDarkTextColor"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentStart="true"
+				android:singleLine="true"
+				android:textSize="18sp" />
+
+			<TextView
+				android:id="@+id/tv_vault_size"
+				style="@style/AppTheme.ListItemDarkTextColor"
+				android:textColor="@color/textColorLight"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentEnd="true"
+				android:singleLine="true"
+				android:text="Zero KB"
+				android:textSize="12sp" />
+		</RelativeLayout>
+
 		<!-- using android:singleLine to fix https://code.google.com/p/android/issues/detail?id=33868 -->
 
 		<TextView
@@ -74,4 +97,18 @@
 		android:layout_marginStart="16dp"
 		android:layout_toEndOf="@id/cloud_image"
 		android:background="@color/list_divider" />
+
+	<TextView
+		android:id="@+id/tvStatus"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentTop="true"
+		android:layout_alignParentEnd="true"
+		android:layout_marginTop="8dp"
+		android:layout_marginEnd="8dp"
+		android:background="@color/error"
+		android:padding="4dp"
+		android:textColor="@color/textColorWhite"
+		android:textSize="10dp"
+		android:visibility="gone" />
 </RelativeLayout>

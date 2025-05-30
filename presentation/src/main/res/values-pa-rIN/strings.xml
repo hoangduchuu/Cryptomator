@@ -9,7 +9,7 @@
 	<string name="error_no_network_connection">ਕੋਈ ਨੈੱਟਵਰਕ ਕਨੈਕਸ਼ਨ ਨਹੀਂ</string>
 	<string name="error_invalid_passphrase">ਗ਼ਲਤ ਪਾਸਵਰਡ</string>
 	<string name="error_file_or_folder_exists">ਫਾਇਲ ਜਾਂ ਫੋਲਡਰ ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ।</string>
-	<string name="error_vault_version_not_supported">ਵਾਲਟ ਵਰਜ਼ਨ %1$s ਗ਼ੈਰ-ਸਹਾਇਕ ਹੈ। ਇਹ ਵਾਲਟ ਨੂੰ Cryptomator ਦੇ ਪੁਰਾਣੇ ਜਾਂ ਨਵੇਂ ਵਰਜ਼ਨ ਨਾਲ ਬਣਾਇਆ ਗਿਆ ਹੈ।</string>
+	<string name="error_vault_version_not_supported">ਵਾਲਟ ਵਰਜ਼ਨ %1$s ਗ਼ੈਰ-ਸਹਾਇਕ ਹੈ। ਇਹ ਵਾਲਟ ਨੂੰ nCryptor ਦੇ ਪੁਰਾਣੇ ਜਾਂ ਨਵੇਂ ਵਰਜ਼ਨ ਨਾਲ ਬਣਾਇਆ ਗਿਆ ਹੈ।</string>
 	<string name="error_vault_already_exists">\"%@\" ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ।</string>
 	<string name="error_no_such_file">ਫਾਇਲ ਮੌਜੂਦ ਨਹੀਂ ਹੈ।</string>
 	<string name="error_vault_has_been_locked">ਵਾਲਟ ਨੂੰ ਲਾਕ ਕੀਤਾ ਗਿਆ ਹੈ।</string>
@@ -40,7 +40,7 @@
 	<string name="snack_bar_cryptomator_variants_title">ਹੋਰ ਪੜ੍ਹੋ</string>
 	<!-- # screens -->
 	<!-- # screen: vault list -->
-	<string name="screen_vault_list_actions_title">Cryptomator ਵਿੱਚ ਜੋੜੋ</string>
+	<string name="screen_vault_list_actions_title">nCryptor ਵਿੱਚ ਜੋੜੋ</string>
 	<string name="screen_vault_list_action_create_new_vault">ਨਵਾਂ ਵਾਲਟ ਬਣਾਓ</string>
 	<string name="screen_vault_list_action_add_existing_vault">ਮੌਜੂਦਾ ਵਾਲਟ ਨੂੰ ਜੋੜੋ</string>
 	<string name="screen_vault_list_vault_action_delete">ਹਟਾਓ</string>
@@ -145,7 +145,7 @@
 	<string name="screen_settings_section_auto_photo_upload_toggle_instant_upload_summary">ਜਦੋਂ ਵੀ ਵਾਲਟ ਅਣ-ਲਾਕ ਹੋਵੇ ਤਾਂ ਸਿੱਧਾ ਅੱਪਲੋਡ ਕਰੋ</string>
 	<string name="screen_settings_section_auto_photo_upload_only_wifi_toggle">ਸਿਰਫ਼ WIFI ਵਰਤ ਕੇ ਅੱਪਲੋਡ ਕਰੋ</string>
 	<string name="screen_settings_section_auto_photo_upload_including_videos">ਵੀਡੀਓ ਨੂੰ ਅੱਪਲੋਡ ਕਰੋ</string>
-	<string name="screen_settings_website_label">Cryptomator ਦੀ ਵੈੱਬਸਾਈਟ</string>
+	<string name="screen_settings_website_label">nCryptor ਦੀ ਵੈੱਬਸਾਈਟ</string>
 	<string name="screen_settings_facebook_label">ਫੇਸਬੁੱਕ ਉੱਤੇ ਸਾਨੂੰ ਪਸੰਦ ਕਰੋ</string>
 	<string name="screen_settings_section_legal">ਕਨੂੰਨੀ</string>
 	<string name="screen_settings_licenses_label">ਲਸੰਸ</string>
@@ -323,4 +323,23 @@
 	<string name="dark">ਗੂੜ੍ਹਾ</string>
 	<!-- update interval names -->
 	<string name="update_interval_1d">ਦਿਨ \'ਚ ਇੱਕ ਵਾਰ</string>
+	<string name="screen_sign_in_title">User Profile</string>
+	<string name="failed_to_start_authorization">Failed to start authorization: %1$s</string>
+	<string name="no_authentication_data_received">No authentication data received</string>
+	<string name="authentication_cancelled_by_user">Authentication cancelled by user</string>
+	<string name="authentication_failed">Authentication failed: %1$s</string>
+	<string name="network_error_occurred">Network error occurred</string>
+	<string name="no_response_or_error_received">No response or error received</string>
+	<string name="service_not_configured_yet">Service not configured yet</string>
+	<string name="failed_to_start_logout">Failed to start logout: %1$s</string>
+	<string name="no_logout_data_received">No logout data received</string>
+	<string name="successfully_logged_out">Successfully logged out</string>
+	<string name="token_exchange_completed_successfully">Token exchange completed successfully</string>
+	<string name="token_exchange_failed">Token exchange failed: %1$s</string>
+	<string name="authorization_failed">Authorization failed: %1$s</string>
+	<string name="next_billing">Next billing</string>
+	<string name="renewal_amount">Renewal Amount: %1$s plus applicable taxes</string>
+	<string name="keep_vaults_data">Keep vaults data</string>
+	<string name="sign_in">Sign in</string>
+	<string name="create_account">Create Account</string>
 </resources>

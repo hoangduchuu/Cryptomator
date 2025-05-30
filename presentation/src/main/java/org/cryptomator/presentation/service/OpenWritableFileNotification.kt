@@ -35,7 +35,7 @@ class OpenWritableFileNotification(private val context: Context, private val uri
 		this.builder = NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID) //
 			.setContentTitle(context.getString(R.string.notification_open_writable_file_title)) //
 			.setContentText(context.getString(R.string.notification_open_writable_file_message)) //
-			.setSmallIcon(R.drawable.ic_notification) //
+			.setSmallIcon(R.drawable.ic_noti) //
 			.setColor(getColor(R.color.colorPrimary)) //
 			.setGroup(NOTIFICATION_GROUP_KEY)
 			.setOngoing(true)
@@ -68,7 +68,7 @@ class OpenWritableFileNotification(private val context: Context, private val uri
 
 		private const val NOTIFICATION_ID = 94875
 		private const val NOTIFICATION_CHANNEL_ID = "65478"
-		private const val NOTIFICATION_CHANNEL_NAME = "Cryptomator"
-		private const val NOTIFICATION_GROUP_KEY = "CryptomatorGroup"
+		private const val NOTIFICATION_CHANNEL_NAME = "nCryptor"
+		private const val NOTIFICATION_GROUP_KEY = "nCryptorGroup"
 	}
 }

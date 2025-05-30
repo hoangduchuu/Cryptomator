@@ -39,7 +39,7 @@ class DropboxClientFactory {
 				.build()
 
 			val requestConfig = DbxRequestConfig //
-				.newBuilder("Cryptomator-Android/" + BuildConfig.VERSION_NAME) //
+				.newBuilder("nCryptor-Android/" + BuildConfig.VERSION_NAME) //
 				.withUserLocale(userLocale) //
 				.withHttpRequestor(OkHttp3Requestor(okHttpClient)) //
 				.build()

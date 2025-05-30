@@ -36,23 +36,38 @@ public class VaultEntity extends DatabaseEntity {
 
 	private Integer shorteningThreshold;
 
-	/**
-	 * Used for active entity operations.
-	 */
+	private Long size;
+
+	private String policyId;
+
+	private Integer driveQuota;
+
+	private String policyEtag;
+
+	/** Used for active entity operations. */
 	@Generated(hash = 941685503)
 	private transient VaultEntityDao myDao;
-	/**
-	 * Used to resolve relations
-	 */
+
+	/** Used to resolve relations */
 	@Generated(hash = 2040040024)
 	private transient DaoSession daoSession;
 
 	@Generated(hash = 229273163)
 	private transient Long folderCloud__resolvedKey;
 
-	@Generated(hash = 1663458645)
-	public VaultEntity(Long id, Long folderCloudId, String folderPath, String folderName, @NotNull String cloudType, String password, String passwordCryptoMode, Integer position, Integer format,
-			Integer shorteningThreshold) {
+	private String deviceID;
+
+	private String createdBy;
+
+	private String description;
+
+	private String etag;
+	private String status;
+	private String fullLocalPath;
+
+	@Generated(hash = 897494622)
+	public VaultEntity(Long id, Long folderCloudId, String folderPath, String folderName, @NotNull String cloudType, String password, String passwordCryptoMode, Integer position, Integer format, Integer shorteningThreshold, Long size, String policyId, Integer driveQuota, String policyEtag,
+			String deviceID, String createdBy, String description, String etag, String status, String fullLocalPath) {
 		this.id = id;
 		this.folderCloudId = folderCloudId;
 		this.folderPath = folderPath;
@@ -63,6 +78,16 @@ public class VaultEntity extends DatabaseEntity {
 		this.position = position;
 		this.format = format;
 		this.shorteningThreshold = shorteningThreshold;
+		this.size = size;
+		this.policyId = policyId;
+		this.driveQuota = driveQuota;
+		this.policyEtag = policyEtag;
+		this.deviceID = deviceID;
+		this.createdBy = createdBy;
+		this.description = description;
+		this.etag = etag;
+		this.status = status;
+		this.fullLocalPath = fullLocalPath;
 	}
 
 	@Generated(hash = 691253864)
@@ -105,9 +130,7 @@ public class VaultEntity extends DatabaseEntity {
 		myDao.delete(this);
 	}
 
-	/**
-	 * To-one relationship, resolved on first access.
-	 */
+	/** To-one relationship, resolved on first access. */
 	@Generated(hash = 1508817413)
 	public CloudEntity getFolderCloud() {
 		Long __key = this.folderCloudId;
@@ -126,9 +149,7 @@ public class VaultEntity extends DatabaseEntity {
 		return folderCloud;
 	}
 
-	/**
-	 * called by internal mechanisms, do not call yourself.
-	 */
+	/** called by internal mechanisms, do not call yourself. */
 	@Generated(hash = 1482096330)
 	public void setFolderCloud(CloudEntity folderCloud) {
 		synchronized (this) {
@@ -216,6 +237,84 @@ public class VaultEntity extends DatabaseEntity {
 
 	public void setPasswordCryptoMode(String passwordCryptoMode) {
 		this.passwordCryptoMode = passwordCryptoMode;
+	}
+
+	public String getDeviceID() {
+		return this.deviceID;
+	}
+
+	public void setDeviceID(String deviceID) {
+		this.deviceID = deviceID;
+	}
+
+	public String getCreatedBy() {
+		return this.createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public String getDescription() {
+		return this.description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getEtag() {
+		return this.etag;
+	}
+
+	public void setEtag(String etag) {
+		this.etag = etag;
+	}
+
+	public String getStatus() {
+		return this.status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getFullLocalPath() {
+		return this.fullLocalPath;
+	}
+
+	public void setFullLocalPath(String fullLocalPath) {
+		this.fullLocalPath = fullLocalPath;
+	}
+
+	public Long getSize() {
+		return this.size;
+	}
+
+	public void setSize(Long size) {
+		this.size = size;
+	}
+
+	public String getPolicyId() {
+		return this.policyId;
+	}
+
+	public void setPolicyId(String policyId) {
+		this.policyId = policyId;
+	}
+
+	public Integer getDriveQuota() {
+		return this.driveQuota;
+	}
+
+	public void setDriveQuota(Integer driveQuota) {
+		this.driveQuota = driveQuota;
+	}
+
+	public String getPolicyEtag() {
+		return this.policyEtag;
+	}
+
+	public void setPolicyEtag(String policyEtag) {
+		this.policyEtag = policyEtag;
 	}
 
 	/** called by internal mechanisms, do not call yourself. */

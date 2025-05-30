@@ -8,7 +8,7 @@ open class UnverifiedVaultConfig(open val jwt: String, open val keyId: URI, open
 }
 
 enum class KeyLoadingStrategy(private val prefix: String) {
-	MASTERKEY("masterkeyfile"),
+	MASTERKEY("embedded"),
 	HUB("hub+http");
 
 	companion object {

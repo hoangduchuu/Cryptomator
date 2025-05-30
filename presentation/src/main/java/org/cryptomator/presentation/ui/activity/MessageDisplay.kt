@@ -6,4 +6,8 @@ interface MessageDisplay {
 
 	fun showMessage(message: String, vararg args: Any)
 
+	fun showDialogMessage(messageId: Int, vararg args: Any)
+
+	fun showDialogMessage(message: String, vararg args: Any)
+
 }

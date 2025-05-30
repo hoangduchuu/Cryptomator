@@ -55,10 +55,10 @@
 # repo_maxage: 0
 
 repo_url: https://static.cryptomator.org/android/fdroid/repo
-repo_name: Cryptomator F-Droid Repo
+repo_name: nCryptor F-Droid Repo
 repo_icon: fdroid-icon.png
 repo_description: |
-  This is the official repository for the Cryptomator Android app.
+  This is the official repository for the nCryptor Android app.
 
 # As above, but for the archive repo.
 # archive_older sets the number of versions kept in the main repo, with all
@@ -66,10 +66,10 @@ repo_description: |
 # repository, and no need to define the other archive_ values.
 archive_older: 0
 archive_url: https://static.cryptomator.org/android/fdroid/archive
-archive_name: Cryptomator F-Droid Archive
+archive_name: nCryptor F-Droid Archive
 archive_icon: fdroid-icon.png
 archive_description: |
-  The repository of older versions of Cryptomator for Android.
+  The repository of older versions of nCryptor for Android.
 
 # This allows a specific kind of insecure APK to be included in the
 # 'repo' section.  Since April 2017, APK signatures that use MD5 are

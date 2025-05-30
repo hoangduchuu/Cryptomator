@@ -39,11 +39,13 @@ import org.cryptomator.presentation.model.S3CloudModel
 import org.cryptomator.presentation.model.WebDavCloudModel
 import org.cryptomator.presentation.model.mappers.CloudModelMapper
 import org.cryptomator.presentation.ui.activity.view.AuthenticateCloudView
+import org.cryptomator.presentation.ui.dialog.PermissionRevokedDialog
 import org.cryptomator.presentation.workflow.ActivityResult
 import org.cryptomator.presentation.workflow.AddExistingVaultWorkflow
 import org.cryptomator.presentation.workflow.CreateNewVaultWorkflow
 import org.cryptomator.presentation.workflow.Workflow
 import org.cryptomator.util.ExceptionUtil
+import org.cryptomator.util.SharedPreferencesHandler
 import org.cryptomator.util.crypto.CredentialCryptor
 import java.security.cert.CertificateEncodingException
 import java.security.cert.CertificateException
@@ -60,7 +62,8 @@ class AuthenticateCloudPresenter @Inject constructor( //
 	private val getCloudsUseCase: GetCloudsUseCase, //
 	private val getUsernameUseCase: GetUsernameUseCase,  //
 	private val addExistingVaultWorkflow: AddExistingVaultWorkflow,  //
-	private val createNewVaultWorkflow: CreateNewVaultWorkflow
+	private val createNewVaultWorkflow: CreateNewVaultWorkflow,//
+	private val preferencesHandler: SharedPreferencesHandler
 ) : Presenter<AuthenticateCloudView>(exceptionHandlers) {
 
 	private val strategies = arrayOf( //
@@ -103,6 +106,7 @@ class AuthenticateCloudPresenter @Inject constructor( //
 	private fun getUsernameAndSuceedAuthentication(cloud: Cloud) {
 		getUsernameUseCase.withCloud(cloud).run(object : DefaultResultHandler<String>() {
 			override fun onSuccess(username: String) {
+				storeEmailOf(cloud, username)
 				succeedAuthenticationWith(updateUsernameOf(cloud, username))
 			}
 
@@ -118,6 +122,20 @@ class AuthenticateCloudPresenter @Inject constructor( //
 			CloudType.DROPBOX -> DropboxCloud.aCopyOf(cloud as DropboxCloud).withUsername(username).build()
 			CloudType.ONEDRIVE -> OnedriveCloud.aCopyOf(cloud as OnedriveCloud).withUsername(username).build()
 			else -> throw IllegalStateException("Cloud " + cloud.type() + " is not supported")
+		}
+	}
+
+	private fun storeEmailOf(cloud: Cloud, email: String) {
+		return when (cloud.type()) {
+			CloudType.GOOGLE_DRIVE -> {
+				preferencesHandler.setGoogleDriverEmail(email)
+			}
+			CloudType.DROPBOX -> {
+				preferencesHandler.setDropboxEmail(email)
+			}
+			else -> {
+				// do nothing
+			}
 		}
 	}
 
@@ -471,13 +489,15 @@ class AuthenticateCloudPresenter @Inject constructor( //
 			for (permission in permissions) {
 				if (permission.uri.toString() == uri) {
 					succeedAuthenticationWith(cloud.toCloud())
+					return
 				}
 			}
 
-			Timber.tag("AuthicateCloudPrester").e("Permission revoked, ask to re-pick location")
+			Timber.tag("AuthicateCloudPrester").e("Permission not found for URI: $uri")
+			Timber.tag("AuthicateCloudPrester").d("Current persisted permissions: ${permissions.map { it.uri }}")
 
-			Toast.makeText(context(), getString(R.string.permission_revoked_re_request_permission), Toast.LENGTH_LONG).show()
-
+			view?.showDialog(PermissionRevokedDialog.newInstance())
+			
 			val openDocumentTree = Intent(ACTION_OPEN_DOCUMENT_TREE).apply {
 				putExtra(DocumentsContract.EXTRA_INITIAL_URI, uri)
 			}

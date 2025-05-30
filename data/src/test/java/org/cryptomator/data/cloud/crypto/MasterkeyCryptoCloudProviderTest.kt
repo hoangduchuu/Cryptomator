@@ -57,7 +57,7 @@ internal class MasterkeyCryptoCloudProviderTest {
 	private val masterkeyV7 =
 		"{  \"version\": 7,  \"scryptSalt\": \"AAAAAAAAAAA=\",  \"scryptCostParam\": 32768,  \"scryptBlockSize\": 8,  \"primaryMasterKey\": \"D2kc+xBoAcVY+M7s74YBEy6l7ga2+Nz+HS5o0TQY3JMW1uQ5jTlLIQ==\",  \"hmacMasterKey\": \"D2kc+xBoAcVY+M7s74YBEy6l7ga2+Nz+HS5o0TQY3JMW1uQ5jTlLIQ==\",  \"versionMac\": \"cn2sAK6l9p1/w9deJVUuW3h7br056mpv5srvALiYw+g=\"}"
 	private val vaultConfig =
-		"eyJraWQiOiJtYXN0ZXJrZXlmaWxlOm1hc3RlcmtleS5jcnlwdG9tYXRvciIsImFsZyI6IkhTMjU2IiwidHlwIjoiSldUIn0.eyJqdGkiOiIiLCJmb3JtYXQiOjgsImNpcGhlckNvbWJvIjoiU0lWX0dDTSIsInNob3J0ZW5pbmdUaHJlc2hvbGQiOjIyMH0.HHMkCqK-kFv_TXAhrzgp8vuPhws_2NswhaAHB9hkKBs"
+		"eyJraWQiOiJlbWJlZGRlZDptay5uY3J5cHRvciIsImFsZyI6IkhTMjU2IiwidHlwIjoiSldUIn0.eyJqdGkiOiIiLCJmb3JtYXQiOjgsImNpcGhlckNvbWJvIjoiU0lWX0dDTSIsInNob3J0ZW5pbmdUaHJlc2hvbGQiOjIyMH0.syHqS7RUC2e7XcACgbZOvoPrEXr3UTcg-MXCKYUAu4I"
 
 	private var context: Context = mock()
 	private var cloud: Cloud = mock()

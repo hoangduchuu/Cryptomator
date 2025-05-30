@@ -1,6 +1,6 @@
 package org.cryptomator.domain.exception;
 
-public abstract class BackendException extends Exception {
+public class BackendException extends Exception {
 
 	public BackendException() {
 		super();

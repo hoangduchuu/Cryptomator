@@ -3,6 +3,8 @@ package org.cryptomator.presentation.di.module;
 import android.content.Context;
 
 import org.cryptomator.presentation.CryptomatorApp;
+import org.cryptomator.presentation.util.DeviceUtils;
+import org.cryptomator.util.SharedPreferencesHandler;
 
 import javax.inject.Singleton;
 
@@ -22,5 +24,17 @@ public class ApplicationModule {
 	@Singleton
 	Context provideApplicationContext() {
 		return application;
+	}
+
+	@Provides
+	@Singleton
+	SharedPreferencesHandler provideSharedPreferencesHandler(Context context) {
+		return new SharedPreferencesHandler(context);
+	}
+
+	@Provides
+	@Singleton
+	DeviceUtils provideDeviceUtils() {
+		return new DeviceUtils();
 	}
 }

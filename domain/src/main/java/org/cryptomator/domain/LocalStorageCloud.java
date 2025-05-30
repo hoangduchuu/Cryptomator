@@ -9,7 +9,7 @@ public class LocalStorageCloud implements Cloud {
 	private final Long id;
 	private final String rootUri;
 
-	private LocalStorageCloud(Builder builder) {
+	public LocalStorageCloud(Builder builder) {
 		this.id = builder.id;
 		this.rootUri = builder.rootUri;
 	}

@@ -267,12 +267,18 @@ class CloudConnectionListPresenter @Inject constructor( //
 
 	private fun persistUriPermission(rootTreeUriOfLocalStorage: Uri?) {
 		rootTreeUriOfLocalStorage?.let {
-			context() //
-				.contentResolver //
-				.takePersistableUriPermission( //
-					it,  //
-					Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
-				)
+			try {
+				context() //
+					.contentResolver //
+					.takePersistableUriPermission( //
+						it,  //
+						Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+					)
+				Timber.tag("CloudConnectionListPresenter").i("Successfully persisted URI permission for ${it}")
+			} catch (e: SecurityException) {
+				Timber.tag("CloudConnectionListPresenter").e(e, "Failed to persist URI permission for ${it}")
+				Toast.makeText(context(), "R.string.error_failed_to_persist_permission", Toast.LENGTH_LONG).show()
+			}
 		}
 	}
 

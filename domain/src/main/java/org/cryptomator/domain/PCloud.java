@@ -9,7 +9,7 @@ public class PCloud implements Cloud {
 	private final String url;
 	private final String username;
 
-	private PCloud(Builder builder) {
+	public PCloud(Builder builder) {
 		this.id = builder.id;
 		this.accessToken = builder.accessToken;
 		this.url = builder.url;

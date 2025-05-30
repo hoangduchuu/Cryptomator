@@ -75,6 +75,27 @@ class CloudRepositoryImpl implements CloudRepository {
 	}
 
 	@Override
+	public Cloud getOrCreate(Cloud cloud) throws BackendException {
+	// check tye cloud name is exist
+		List<Cloud> allClouds = allClouds();
+		for (Cloud c : allClouds) {
+			if (c.type().equals(cloud.type())) {
+				return c;
+			}
+		}
+
+		// check the cloud type is exist
+		List<Cloud> clouds = clouds(cloud.type());
+		for (Cloud c : clouds) {
+			if (c.configurationMatches(cloud)) {
+				return c;
+			}
+		}
+
+		return store(cloud);
+	}
+
+	@Override
 	public void delete(Cloud cloud) {
 		if (!cloud.persistent()) {
 			throw new IllegalArgumentException("Can not delete non persistent cloud");

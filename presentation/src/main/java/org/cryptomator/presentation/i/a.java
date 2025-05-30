@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 /**
- * This file is the obfuscated AutoUploadFilesStore of Cryptomator in version 1.5.11-beta1
+ * This file is the obfuscated AutoUploadFilesStore of nCryptor in version 1.5.11-beta1
  * and is used to recover it in version 1.5.11-beta2
  * <p>
  * TODO Delete as soon as possible

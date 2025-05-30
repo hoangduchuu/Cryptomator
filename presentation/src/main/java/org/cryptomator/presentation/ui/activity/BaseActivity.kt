@@ -11,6 +11,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.DialogFragment
@@ -271,6 +272,24 @@ abstract class BaseActivity<VB : ViewBinding>(val bindingFactory: (LayoutInflate
 			showToastMessage(formattedMessage)
 		}
 		Timber.tag("Message").i(formattedMessage)
+	}
+
+	override fun showDialogMessage(message: String, vararg args: Any) {
+		// avoid 		// avoid showing dialog message if current dialog is a progress dialog		if (currentDialog is ProgressAware) {
+		AlertDialog.Builder(this)
+			.setMessage(format(message, *args))
+			.setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+			.create()
+			.show();
+	}
+
+	override fun showDialogMessage(messageId: Int, vararg args: Any) {
+		val msg = getString(messageId)
+		AlertDialog.Builder(this)
+			.setMessage(format(msg, *args))
+			.setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+			.create()
+			.show();
 	}
 
 	override fun showProgress(progress: ProgressModel) {

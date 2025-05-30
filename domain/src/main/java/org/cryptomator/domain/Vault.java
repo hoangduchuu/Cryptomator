@@ -4,6 +4,8 @@ import org.cryptomator.util.crypto.CryptoMode;
 
 import java.io.Serializable;
 
+import javax.annotation.Nullable;
+
 public class Vault implements Serializable {
 
 	private static final Long NOT_SET = Long.MIN_VALUE;
@@ -18,6 +20,19 @@ public class Vault implements Serializable {
 	private final int format;
 	private final int shorteningThreshold;
 	private final int position;
+	private final Long size;
+	private final String policyId;
+	private final Integer driveQuota;
+	private final String policyEtag;
+
+	private final String deviceID;
+	private final String createdBy;
+
+	private final String vaultDescription;
+	private final String etag;
+
+	private final String status;
+	private final String fullLocalPath;
 
 	private Vault(Builder builder) {
 		this.id = builder.id;
@@ -31,6 +46,16 @@ public class Vault implements Serializable {
 		this.format = builder.format;
 		this.shorteningThreshold = builder.shorteningThreshold;
 		this.position = builder.position;
+		this.size = builder.size;
+		this.policyId = builder.policyId;
+		this.driveQuota = builder.driveQuota;
+		this.policyEtag = builder.policyEtag;
+		this.deviceID = builder.deviceID;
+		this.createdBy = builder.createdBy;
+		this.vaultDescription = builder.description;
+		this.etag = builder.etag;
+		this.status = builder.status;
+		this.fullLocalPath = builder.fullLocalPath;
 	}
 
 	public static Builder aVault() {
@@ -48,7 +73,17 @@ public class Vault implements Serializable {
 				.withSavedPassword(vault.getPassword(), vault.getPasswordCryptoMode()) //
 				.withFormat(vault.getFormat()) //
 				.withShorteningThreshold(vault.getShorteningThreshold()) //
-				.withPosition(vault.getPosition());
+				.withPosition(vault.getPosition())//
+				.withDeviceID(vault.getDeviceID())//
+				.withCreatedBy(vault.getCreatedBy())
+				.withVaultDescription(vault.getVaultDescription())
+				.withEtag(vault.getEtag())
+				.withStatus(vault.getStatus())
+				.withFullLocalPath(vault.getFullLocalPath())
+				.withSize(vault.getSize())
+				.withPolicyId(vault.getPolicyId())
+				.withDriveQuota(vault.getDriveQuota())
+				.withPolicyEtag(vault.getPolicyEtag());
 	}
 
 	public Long getId() {
@@ -95,8 +130,54 @@ public class Vault implements Serializable {
 		return position;
 	}
 
+	public String getDeviceID() {
+		return deviceID;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public String getVaultDescription() {
+		return vaultDescription;
+	}
+
+	public String getEtag() {
+		if(etag == null || etag.isEmpty()) {
+			return "1";
+		}
+		return etag;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public String getFullLocalPath() {
+		return fullLocalPath;
+	}
+
 	public boolean isReadOnly() {
 		return false; //TODO Implement read-only check
+	}
+
+	public Long getSize() {
+		return size;
+	}
+
+	public String getPolicyId() {
+		return policyId;
+	}
+
+	public Integer getDriveQuota() {
+		return driveQuota;
+	}
+
+	public String getPolicyEtag() {
+		if(policyEtag == null || policyEtag.isEmpty()) {
+			return "1";
+		}
+		return policyEtag;
 	}
 
 	@Override
@@ -119,6 +200,121 @@ public class Vault implements Serializable {
 		return id == null ? 0 : id.hashCode();
 	}
 
+	public Vault withNewEtag(String etag) {
+		return new Vault.Builder() //
+				.withId(id) //
+				.withCloud(cloud) //
+				.withCloudType(cloudType) //
+				.withName(name) //
+				.withPath(path) //
+				.withUnlocked(unlocked) //
+				.withSavedPassword(password, passwordCryptoMode) //
+				.withFormat(format) //
+				.withShorteningThreshold(shorteningThreshold) //
+				.withPosition(position)//
+				.withDeviceID(deviceID)//
+				.withCreatedBy(createdBy)
+				.withVaultDescription(vaultDescription)
+				.withSize(size)
+				.withPolicyId(policyId)
+				.withDriveQuota(driveQuota)
+				.withPolicyEtag(policyEtag)
+				.withEtag(etag).build();
+	}
+
+	public Vault withArgs(String etag,boolean unlocked) {
+		return new Vault.Builder() //
+				.withId(id) //
+				.withCloud(cloud) //
+				.withCloudType(cloudType) //
+				.withName(name) //
+				.withPath(path) //
+				.withUnlocked(unlocked) //
+				.withSavedPassword(password, passwordCryptoMode) //
+				.withFormat(format) //
+				.withShorteningThreshold(shorteningThreshold) //
+				.withPosition(position)//
+				.withDeviceID(deviceID)//
+				.withCreatedBy(createdBy)
+				.withVaultDescription(vaultDescription)
+				.withStatus(status)
+				.withSize(size)
+				.withPolicyId(policyId)
+				.withDriveQuota(driveQuota)
+				.withPolicyEtag(policyEtag)
+				.withEtag(etag).build();
+	}
+
+	public Vault withCloud(Cloud cloud) {
+		return new Vault.Builder() //
+				.withId(id) //
+				.withCloud(cloud) //
+				.withCloudType(cloudType) //
+				.withName(name) //
+				.withPath(path) //
+				.withUnlocked(unlocked) //
+				.withSavedPassword(password, passwordCryptoMode) //
+				.withFormat(format) //
+				.withShorteningThreshold(shorteningThreshold) //
+				.withPosition(position)//
+				.withDeviceID(deviceID)//
+				.withCreatedBy(createdBy)
+				.withVaultDescription(vaultDescription)
+				.withStatus(status)
+				.withSize(size)
+				.withPolicyId(policyId)
+				.withDriveQuota(driveQuota)
+				.withPolicyEtag(policyEtag)
+				.withEtag(etag).build();
+	}
+
+	public Vault withCreatedBy(String userCognitoId) {
+		return new Vault.Builder() //
+				.withId(id) //
+				.withCloud(cloud) //
+				.withCloudType(cloudType) //
+				.withName(name) //
+				.withPath(path) //
+				.withUnlocked(unlocked) //
+				.withSavedPassword(password, passwordCryptoMode) //
+				.withFormat(format) //
+				.withShorteningThreshold(shorteningThreshold) //
+				.withPosition(position)//
+				.withDeviceID(deviceID)//
+				.withCreatedBy(createdBy)
+				.withVaultDescription(vaultDescription)
+				.withStatus(status)
+				.withCreatedBy(userCognitoId)
+				.withSize(size)
+				.withPolicyId(policyId)
+				.withDriveQuota(driveQuota)
+				.withPolicyEtag(policyEtag)
+				.withEtag(etag).build();
+	}
+
+	public Vault withNewSize(long size) {
+		return new Vault.Builder() //
+				.withId(id) //
+				.withCloud(cloud) //
+				.withCloudType(cloudType) //
+				.withName(name) //
+				.withPath(path) //
+				.withUnlocked(unlocked) //
+				.withSavedPassword(password, passwordCryptoMode) //
+				.withFormat(format) //
+				.withShorteningThreshold(shorteningThreshold) //
+				.withPosition(position)//
+				.withDeviceID(deviceID)//
+				.withCreatedBy(createdBy)
+				.withVaultDescription(vaultDescription)
+				.withStatus(status)
+				.withSize(size)
+				.withPolicyId(policyId)
+				.withDriveQuota(driveQuota)
+				.withPolicyEtag(policyEtag)
+				.withEtag(etag).build();
+	}
+
 	public static class Builder {
 
 		private Long id = NOT_SET;
@@ -132,6 +328,18 @@ public class Vault implements Serializable {
 		private int format = -1;
 		private int shorteningThreshold = -1;
 		private int position = -1;
+		private Long size = 0L;
+		private String policyId;
+		private Integer driveQuota;
+		private String policyEtag;
+		private String deviceID;
+		private String createdBy;
+
+		private String description;
+		private String etag;
+
+		private String status;
+		private String fullLocalPath;
 
 		private Builder() {
 		}
@@ -213,6 +421,59 @@ public class Vault implements Serializable {
 			return this;
 		}
 
+		public Builder withDeviceID(String deviceID) {
+			this.deviceID = deviceID;
+			return this;
+		}
+
+		public Builder withCreatedBy(String createdBy) {
+			this.createdBy = createdBy;
+			return this;
+		}
+
+		public Builder withVaultDescription(@Nullable String vaultDescription) {
+			if (vaultDescription == null) {
+				vaultDescription = "";
+			}
+			this.description = vaultDescription;
+			return this;
+		}
+
+		public Builder withEtag(String etag) {
+			this.etag = etag;
+			return this;
+		}
+
+		public Builder withStatus(String status) {
+			this.status = status;
+			return this;
+		}
+
+		public Builder withFullLocalPath(String fullLocalPath) {
+			this.fullLocalPath = fullLocalPath;
+			return this;
+		}
+
+		public Builder withSize(Long size) {
+			this.size = size;
+			return this;
+		}
+
+		public Builder withPolicyId(String policyId) {
+			this.policyId = policyId;
+			return this;
+		}
+
+		public Builder withDriveQuota(Integer driveQuota) {
+			this.driveQuota = driveQuota;
+			return this;
+		}
+
+		public Builder withPolicyEtag(String policyEtag) {
+			this.policyEtag = policyEtag;
+			return this;
+		}
+
 		public Vault build() {
 			validate();
 			return new Vault(this);
@@ -241,5 +502,10 @@ public class Vault implements Serializable {
 				throw new IllegalStateException("password must be set if passwordCryptoMode is set");
 			}
 		}
+	}
+
+	@Override
+	public String toString() {
+		return "Vault{" + "id=" + id + ", name='" + name + '\'' + ", path='" + path + '\'' + ", cloud=" + cloud + ", cloudType=" + cloudType + ", unlocked=" + unlocked + ", password='" + password + '\'' + ", passwordCryptoMode=" + passwordCryptoMode + ", format=" + format + ", shorteningThreshold=" + shorteningThreshold + ", position=" + position + ", deviceID='" + deviceID + '\'' + ", createdBy='" + createdBy + '\'' + ", vaultDescription='" + vaultDescription + '\'' + ", etag='" + etag + '\'' + ", status='" + status + '\'' + ", fullLocalPath='" + fullLocalPath + '\'' + ", driveQuota='" + driveQuota + '\'' + '}';
 	}
 }

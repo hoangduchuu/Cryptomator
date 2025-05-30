@@ -1,6 +1,7 @@
 package org.cryptomator.presentation.ui.fragment
 
 import android.annotation.SuppressLint
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import org.cryptomator.domain.CloudNode
+import org.cryptomator.domain.Vault
 import org.cryptomator.generator.Fragment
 import org.cryptomator.presentation.R
 import org.cryptomator.presentation.R.dimen.global_padding
@@ -24,9 +26,11 @@ import org.cryptomator.presentation.model.CloudFileModel
 import org.cryptomator.presentation.model.CloudFolderModel
 import org.cryptomator.presentation.model.CloudNodeModel
 import org.cryptomator.presentation.model.ProgressModel
+import org.cryptomator.presentation.model.VaultModel
 import org.cryptomator.presentation.presenter.BrowseFilesPresenter
 import org.cryptomator.presentation.ui.adapter.BrowseFilesAdapter
 import org.cryptomator.presentation.util.ResourceHelper.Companion.getPixelOffset
+import org.cryptomator.util.VaultStatus
 import java.util.Optional
 import javax.inject.Inject
 
@@ -112,6 +116,29 @@ class BrowseFilesFragment : BaseFragment<FragmentBrowseFilesBinding>(FragmentBro
 			isSelectionMode(FILES_ONLY) -> setupViewForFilesSelection()
 			isNavigationMode(SELECT_ITEMS) -> setupViewForNodeSelectionMode()
 		}
+
+		// disable fab button depend on vault status
+		if (vault?.getVaultStatus() == VaultStatus.ReadOnly || vault?.getVaultStatus() == VaultStatus.ReadonlyPending) {
+			disableFab()
+		} else {
+			enableFab()
+		}
+
+		browseFilesPresenter.setVault(vault)
+		browseFilesPresenter.checkPlan()
+	}
+
+	// disable floating action button
+	private fun disableFab() {
+		// update color
+		binding.floatingActionButton.floatingActionButton.setColorFilter(ContextCompat.getColor(context(), R.color.colorGray), PorterDuff.Mode.SRC_IN)
+		// disable button
+		binding.floatingActionButton.floatingActionButton.isEnabled = false
+	}
+
+	// enable fab
+	private fun enableFab() {
+
 	}
 
 	private fun isNavigationMode(navigationMode: ChooseCloudNodeSettings.NavigationMode): Boolean = this.navigationMode == navigationMode
@@ -295,19 +322,31 @@ class BrowseFilesFragment : BaseFragment<FragmentBrowseFilesBinding>(FragmentBro
 		cloudNodesAdapter.setSort(comparator)
 	}
 
+	fun updatePlanLimited(vault: Vault) {
+		hideFloatingActionButton()
+	}
+
 	companion object {
 
 		private const val ARG_FOLDER = "folder"
 		private const val ARG_CHOOSE_CLOUD_NODE_SETTINGS = "chooseCloudNodeSettings"
+		private const val ARG_VAULT = "vault"
 
-		fun newInstance(folder: CloudFolderModel, chooseCloudNodeSettings: ChooseCloudNodeSettings?): BrowseFilesFragment {
+		fun newInstance(folder: CloudFolderModel, chooseCloudNodeSettings: ChooseCloudNodeSettings?, vault: VaultModel?): BrowseFilesFragment {
 			val result = BrowseFilesFragment()
 			val args = Bundle()
 			args.putSerializable(ARG_FOLDER, folder)
 			args.putSerializable(ARG_CHOOSE_CLOUD_NODE_SETTINGS, chooseCloudNodeSettings)
+			args.putSerializable(ARG_VAULT, vault)
 			result.arguments = args
 			return result
 		}
 	}
+
+	var vault: VaultModel?
+		get() = requireArguments().getSerializable(ARG_VAULT) as VaultModel?
+		set(value) {
+			arguments?.putSerializable(ARG_VAULT, value)
+		}
 
 }

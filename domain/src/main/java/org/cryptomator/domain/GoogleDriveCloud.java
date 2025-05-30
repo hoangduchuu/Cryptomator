@@ -7,7 +7,7 @@ public class GoogleDriveCloud implements Cloud {
 	private final Long id;
 	private final String username;
 
-	private GoogleDriveCloud(Builder builder) {
+	public GoogleDriveCloud(Builder builder) {
 		this.id = builder.id;
 		this.username = builder.username;
 	}

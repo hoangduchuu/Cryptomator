@@ -12,7 +12,7 @@ public class S3Cloud implements Cloud {
 	private final String s3Region;
 	private final String displayName;
 
-	private S3Cloud(Builder builder) {
+	public S3Cloud(Builder builder) {
 		this.id = builder.id;
 		this.accessKey = builder.accessKey;
 		this.secretKey = builder.secretKey;

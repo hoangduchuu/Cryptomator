@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="screen_sign_in_title">User Profile</string>
+	<string name="failed_to_start_authorization">Failed to start authorization: %1$s</string>
+	<string name="no_authentication_data_received">No authentication data received</string>
+	<string name="authentication_cancelled_by_user">Authentication cancelled by user</string>
+	<string name="authentication_failed">Authentication failed: %1$s</string>
+	<string name="network_error_occurred">Network error occurred</string>
+	<string name="no_response_or_error_received">No response or error received</string>
+	<string name="service_not_configured_yet">Service not configured yet</string>
+	<string name="failed_to_start_logout">Failed to start logout: %1$s</string>
+	<string name="no_logout_data_received">No logout data received</string>
+	<string name="successfully_logged_out">Successfully logged out</string>
+	<string name="token_exchange_completed_successfully">Token exchange completed successfully</string>
+	<string name="token_exchange_failed">Token exchange failed: %1$s</string>
+	<string name="authorization_failed">Authorization failed: %1$s</string>
+	<string name="next_billing">Next billing</string>
+	<string name="renewal_amount">Renewal Amount: %1$s plus applicable taxes</string>
+	<string name="keep_vaults_data">Keep vaults data</string>
+	<string name="sign_in">Sign in</string>
+	<string name="create_account">Create Account</string>
+</resources>

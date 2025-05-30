@@ -44,7 +44,7 @@ class UpdateLicenseDialog : BaseProgressErrorDialog<UpdateLicenseDialog.Callback
 			}
 			binding.tvMessage.setOnClickListener {
 				Intent(Intent.ACTION_VIEW).let {
-					it.data = Uri.parse("https://cryptomator.org/android/")
+					it.data = Uri.parse("https://ncryptor.com/android/")
 					startActivity(it)
 				}
 			}

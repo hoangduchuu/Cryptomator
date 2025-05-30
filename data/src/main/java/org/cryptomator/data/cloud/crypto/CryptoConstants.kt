@@ -4,12 +4,12 @@ import org.cryptomator.cryptolib.api.CryptorProvider
 
 object CryptoConstants {
 
-	const val MASTERKEY_SCHEME = "masterkeyfile"
-	const val MASTERKEY_FILE_NAME = "masterkey.cryptomator"
-	const val HUB_REDIRECT_URL = "org.cryptomator.android:/hub/auth"
+	const val MASTERKEY_SCHEME = "embedded"
+	const val MASTERKEY_FILE_NAME = "mk.ncryptor"
+	const val HUB_REDIRECT_URL = "com.ncryptor.android:/hub/auth"
 	const val ROOT_DIR_ID = ""
 	const val DATA_DIR_NAME = "d"
-	const val VAULT_FILE_NAME = "vault.cryptomator"
+	const val VAULT_FILE_NAME = "vault.ncryptor"
 	const val MASTERKEY_BACKUP_FILE_EXT = ".bkup"
 	const val DEFAULT_MASTERKEY_FILE_VERSION = 999
 	const val MAX_VAULT_VERSION = 8

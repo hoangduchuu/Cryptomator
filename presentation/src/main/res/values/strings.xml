@@ -4,10 +4,10 @@
 	<string name="empty" translatable="false"></string>
 
 	<!-- # app -->
-	<string name="app_name" translatable="false">Cryptomator</string>
+	<string name="app_name" translatable="false">nCryptor</string>
 	<string name="download_subdirectory_name" translatable="false">@string/app_name</string>
-	<string name="vault_cryptomator" translatable="false">vault.cryptomator</string>
-	<string name="masterkey_cryptomator" translatable="false">masterkey.cryptomator</string>
+	<string name="vault_cryptomator" translatable="false">vault.ncryptor</string>
+	<string name="masterkey_cryptomator" translatable="false">mk.ncryptor</string>
 	<string name="share_with_label">Encrypt</string>
 
 	<!-- # error messages -->
@@ -17,7 +17,7 @@
 	<string name="error_no_network_connection">No network connection</string>
 	<string name="error_invalid_passphrase">Wrong password</string>
 	<string name="error_file_or_folder_exists">A file or folder already exists.</string>
-	<string name="error_vault_version_not_supported">Vault version %1$s is unsupported. This vault has been created with an older or newer version of Cryptomator.</string>
+	<string name="error_vault_version_not_supported">Vault version %1$s is unsupported. This vault has been created with an older or newer version of nCryptor.</string>
 	<string name="error_vault_config_file_missing_due_to_format_999">%1$s file is missing in your vault folder. Make sure that this file exists in your vault folder in the cloud.</string>
 	<string name="error_vault_already_exists">Vault already exists.</string>
 	<string name="error_no_such_file">File does not exist.</string>
@@ -39,7 +39,7 @@
 	<string name="error_vault_version_mismatch">Version specified in %1$s is different to %2$s</string>
 	<string name="error_vault_key_invalid">%1$s does not match with this %2$s</string>
 	<string name="error_vault_config_loading">General error while loading the vault config</string>
-	<string name="error_file_not_found_after_opening_using_3party">Local file isn\'t present anymore after switching back to Cryptomator. Possible changes cannot be propagated back to the cloud.</string>
+	<string name="error_file_not_found_after_opening_using_3party">Local file isn\'t present anymore after switching back to nCryptor. Possible changes cannot be propagated back to the cloud.</string>
 	<string name="error_no_such_bucket">No such bucket</string>
 	<string name="error_masterkey_location_not_supported">Custom Masterkey location not supported yet</string>
 	<string name="error_interact_with_fdroid_but_fdroid_missing">Failed to communicate with the F-Droid app. Not installed?</string>
@@ -50,6 +50,8 @@
 	<string name="error_hub_invalid_setup_code">The Account Key is invalid.</string>
 	<string name="error_hub_invalid_version">Unsupported Hub version.</string>
 	<string name="error_hub_unlock_pre_31">Hub is only supported on Android 12 and above.</string>
+	<string name="error_storage_permission_required">Storage permission is required to access and import vaults. Please grant the permission in Settings.</string>
+	<string name="error_getting_deployment">Failed to retrieve vault deployments. Please try again later.</string>
 
 	<!-- # clouds -->
 
@@ -66,11 +68,11 @@
 	<!-- # permission -->
 
 	<!-- ## permission messages -->
-	<string name="permission_message_export_file">Cryptomator needs storage access to export files</string>
-	<string name="permission_message_upload_file">Cryptomator needs storage access to upload files</string>
-	<string name="permission_message_share_file">Cryptomator needs storage access to share files</string>
+	<string name="permission_message_export_file">nCryptor needs storage access to export files</string>
+	<string name="permission_message_upload_file">nCryptor needs storage access to upload files</string>
+	<string name="permission_message_share_file">nCryptor needs storage access to share files</string>
 
-	<string name="permission_revoked_re_request_permission">Cryptomator has lost permission to access this location. Please select this folder again to restore the permission.</string>
+	<string name="permission_revoked_re_request_permission">nCryptor has lost permission to access this location. Please select this folder again to restore the permission.</string>
 
 	<string name="snack_bar_action_title_settings">Settings</string>
 	<string name="snack_bar_action_title_search">Search</string>
@@ -93,7 +95,7 @@
 	<!-- # screens -->
 
 	<!-- # screen: vault list -->
-	<string name="screen_vault_list_actions_title">Add to Cryptomator</string>
+	<string name="screen_vault_list_actions_title">Add to nCryptor</string>
 	<string name="screen_vault_list_action_create_new_vault">Create new vault</string>
 	<string name="screen_vault_list_action_add_existing_vault">Add existing vault</string>
 	<string name="screen_vault_list_vault_action_rename" translatable="false">@string/screen_file_browser_node_action_rename</string>
@@ -215,7 +217,8 @@
 	<string name="screen_enter_vault_name_title" translatable="false">@string/screen_vault_list_action_create_new_vault</string>
 	<string name="screen_enter_vault_name_msg_name_empty">Vault name can\'t be empty.</string>
 	<string name="screen_enter_vault_name_vault_label">Vault name</string>
-	<string name="screen_enter_vault_name_button_text">Create</string>
+	<string name="screen_enter_vault_description_vault_label">Description (optional)</string>
+	<string name="screen_enter_vault_name_button_text">Create vault</string>
 
 	<!-- ## screen: set password -->
 	<string name="screen_set_password_title">Set password</string>
@@ -266,12 +269,12 @@
 	<string name="screen_settings_auto_photo_upload_title">Save auto upload files to&#8230;</string>
 
 	<string name="screen_settings_section_social" translatable="false">@string/screen_webdav_settings_done_button_text</string>
-	<string name="screen_settings_website_label">Cryptomator website</string>
+	<string name="screen_settings_website_label">nCryptor website</string>
 	<string name="screen_settings_mastodon_label">Follow us on Mastodon</string>
 	<string name="screen_settings_facebook_label">Like us on Facebook</string>
-	<string name="screen_settings_website_uri" translatable="false">https://cryptomator.org</string>
-	<string name="screen_settings_facebook_uri" translatable="false">https://facebook.com/Cryptomator</string>
-	<string name="screen_settings_mastodon_uri" translatable="false">https://mastodon.online/@cryptomator</string>
+	<string name="screen_settings_website_uri" translatable="false">https://ncryptor.com/</string>
+	<string name="screen_settings_facebook_uri" translatable="false">https://facebook.com/nCryptor</string>
+	<string name="screen_settings_mastodon_uri" translatable="false">https://mastodon.online/@ncryptor</string>
 
 	<string name="screen_settings_section_legal">Legal</string>
 	<string name="screen_settings_licenses_label">Licenses</string>
@@ -279,12 +282,12 @@
 
 	<string name="screen_settings_section_support">Support</string>
 	<string name="screen_settings_contact_label">Request help</string>
-	<string name="screen_settings_support_uri" translatable="false">https://cryptomator.org/contact/</string>
+	<string name="screen_settings_support_uri" translatable="false">https://ncryptor.com/contact/</string>
 	<string name="screen_settings_debug_mode_label">Debug mode</string>
 	<string name="screen_settings_error_report_label">Send log file</string>
 	<string name="screen_settings_error_report_failed">Sending failed</string>
 	<string name="screen_settings_security_label">Security hints</string>
-	<string name="screen_settings_security_url" translatable="false">https://docs.cryptomator.org/en/latest/security/best-practices/</string>
+	<string name="screen_settings_security_url" translatable="false">https://docs.ncryptor.com/en/latest/security/best-practices/</string>
 
 	<string name="screen_settings_section_version">Version</string>
 
@@ -317,15 +320,15 @@
 	<string name="screen_update_pcloud_connections_title">Update pCloud credentials</string>
 
 	<!-- ## screen: cryptomator app variants -->
-	<string name="screen_cryptomator_variants_title">Variants of Cryptomator</string>
+	<string name="screen_cryptomator_variants_title">Variants of nCryptor</string>
 	<string name="screen_cryptomator_variants_lite_title">Main F-Droid Repository</string>
 	<string name="screen_cryptomator_variants_lite_description">Excluded because they require API keys.</string>
 	<string name="screen_cryptomator_variants_lite_install">Install</string>
-	<string name="screen_cryptomator_variants_fdroid_title">Cryptomator F-Droid Repository</string>
+	<string name="screen_cryptomator_variants_fdroid_title">nCryptor F-Droid Repository</string>
 	<string name="screen_cryptomator_variants_fdroid_description">Excluded because it contains proprietary dependencies.</string>
-	<string name="screen_cryptomator_variants_fdroid_add_repo_hint">Add Cryptomator repository to the F-Droid app.</string>
+	<string name="screen_cryptomator_variants_fdroid_add_repo_hint">Add nCryptor repository to the F-Droid app.</string>
 	<string name="screen_cryptomator_variants_fdroid_add_repo">Add</string>
-	<string name="screen_cryptomator_variants_fdroid_install_hint">Install Cryptomator using F-Droid.\nIf a not found error is displayed, wait until the F-Droid synchronisation is finished.</string>
+	<string name="screen_cryptomator_variants_fdroid_install_hint">Install nCryptor using F-Droid.\nIf a not found error is displayed, wait until the F-Droid synchronisation is finished.</string>
 	<string name="screen_cryptomator_variants_fdroid_install" translatable="false">@string/screen_cryptomator_variants_lite_install</string>
 	<string name="screen_cryptomator_variants_website_title">Website</string>
 	<string name="screen_cryptomator_variants_website_description">Contains proprietary dependencies.</string>
@@ -369,7 +372,7 @@
 	<string name="dialog_replace_title_multiple_files_exist">Replace files?</string>
 
 	<string name="dialog_unable_to_share_title">Unable to share files</string>
-	<string name="dialog_unable_to_share_message">You haven\'t set up any vaults. Please create a new vault with the Cryptomator app first.</string>
+	<string name="dialog_unable_to_share_message">You haven\'t set up any vaults. Please create a new vault with the nCryptor app first.</string>
 	<string name="dialog_unable_to_share_positive_button">OK</string>
 	<string name="dialog_unable_to_share_negative_button">Create vault</string>
 
@@ -449,18 +452,18 @@
 	<string name="dialog_debug_mode_positive_button">Enable</string>
 	<string name="dialog_debug_mode_negative_button" translatable="false">@string/dialog_button_cancel</string>
 
-	<string name="dialog_microsoft_workaround_disclaimer_hint">Due to a bug in Microsoft apps, the file to be edited must be shared with these apps in a public media folder on your device. After Cryptomator is resumed, the publicly accessible file is deleted again, but Cryptomator cannot influence what has happened to this file in the meantime. Make sure that you are aware of this behavior when activating this option. This will only apply to Microsoft file types.\n\nCryptomator will restart after activation.</string>
+	<string name="dialog_microsoft_workaround_disclaimer_hint">Due to a bug in Microsoft apps, the file to be edited must be shared with these apps in a public media folder on your device. After nCryptor is resumed, the publicly accessible file is deleted again, but nCryptor cannot influence what has happened to this file in the meantime. Make sure that you are aware of this behavior when activating this option. This will only apply to Microsoft file types.\n\nnCryptor will restart after activation.</string>
 	<string name="dialog_microsoft_workaround_disclaimer_title" translatable="false">@string/dialog_debug_mode_disclaimer_title</string>
 	<string name="dialog_microsoft_workaround_positive_button" translatable="false">@string/screen_settings_section_auto_photo_upload_toggle</string>
 	<string name="dialog_microsoft_workaround_negative_button" translatable="false">@string/dialog_button_cancel</string>
 
-	<string name="dialog_disable_app_obscured_disclaimer_hint">This setting is a security feature and prevents other apps from tricking users into doing things they do not wan\'t to do.\n\nBy disabling, you confirm that you are <a href="https://docs.cryptomator.org/en/latest/android/settings/#block-app-when-obscured">aware of the risks</a>.</string>
+	<string name="dialog_disable_app_obscured_disclaimer_hint">This setting is a security feature and prevents other apps from tricking users into doing things they do not want to do.\n\nBy disabling, you confirm that you are <a href="https://docs.ncryptor.com/en/latest/android/settings/#block-app-when-obscured">aware of the risks</a>.</string>
 	<string name="dialog_disable_app_obscured_disclaimer_title">Attention</string>
 	<string name="dialog_disable_app_obscured_positive_button">Disable</string>
 	<string name="dialog_disable_app_obscured_negative_button" translatable="false">@string/dialog_button_cancel</string>
 
 	<string name="dialog_app_is_obscured_info_title">App is obscured</string>
-	<string name="dialog_app_is_obscured_info_hint">Another app is displaying something on top of Cryptomator (e.g., a blue light filter or night mode app). For security reasons, Cryptomator is disabled.\n\n<a href="https://docs.cryptomator.org/en/latest/android/settings/#block-app-when-obscured">How to enable Cryptomator</a></string>
+	<string name="dialog_app_is_obscured_info_hint">Another app is displaying something on top of nCryptor (e.g., a blue light filter or night mode app). For security reasons, nCryptor is disabled.\n\n<a href="https://docs.ncryptor.com/en/latest/android/settings/#block-app-when-obscured">How to enable nCryptor</a></string>
 	<string name="dialog_app_is_obscured_info_neutral_button">Close</string>
 
 	<string name="dialog_vaults_removed_during_migration_title">Please re-add vaults for %1s cloud</string>
@@ -471,7 +474,7 @@
 	<string name="dialog_vault_is_root_folder_of_cloud_hint">Create a new cloud connection where you select at least the parent folder of this vault folder as the root directory to add this vault.</string>
 	<string name="dialog_vault_is_root_folder_of_cloud_neutral_button" translatable="false">@string/dialog_unable_to_share_positive_button</string>
 
-	<string name="dialog_disable_secure_screen_disclaimer_hint">This setting is a security feature and prevents other apps from tricking users into doing things they do not wan\'t to do.\n\nBy disabling, you confirm that you are <a href="https://docs.cryptomator.org/en/latest/android/settings/#screen-security">aware of the risks</a>.</string>
+	<string name="dialog_disable_secure_screen_disclaimer_hint">This setting is a security feature and prevents other apps from tricking users into doing things they do not want to do.\n\nBy disabling, you confirm that you are <a href="https://docs.ncryptor.com/en/latest/android/settings/#screen-security">aware of the risks</a>.</string>
 
 	<string name="dialog_delete_cloud_connection_with_vaults_message">Are you sure you want to remove this cloud connection?</string>
 	<string name="dialog_delete_cloud_connection_with_vaults_hint">This action will remove the cloud connection and all vaults of this cloud.</string>
@@ -486,11 +489,11 @@
 	<string name="dialog_confirm_delete_folder_message">This will delete all of the folder\'s contents. Are you sure you want to delete this folder?</string>
 
 	<string name="dialog_biometric_auth_key_invalidated_title">Biometric authentication feature deactivated</string>
-	<string name="dialog_biometric_auth_key_invalidated_message">Because the key has been invalidated, the biometric authentication feature has been deactivated. To re-enable, open the Cryptomator settings.</string>
+	<string name="dialog_biometric_auth_key_invalidated_message">Because the key has been invalidated, the biometric authentication feature has been deactivated. To re-enable, open the nCryptor settings.</string>
 	<string name="dialog_biometric_auth_key_invalidated_neutral_button" translatable="false">@string/dialog_unable_to_share_positive_button</string>
 
 	<string name="dialog_enter_license_title">Provide a valid license</string>
-	<string name="dialog_enter_license_content">We detected that you installed Cryptomator without using Google Play Store. Provide a valid license, which can be purchased on <a href="https://cryptomator.org/android/">https://cryptomator.org/android/</a></string>
+	<string name="dialog_enter_license_content">We detected that you installed nCryptor without using Google Play Store. Provide a valid license, which can be purchased on <a href="https://ncryptor.com/android/">https://ncryptor.com/android/</a></string>
 	<string name="dialog_enter_license_not_valid_content">The provided license isn\'t valid. Make sure you entered it correctly.</string>
 	<string name="dialog_enter_license_not_valid_content_desktop_supporter_certificate">The provided key is a desktop supporter certificate. Please enter a valid license.</string>
 	<string name="dialog_enter_license_no_content">No license provided. Please enter a valid license.</string>
@@ -502,13 +505,13 @@
 	<string name="dialog_license_confirmation_ok_btn" translatable="false">@string/dialog_unable_to_share_positive_button</string>
 
 	<string name="dialog_update_available_title">Update available</string>
-	<string name="dialog_update_available_message">Update Cryptomator to the latest version. By pressing OK we will download the app in the background and will ask you to install it.</string>
+	<string name="dialog_update_available_message">Update nCryptor to the latest version. By pressing OK we will download the app in the background and will ask you to install it.</string>
 	<string name="dialog_update_available_update">Update now</string>
 	<string name="dialog_update_available_download_site">Go to downloads site</string>
 	<string name="dialog_update_available_cancel">Later</string>
 
 	<string name="dialog_download_update_title">Download running</string>
-	<string name="dialog_download_update_message">Downloading latest version of Cryptomator</string>
+	<string name="dialog_download_update_message">Downloading latest version of nCryptor</string>
 
 	<string name="dialog_sym_link_title">Folder is a symbolic link</string>
 	<string name="dialog_sym_link_message">You can not navigate into this symbolic link</string>
@@ -542,11 +545,11 @@
 	<string name="dialog_progress_creating_hub_device_setup">Creating device&#8230;</string>
 
 	<string name="dialog_hub_vault_access_forbidden_title">Access denied</string>
-	<string name="dialog_hub_vault_access_forbidden_hint">Your user has not yet been authorized to access this vault. Ask the vault owner to authorize it."</string>
+	<string name="dialog_hub_vault_access_forbidden_hint">Your user has not yet been authorized to access this vault. Ask the vault owner to authorize it.</string>
 	<string name="dialog_hub_vault_access_forbidden_neutral_button" translatable="false">@string/dialog_unable_to_share_positive_button</string>
 
 	<string name="dialog_hub_license_upgrade_required_title">Check Hub license</string>
-	<string name="dialog_hub_license_upgrade_required_hint">Your Cryptomator Hub instance has an invalid license. Please inform a Hub administrator to upgrade or renew the license."</string>
+	<string name="dialog_hub_license_upgrade_required_hint">Your nCryptor Hub instance has an invalid license. Please inform a Hub administrator to upgrade or renew the license.</string>
 	<string name="dialog_hub_license_upgrade_required_neutral_button" translatable="false">@string/dialog_unable_to_share_positive_button</string>
 
 	<string name="dialog_hub_vault_archived_title">Vault archived</string>
@@ -558,9 +561,9 @@
 	<string name="dialog_hub_user_setup_required_neutral_button">Go to Profile</string>
 	<string name="dialog_hub_user_setup_required_negative_button" translatable="false">@string/dialog_button_cancel</string>
 
-	<string name="permission_snackbar_auth_local_vault">Cryptomator needs storage access to use local vaults</string>
-	<string name="permission_snackbar_auth_auto_upload">Cryptomator needs storage access to use auto photo upload</string>
-	<string name="permission_snackbar_notifications">Cryptomator needs notification permissions to display vault status for example</string>
+	<string name="permission_snackbar_auth_local_vault">nCryptor needs storage access to use local vaults</string>
+	<string name="permission_snackbar_auth_auto_upload">nCryptor needs storage access to use auto photo upload</string>
+	<string name="permission_snackbar_notifications">nCryptor needs notification permissions to display vault status for example</string>
 
 	<!-- # error reports -->
 	<string name="error_report_subject" translatable="false">Android Error Report</string>
@@ -675,5 +678,55 @@
 	<!-- update interval names -->
 	<string name="update_interval_1d">Once a day</string>
 	<string name="update_interval_never" translatable="false">@string/lock_timeout_never</string>
+	<string name="screen_sign_in_title">User Profile</string>
+
+	<string name="error_authorization_failed">Authorization failed</string>
+	<string name="error_token_exchange_failed">Token exchange failed</string>
+	<string name="error_auth_cancelled">Authentication cancelled</string>
+	<string name="error_network">Network error occurred</string>
+	<string name="error_no_response">No response received</string>
+	<string name="message_login_successful">Successfully logged in</string>
+	<string name="message_service_configured">Service configured successfully</string>
+	<string name="error_service_not_configured">Service not configured yet</string>
+	<string name="error_logout_failed">Logout failed</string>
+	<string name="message_logout_successful">Successfully logged out</string>
+	<string name="failed_to_start_authorization">Failed to start authorization: %1$s</string>
+	<string name="no_authentication_data_received">No authentication data received</string>
+	<string name="authentication_cancelled_by_user">Authentication cancelled by user</string>
+	<string name="authentication_failed">Authentication failed: %1$s</string>
+	<string name="network_error_occurred">Network error occurred</string>
+	<string name="no_response_or_error_received">No response or error received</string>
+	<string name="service_not_configured_yet">Service not configured yet</string>
+	<string name="failed_to_start_logout">Failed to start logout: %1$s</string>
+	<string name="no_logout_data_received">No logout data received</string>
+	<string name="successfully_logged_out">Successfully logged out</string>
+	<string name="token_exchange_completed_successfully">Token exchange completed successfully</string>
+	<string name="token_exchange_failed">Token exchange failed: %1$s</string>
+	<string name="authorization_failed">Authorization failed: %1$s</string>
+	<string name="next_billing">Next billing</string>
+	<string name="renewal_amount">Renewal Amount: %1$s plus applicable taxes</string>
+	<string name="keep_vaults_data">Keep vaults data</string>
+	<string name="sign_in">Sign in</string>
+	<string name="create_account">Create Account</string>
+	<string name="limit_reached">Vault limit reached. Remove a vault or upgrade your subscription plan to continue.</string>
+	<string name="failed_to_create_vault">"Failed to create vault</string>
+	<string name="this_vault_is_disabled_please_enable_it_in_the_dashboard">This vault is currently disabled. Please restore the status from the web portal.</string>
+	<string name="create_vault_plan_limit_message">Your plan is limited. Please upgrade your plan to create new vaults.</string>
+	<string name="please_wait_until_the_vaults_are_loaded">Please wait until the vaults are loaded.</string>
+
+	<string name="dialog_permission_revoked_title">Storage Permission Required</string>
+	<string name="dialog_permission_revoked_message">The app needs permission to access the selected storage location. Please select the location again to grant permission.</string>
+	<string name="dialog_permission_revoked_positive_button">Select Location</string>
+	<string name="dialog_permission_revoked_negative_button">Cancel</string>
+	<string name="error_failed_to_persist_permission">Failed to save storage permission. Please try again.</string>
+
+	<string name="storage_permission_explanation">Storage access is needed to decrypt your vaults and import deployments. Without this permission, you won\'t be able to access your encrypted files.</string>
+	<string name="storage_permission_title">Storage Permission Required</string>
+	<string name="storage_permission_granted">Storage permission granted. Importing vaults...</string>
+
+	<string name="storage_permission_needed_for_deployments">Storage permission is required to import vault deployments. Please grant the permission to continue.</string>
+	<string name="storage_permission_required_for_deployments">Cannot import vault deployments without storage permission.</string>
+
+	<string name="debug_info_title">Debug Information</string>
 
 </resources>

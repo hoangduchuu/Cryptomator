@@ -16,11 +16,17 @@ class CreateVaultActivity : BaseActivity<ActivityCreateVaultBinding>(ActivityCre
 
 	override fun setupView() {
 		binding.llContentCreateVault.createVaultButton.setOnClickListener {
-			createVaultPresenter.onCreateVaultClicked(binding.llContentCreateVault.vaultNameEditText.text.toString())
+			createVaultPresenter.onCreateVaultClicked(
+				binding.llContentCreateVault.vaultNameEditText.text.toString(),
+				binding.llContentCreateVault.vaultDescriptionEditText.text.toString()
+			)
 		}
 		binding.llContentCreateVault.createVaultButton.setOnEditorActionListener { _, actionId, _ ->
 			if (actionId == EditorInfo.IME_ACTION_DONE) {
-				createVaultPresenter.onCreateVaultClicked(binding.llContentCreateVault.vaultNameEditText.text.toString())
+				createVaultPresenter.onCreateVaultClicked(
+					binding.llContentCreateVault.vaultNameEditText.text.toString(),
+					binding.llContentCreateVault.vaultDescriptionEditText.text.toString()
+				)
 			}
 			false
 		}

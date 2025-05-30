@@ -2,7 +2,11 @@ package org.cryptomator.presentation.ui.activity
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import androidx.fragment.app.DialogFragment
 import org.cryptomator.generator.Activity
 import org.cryptomator.presentation.R
 import org.cryptomator.presentation.databinding.ActivitySettingsBinding
@@ -33,6 +37,11 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>(ActivitySettingsB
 	@Inject
 	lateinit var presenter: SettingsPresenter
 
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		setupView()
+	}
+
 	override fun setupView() {
 		setupToolbar()
 		presenter.checkAutoUploadEnabledAndBatteryOptimizationDisabled()
@@ -50,7 +59,7 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>(ActivitySettingsB
 	}
 
 	override fun onAskIgnoreBatteryOptimizationsRejected(askAgain: Boolean) {
-		presenter.onAskIgnoreBatteryOptimizationsRejected(askAgain);
+		presenter.onAskIgnoreBatteryOptimizationsRejected(askAgain)
 	}
 
 	override fun onDisclaimerAccepted() {
@@ -64,7 +73,6 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>(ActivitySettingsB
 	private fun settingsFragment(): SettingsFragment = supportFragmentManager.findFragmentByTag("SettingsFragment") as SettingsFragment
 
 	private fun accepted(): Boolean = true
-
 
 	override fun onDisableAppObscuredDisclaimerAccepted() {
 		// do nothing, everything set accordingly
@@ -101,7 +109,7 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>(ActivitySettingsB
 	}
 
 	override fun showUpdateWebsite() {
-		val url = "https://cryptomator.org/android/"
+		val url = "https://ncryptor.com/android/"
 		val intent = Intent(Intent.ACTION_VIEW)
 		intent.data = Uri.parse(url)
 		startActivity(intent)
@@ -121,5 +129,33 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>(ActivitySettingsB
 
 	override fun onMicrosoftDisclaimerRejected() {
 		settingsFragment().deactivateMicrosoftWorkaround()
+	}
+
+	override fun onCreateOptionsMenu(menu: Menu): Boolean {
+		menuInflater.inflate(R.menu.menu_settings, menu)
+		return true
+	}
+
+	override fun onOptionsItemSelected(item: MenuItem): Boolean {
+		return when (item.itemId) {
+			android.R.id.home -> {
+				onBackPressed()
+				true
+			}
+			R.id.action_debug -> {
+				showDebugInfo()
+				true
+			}
+			else -> super.onOptionsItemSelected(item)
+		}
+	}
+
+	private fun showDebugInfo() {
+		val intent = Intent(this, DebugActivity::class.java)
+		startActivity(intent)
+	}
+
+	override fun showDialog(dialog: DialogFragment) {
+		dialog.show(supportFragmentManager, dialog.javaClass.simpleName)
 	}
 }

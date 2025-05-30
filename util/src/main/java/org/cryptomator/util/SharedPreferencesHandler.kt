@@ -283,6 +283,117 @@ constructor(context: Context) : SharedPreferences.OnSharedPreferenceChangeListen
 		return defaultSharedPreferences.getBoolean(MICROSOFT_WORKAROUND, false)
 	}
 
+	fun setCognitoAccessToken(accessToken: String) = defaultSharedPreferences //
+		.setValue(COGNITO_ACCESS_TOKEN, accessToken)
+
+	fun getCognitoAccessToken(): String {
+		return defaultSharedPreferences.getValue(COGNITO_ACCESS_TOKEN, "")
+	}
+
+	fun setCognitoRefreshToken(refreshToken: String) = defaultSharedPreferences //
+		.setValue(COGNITO_REFRESH_TOKEN, refreshToken)
+
+	fun getCognitoRefreshToken(): String {
+		return defaultSharedPreferences.getValue(COGNITO_REFRESH_TOKEN, "")
+	}
+
+	fun setUserProfileCacheExpires(expires: Long) {
+		defaultSharedPreferences.setValue(USER_PROFILE_CACHE_EXPIRES, expires)
+	}
+
+	fun getUserProfileCacheExpires(): Long {
+		return defaultSharedPreferences.getValue(USER_PROFILE_CACHE_EXPIRES, 0L)
+	}
+
+
+	fun getUserProfileCache(): String? {
+		return defaultSharedPreferences.getString(USER_PROFILE_CACHE, null)
+	}
+
+	fun setUserProfileCache(profileJson: String) {
+		defaultSharedPreferences.setValue(USER_PROFILE_CACHE, profileJson)
+	}
+
+	fun clearUserProfileCache() {
+		// USER_PROFILE_CACHE delete
+		defaultSharedPreferences.setValue(USER_PROFILE_CACHE, null)
+	}
+
+	fun setSSOUserFullName(fullName: String) {
+		defaultSharedPreferences.setValue(SSO_USER_FULL_NAME, fullName)
+	}
+	fun getSSOUserFullName(): String? {
+		return defaultSharedPreferences.getString(SSO_USER_FULL_NAME, "")
+	}
+
+	fun clearSSOUserFullName() {
+		defaultSharedPreferences.setValue(SSO_USER_FULL_NAME, null)
+	}
+
+	// region CloudSettings
+	fun setGoogleDriverEmail(email: String) {
+		defaultSharedPreferences.setValue(GOOGLE_DRIVER_EMAIL, email)
+	}
+	fun getGoogleDriverEmail(): String? {
+		return defaultSharedPreferences.getString(GOOGLE_DRIVER_EMAIL, "")
+	}
+	fun clearGoogleDriverEmail() {
+		defaultSharedPreferences.setValue(GOOGLE_DRIVER_EMAIL, null)
+	}
+	fun setDropboxEmail(email: String) {
+		defaultSharedPreferences.setValue(DROPBOX_EMAIL, email)
+	}
+	fun getDropboxEmail(): String? {
+		return defaultSharedPreferences.getString(DROPBOX_EMAIL, "")
+	}
+	fun clearDropboxEmail() {
+		defaultSharedPreferences.setValue(DROPBOX_EMAIL, null)
+	}
+	//endregion CloudSettings
+
+	// region UserETag
+	fun setUserETag(userETag: String) {
+		defaultSharedPreferences.setValue(USER_ETAG, userETag)
+	}
+	fun getUserETag(): String? {
+		return defaultSharedPreferences.getString(USER_ETAG, "1")
+	}
+	fun clearUserETag() {
+		defaultSharedPreferences.setValue(USER_ETAG, null)
+	}
+	//endregion UserETag
+
+	// region ComputerId
+	fun setComputerId(computerId: String) {
+		defaultSharedPreferences.setValue(COMPUTER_ID, computerId)
+	}
+	fun getComputerId(): String? {
+		return defaultSharedPreferences.getString(COMPUTER_ID, "")
+	}
+	// endregion ComputerId
+
+	// region UserCognitoId
+	fun setUserCognitoId(userCognitoId: String) {
+		defaultSharedPreferences.setValue(USER_COGNITO_ID, userCognitoId)
+	}
+	fun getUserCognitoId(): String? {
+		return defaultSharedPreferences.getString(USER_COGNITO_ID, "")
+	}
+	// endregion UserCognitoId
+
+
+	//region current plan
+	fun setCurrentPlan(currentPlan: String) {
+		defaultSharedPreferences.setValue(CURRENT_PLAN, currentPlan)
+	}
+	fun getCurrentPlan(): String? {
+		return defaultSharedPreferences.getString(CURRENT_PLAN, "basic")
+	}
+
+	//endregion current plan
+
+
+
 	companion object {
 
 		private const val SCREEN_LOCK_DIALOG_SHOWN = "askForScreenLockDialogShown"
@@ -318,6 +429,17 @@ constructor(context: Context) : SharedPreferences.OnSharedPreferenceChangeListen
 		const val BIOMETRIC_AUTHENTICATION = "biometricAuthentication"
 		const val CRYPTOMATOR_VARIANTS = "cryptomatorVariants"
 		const val LICENSES_ACTIVITY = "licensesActivity"
+		const val COGNITO_ACCESS_TOKEN = "cognitoAccessToken"
+		const val COGNITO_REFRESH_TOKEN = "cognitoRefreshToken"
+		const val USER_PROFILE_CACHE = "user_profile_cache"
+		const val USER_PROFILE_CACHE_EXPIRES = "user_profile_cache_expires"
+		const val SSO_USER_FULL_NAME = "sso_user_full_name"
+		const val GOOGLE_DRIVER_EMAIL = "cloud_setting_google_driver_email"
+		const val DROPBOX_EMAIL = "cloud_setting_dropbox_email"
+		const val USER_ETAG = "user_etag"
+		const val COMPUTER_ID = "computerId"
+		const val USER_COGNITO_ID = "user_cognito_id"
+		const val CURRENT_PLAN = "current_plan"
 	}
 
 	private inline fun SharedPreferences.edit(operation: (SharedPreferences.Editor) -> Unit) {

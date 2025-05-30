@@ -27,7 +27,7 @@ class SettingsVaultBottomSheet : BaseBottomSheet<SettingsVaultBottomSheet.Callba
 		val cloudType = vaultModel.cloudType
 		binding.cloudImage.setImageResource(cloudType.vaultSelectedImageResource)
 		binding.vaultName.text = vaultModel.name
-		binding.vaultPath.text = vaultModel.path
+		binding.vaultPath.text = vaultModel.getDisPlayPath()
 
 		binding.etRename.setOnClickListener {
 			callback?.onRenameVaultClick(vaultModel)

@@ -1,6 +1,7 @@
 package org.cryptomator.presentation.ui.activity.view
 
 import org.cryptomator.domain.CloudNode
+import org.cryptomator.domain.Vault
 import org.cryptomator.presentation.model.CloudFileModel
 import org.cryptomator.presentation.model.CloudFolderModel
 import org.cryptomator.presentation.model.CloudNodeModel
@@ -36,5 +37,7 @@ interface BrowseFilesView : View {
 	fun showSymLinkDialog()
 	fun showNoDirFileOrEmptyDialog(cryptoFolderName: String, cloudFolderPath: String)
 	fun updateActiveFolderDueToAuthenticationProblem(folder: CloudFolderModel)
+	fun showTotalFileSize(formattedSize: String)
+	fun updatePlaneLimit(vault: Vault)
 
 }

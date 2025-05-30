@@ -29,6 +29,23 @@
 
 	</com.google.android.material.textfield.TextInputLayout>
 
+	<com.google.android.material.textfield.TextInputLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="16dp">
+
+		<com.google.android.material.textfield.TextInputEditText
+			android:id="@+id/vault_description_edit_text"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="@string/screen_enter_vault_description_vault_label"
+			android:imeOptions="flagNoPersonalizedLearning"
+			android:inputType="textMultiLine"
+			android:minLines="3"
+			android:gravity="top" />
+
+	</com.google.android.material.textfield.TextInputLayout>
+
 	<Button
 		android:id="@+id/create_vault_button"
 		android:layout_width="match_parent"

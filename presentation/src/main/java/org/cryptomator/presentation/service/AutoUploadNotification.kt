@@ -42,7 +42,7 @@ class AutoUploadNotification(private val context: Context, private val amountOfP
 
 		this.builder = NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID) //
 			.setContentTitle(context.getString(R.string.notification_auto_upload_title)) //
-			.setSmallIcon(R.drawable.ic_notification) //
+			.setSmallIcon(R.drawable.ic_noti) //
 			.setColor(getColor(R.color.colorPrimary)) //
 			.addAction(cancelNowAction())
 			.setGroup(NOTIFICATION_GROUP_KEY)
@@ -163,7 +163,7 @@ class AutoUploadNotification(private val context: Context, private val amountOfP
 
 		private const val NOTIFICATION_ID = 94874
 		private const val NOTIFICATION_CHANNEL_ID = "65478"
-		private const val NOTIFICATION_CHANNEL_NAME = "Cryptomator"
-		private const val NOTIFICATION_GROUP_KEY = "CryptomatorGroup"
+		private const val NOTIFICATION_CHANNEL_NAME = "nCryptor"
+		private const val NOTIFICATION_GROUP_KEY = "nCryptorGroup"
 	}
 }

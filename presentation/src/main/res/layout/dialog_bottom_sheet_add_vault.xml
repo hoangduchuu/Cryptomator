@@ -37,6 +37,7 @@
 			android:id="@+id/add_existing_vault"
 			style="@style/AppTheme.ListItem"
 			android:text="@string/screen_vault_list_action_add_existing_vault"
+			android:visibility="gone"
 			app:drawableStartCompat="@drawable/ic_search" />
 
 	</LinearLayout>

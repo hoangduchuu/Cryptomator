@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<color name="colorPrimary">#49B04A</color>
-	<color name="colorPrimaryTransparent">#66CC68</color>
-	<color name="colorPrimaryDark">#407F41</color>
+	<color name="colorPrimary">#0A2337</color>
+	<color name="colorPrimaryTransparent">#1C3855</color>
+	<color name="colorPrimaryDark">#061626</color>
 
 	<color name="textColorPrimary">#ffffff</color>
 	<color name="textColorWhite">#ffffff</color>
 	<color name="textColorLight">#80ffffff</color>
 	<color name="textColorError">#E74C3C</color>
+	<color name="colorWhite">#FFFFFF</color>
 
 	<color name="colorBlackTransparent">#50000000</color>
 	<color name="colorBlack">#000000</color>
@@ -26,4 +27,8 @@
 	<color name="popupMenuBackgroundColor">@color/m3_sys_color_dark_background</color>
 	<color name="popupMenuBackgroundTintColor">@color/colorBlack</color>
 
+	<color name="preferenceCategoryTitleColor">#3A6498</color>
+
+	<color name="card_view_background">#A81B322E</color>
+	<color name="error">#E74C3C</color>
 </resources>

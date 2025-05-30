@@ -9,10 +9,12 @@ import org.cryptomator.generator.InjectIntent
 import org.cryptomator.presentation.R
 import org.cryptomator.presentation.databinding.ActivityLayoutBinding
 import org.cryptomator.presentation.intent.TextEditorIntent
+import org.cryptomator.presentation.model.VaultModel
 import org.cryptomator.presentation.presenter.TextEditorPresenter
 import org.cryptomator.presentation.ui.activity.view.TextEditorView
 import org.cryptomator.presentation.ui.dialog.UnsavedChangesDialog
 import org.cryptomator.presentation.ui.fragment.TextEditorFragment
+import org.cryptomator.util.VaultStatus
 import javax.inject.Inject
 
 @Activity
@@ -35,7 +37,14 @@ class TextEditorActivity : BaseActivity<ActivityLayoutBinding>(ActivityLayoutBin
 		setupToolbar()
 	}
 
-	override fun createFragment(): Fragment = TextEditorFragment()
+	val vault: VaultModel?
+		get() = textEditorIntent.vault()
+
+	override fun createFragment(): Fragment =
+		TextEditorFragment.newInstance(
+			textEditorIntent.textFile(),
+			textEditorIntent.vault()
+		)
 
 	override fun onBackPressed() {
 		textEditorPresenter.onBackPressed()
@@ -57,10 +66,16 @@ class TextEditorActivity : BaseActivity<ActivityLayoutBinding>(ActivityLayoutBin
 					return true
 				}
 			})
+
+		// hide save changes button if the file is read-only
+		if (textEditorIntent.vault()?.getVaultStatus() == VaultStatus.ReadOnly) {
+			binding.mtToolbar.toolbar.menu.findItem(R.id.action_save_changes).isVisible = false
+		}
 		return true
 	}
 
 	override fun getCustomMenuResource(): Int = R.menu.menu_text_editor
+
 
 	override fun onMenuItemSelected(itemId: Int): Boolean = when (itemId) {
 		R.id.action_save_changes -> {

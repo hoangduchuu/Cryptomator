@@ -45,7 +45,7 @@ class GoogleDriveClientFactory internal constructor() {
 			}
 			val credential = FixedGoogleAccountCredential.usingOAuth2(context, setOf(DriveScopes.DRIVE)).also { it.setAccountName(accountName) }
 			return Drive.Builder(NetHttpTransport(), GsonFactory.getDefaultInstance(), credential) //
-				.setApplicationName("Cryptomator-Android/" + BuildConfig.VERSION_NAME) //
+				.setApplicationName("nCryptor-Android/" + BuildConfig.VERSION_NAME) //
 				.setHttpRequestInitializer { request ->
 					credential.initialize(request)
 

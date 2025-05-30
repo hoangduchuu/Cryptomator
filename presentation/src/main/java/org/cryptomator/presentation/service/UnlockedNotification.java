@@ -30,8 +30,8 @@ class UnlockedNotification {
 
 	private static final int NOTIFICATION_ID = 94873;
 	private static final String NOTIFICATION_CHANNEL_ID = "65478";
-	private static final String NOTIFICATION_CHANNEL_NAME = "Cryptomator";
-	private static final String NOTIFICATION_GROUP_KEY = "CryptomatorGroup";
+	private static final String NOTIFICATION_CHANNEL_NAME = "nCryptor";
+	private static final String NOTIFICATION_GROUP_KEY = "nCryptorGroup";
 
 	private final Service service;
 	private final AutolockTimeout autolockTimeout;
@@ -55,7 +55,7 @@ class UnlockedNotification {
 		}
 
 		this.builder = new NotificationCompat.Builder(service, NOTIFICATION_CHANNEL_ID) //
-				.setSmallIcon(R.drawable.ic_notification) //
+				.setSmallIcon(R.drawable.ic_noti) //
 				.setColor(ResourceHelper.Companion.getColor(R.color.colorPrimary)) //
 				.addAction(lockNowAction()) //
 				.setGroup(NOTIFICATION_GROUP_KEY) //

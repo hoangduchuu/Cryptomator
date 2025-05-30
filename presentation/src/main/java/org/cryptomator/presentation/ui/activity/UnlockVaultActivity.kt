@@ -140,6 +140,10 @@ class UnlockVaultActivity : BaseActivity<ActivityUnlockVaultBinding>(ActivityUnl
 		showDialog(HubVaultArchivedDialog.newInstance())
 	}
 
+	override fun showVaultIsDisableNotice() {
+		showMessage(getString(R.string.this_vault_is_disabled_please_enable_it_in_the_dashboard))
+	}
+
 	override fun onChangePasswordClick(vaultModel: VaultModel, unverifiedVaultConfig: UnverifiedVaultConfig?, oldPassword: String, newPassword: String) {
 		presenter.onChangePasswordClick(vaultModel, unverifiedVaultConfig, oldPassword, newPassword)
 	}

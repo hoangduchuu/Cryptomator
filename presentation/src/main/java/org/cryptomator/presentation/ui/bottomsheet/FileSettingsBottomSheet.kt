@@ -7,6 +7,8 @@ import org.cryptomator.presentation.R
 import org.cryptomator.presentation.databinding.DialogBottomSheetFileSettingsBinding
 import org.cryptomator.presentation.model.CloudFileModel
 import org.cryptomator.presentation.model.CloudNodeModel
+import org.cryptomator.presentation.model.VaultModel
+import org.cryptomator.util.VaultStatus
 
 @BottomSheet(R.layout.dialog_bottom_sheet_file_settings)
 class FileSettingsBottomSheet : BaseBottomSheet<FileSettingsBottomSheet.Callback, DialogBottomSheetFileSettingsBinding>(DialogBottomSheetFileSettingsBinding::inflate) {
@@ -24,6 +26,7 @@ class FileSettingsBottomSheet : BaseBottomSheet<FileSettingsBottomSheet.Callback
 	override fun setupView() {
 		val cloudFileModel = requireArguments().getSerializable(FILE_ARG) as CloudFileModel
 		val parentFolderPath = requireArguments().getString(PARENT_FOLDER_PATH_ARG)
+		val vaultModel = requireArguments().getSerializable(VAULT_ARG) as VaultModel?
 
 		binding.ivFileImage.setImageResource(cloudFileModel.icon.iconResource)
 		binding.tvFileName.text = cloudFileModel.name
@@ -58,17 +61,33 @@ class FileSettingsBottomSheet : BaseBottomSheet<FileSettingsBottomSheet.Callback
 			callback?.onDeleteNodeClicked(cloudFileModel)
 			dismiss()
 		}
+
+		// update color for disabled status
+
+		if(vaultModel?.getVaultStatus() == VaultStatus.ReadOnly || vaultModel?.getVaultStatus() == VaultStatus.ReadonlyPending) {
+			binding.renameFile.setTextColor(requireContext().getColor(R.color.colorGray))
+			binding.renameFile.isEnabled = false
+
+			binding.moveFile.setTextColor(requireContext().getColor(R.color.colorGray))
+			binding.moveFile.isEnabled = false
+
+			binding.deleteFile.setTextColor(requireContext().getColor(R.color.colorGray))
+			binding.deleteFile.isEnabled = false
+		}
 	}
 
 	companion object {
 
 		private const val FILE_ARG = "file"
 		private const val PARENT_FOLDER_PATH_ARG = "parentFolderPath"
-		fun newInstance(cloudFileModel: CloudFileModel, parentFolderPath: String): FileSettingsBottomSheet {
+		private const val VAULT_ARG = "vault"
+
+		fun newInstance(cloudFileModel: CloudFileModel, parentFolderPath: String, vault: VaultModel?): FileSettingsBottomSheet {
 			val dialog = FileSettingsBottomSheet()
 			val args = Bundle()
 			args.putSerializable(FILE_ARG, cloudFileModel)
 			args.putString(PARENT_FOLDER_PATH_ARG, parentFolderPath)
+			args.putSerializable(VAULT_ARG, vault)
 			dialog.arguments = args
 			return dialog
 		}

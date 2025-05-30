@@ -40,7 +40,11 @@ import org.cryptomator.domain.usecases.cloud.RenameFolderUseCase
 import org.cryptomator.domain.usecases.cloud.UploadFile
 import org.cryptomator.domain.usecases.cloud.UploadFilesUseCase
 import org.cryptomator.domain.usecases.cloud.UploadState
+import org.cryptomator.domain.usecases.user.GetCachedUserProfileUseCase
 import org.cryptomator.domain.usecases.vault.AssertUnlockedUseCase
+import org.cryptomator.domain.usecases.vault.GetVaultRemoteDetailUseCase
+import org.cryptomator.domain.usecases.vault.PollVaultPolicyIdUseCase
+import org.cryptomator.domain.usecases.vault.UpdateVaultSizeUseCase
 import org.cryptomator.generator.Callback
 import org.cryptomator.generator.InjectIntent
 import org.cryptomator.generator.InstanceState
@@ -58,6 +62,7 @@ import org.cryptomator.presentation.model.CloudNodeModel
 import org.cryptomator.presentation.model.ImagePreviewFilesStore
 import org.cryptomator.presentation.model.ProgressModel
 import org.cryptomator.presentation.model.ProgressStateModel
+import org.cryptomator.presentation.model.VaultModel
 import org.cryptomator.presentation.model.mappers.CloudFileModelMapper
 import org.cryptomator.presentation.model.mappers.CloudFolderModelMapper
 import org.cryptomator.presentation.model.mappers.CloudNodeModelMapper
@@ -70,6 +75,7 @@ import org.cryptomator.presentation.ui.dialog.FileNameDialog
 import org.cryptomator.presentation.util.ContentResolverUtil
 import org.cryptomator.presentation.util.DownloadFileUtil
 import org.cryptomator.presentation.util.FileNameBlacklist
+import org.cryptomator.presentation.util.FileSizeHelper
 import org.cryptomator.presentation.util.FileUtil
 import org.cryptomator.presentation.util.FolderNameBlacklist
 import org.cryptomator.presentation.util.ShareFileHelper
@@ -92,7 +98,11 @@ import kotlin.reflect.KClass
 import timber.log.Timber
 
 @PerView
-class BrowseFilesPresenter @Inject constructor( //
+class BrowseFilesPresenter @Inject constructor(
+	private val getPollVaultPolicyIdUseCase: PollVaultPolicyIdUseCase,//
+	private val getCachedUserProfileUseCase: GetCachedUserProfileUseCase,//
+	private val getVaultRemoteDetailUseCase: GetVaultRemoteDetailUseCase,//
+	private val updateVaultSizeUseCase: UpdateVaultSizeUseCase,//
 	private val getCloudListUseCase: GetCloudListUseCase,  //
 	private val createFolderUseCase: CreateFolderUseCase,  //
 	private val downloadFilesUseCase: DownloadFilesUseCase,  //
@@ -156,6 +166,9 @@ class BrowseFilesPresenter @Inject constructor( //
 
 	@JvmField
 	var openWritableFileNotification: OpenWritableFileNotification? = null
+
+	// will set from fragment
+	var vaultModel: VaultModel? = null
 
 	override fun workflows(): Iterable<Workflow<*>> {
 		return listOf(addExistingVaultWorkflow, createNewVaultWorkflow)
@@ -277,6 +290,7 @@ class BrowseFilesPresenter @Inject constructor( //
 				override fun onSuccess(cloudFolder: CloudFolder) {
 					view?.addOrUpdateCloudNode(cloudFolderModelMapper.toModel(cloudFolder))
 					view?.closeDialog()
+					calculateTotalFileSize()
 				}
 			})
 	}
@@ -429,6 +443,7 @@ class BrowseFilesPresenter @Inject constructor( //
 					override fun onSuccess(files: List<CloudFile>) {
 						files.forEach { file -> view?.addOrUpdateCloudNode(cloudFileModelMapper.toModel(file)) }
 						onFileUploadCompleted()
+						calculateTotalFileSize();
 					}
 
 					override fun onError(e: Throwable) {
@@ -473,6 +488,7 @@ class BrowseFilesPresenter @Inject constructor( //
 				override fun onSuccess(cloudFolderResultRenamed: ResultRenamed<CloudFolder>) {
 					view?.replaceRenamedCloudNode(cloudNodeModelMapper.toModel(cloudFolderResultRenamed))
 					view?.closeDialog()
+					calculateTotalFileSize()
 				}
 			})
 	}
@@ -500,6 +516,7 @@ class BrowseFilesPresenter @Inject constructor( //
 			.run(object : DefaultResultHandler<List<CloudNode>>() {
 				override fun onSuccess(cloudNodes: List<CloudNode>) {
 					view?.deleteCloudNodesFromAdapter(cloudNodeModelMapper.toModels(cloudNodes))
+					calculateTotalFileSize();
 				}
 			})
 	}
@@ -510,6 +527,7 @@ class BrowseFilesPresenter @Inject constructor( //
 			startIntent(
 				Intents.textEditorIntent() //
 					.withTextFile(cloudFile)
+					.withVault(vaultModel) //
 			)
 		} else if (!lowerFileName.endsWith(".gif") && isImageMediaType(cloudFile.name)) {
 			val cloudFileNodes = previewCloudFileNodes
@@ -582,7 +600,7 @@ class BrowseFilesPresenter @Inject constructor( //
 	@Callback(dispatchResultOkOnly = false)
 	fun openFileFinished(result: ActivityResult, openFileType: OpenFileType) {
 		try {
-			// necessary see https://community.cryptomator.org/t/android-tabelle-nach-upload-unlesbar/6550
+			// necessary see https://community.ncryptor.com/t/android-tabelle-nach-upload-unlesbar/6550
 			Thread.sleep(500)
 		} catch (e: InterruptedException) {
 			Timber.tag("BrowseFilesPresenter").e(e, "Failed to sleep after resuming editing, necessary for google office apps")
@@ -734,6 +752,7 @@ class BrowseFilesPresenter @Inject constructor( //
 				override fun onSuccess(cloudNodeRecursiveListing: CloudNodeRecursiveListing) {
 					Timber.tag("BrowseFilesPresenter").d("cloud node recursive listing")
 					prepareSharingOf(cloudNodeRecursiveListing, filesToShare)
+					calculateTotalFileSize()
 				}
 			})
 	}
@@ -1145,7 +1164,8 @@ class BrowseFilesPresenter @Inject constructor( //
 					if (internalEditor) {
 						startIntent(
 							Intents.textEditorIntent() //
-								.withTextFile(textFile)
+								.withTextFile(textFile) //
+								.withVault(vaultModel)
 						)
 					} else {
 						viewExternalFile(textFile)
@@ -1230,6 +1250,35 @@ class BrowseFilesPresenter @Inject constructor( //
 		activity().invalidateOptionsMenu()
 	}
 
+	fun setVault(vault: VaultModel?) {
+		this.vaultModel = vault
+	}
+
+	var currentSize = 10000;
+
+	fun calculateTotalFileSize(): Long {
+		var totalSize = 0L
+		view?.renderedCloudNodes()?.forEach { node ->
+			if (node is CloudFileModel) {
+				node.size?.let { size ->
+					totalSize += size
+				}
+			}
+		}
+		
+		// Only proceed with recursive calculation if view and folder are valid
+		val currentFolder = view?.folder
+		if (currentFolder != null) {
+			getRecursiveSize(currentFolder)
+		} else {
+			Timber.tag("BrowseFilesPresenter").w("Current folder is null, skipping recursive size calculation")
+		}
+
+		Timber.tag("BrowseFilesPresenter").d("Total file size calculated: $totalSize -- ${FileSizeHelper(context()).getFormattedFileSize(totalSize)}")
+		
+		return totalSize
+	}
+
 	interface ExportOperation : Serializable {
 
 		fun export(presenter: BrowseFilesPresenter, downloadFiles: List<DownloadFile>)
@@ -1257,6 +1306,129 @@ class BrowseFilesPresenter @Inject constructor( //
 		}
 	}
 
+	// region get recursive size
+	private fun isRoot(): Boolean {
+		return view?.folder?.name?.isEmpty() ?: false
+	}
+	private fun getRecursiveSize(folder: CloudFolderModel) {
+		// Check if view is still valid before proceeding
+		if (view == null || !isRoot()) {
+			Timber.tag("BrowseFilesPresenter").w("View is null, skipping recursive size calculation")
+			return
+		}
+		getCloudListRecursiveUseCase
+			.withFolders(cloudFolderModelMapper.fromModels(listOf(folder)))
+			.run(object : DefaultResultHandler<CloudNodeRecursiveListing>() {
+				override fun onFinished() {
+					Timber.tag("BrowseFilesPresenter").d("getRecursiveSize onFinished")
+				}
+
+				override fun onSuccess(cloudNodeRecursiveListing: CloudNodeRecursiveListing) {
+					val totalSize = calculateTotalSize(cloudNodeRecursiveListing)
+					Timber.tag("BrowseFilesPresenter").d("getRecursiveSize onSuccess, total size: $totalSize -- ${FileSizeHelper(context()).getFormattedFileSize(totalSize)}")
+					updateSize(totalSize)
+				}
+
+				override fun onError(e: Throwable) {
+					super.onError(e)
+				}
+			})
+	}
+
+	private fun calculateTotalSize(cloudNodeRecursiveListing: CloudNodeRecursiveListing): Long {
+		var totalSize = 0L
+
+		// Add sizes from all files in the recursive listing
+		cloudNodeRecursiveListing.foldersContent.forEach { folderRecursiveListing ->
+			totalSize += calculateFolderSize(folderRecursiveListing)
+		}
+
+		return totalSize
+	}
+
+	private fun calculateFolderSize(folderContent: CloudFolderRecursiveListing): Long {
+		var folderSize = 0L
+
+		// Add sizes of files in this folder
+		folderContent.files.forEach { cloudFile ->
+			folderSize += cloudFile.size ?: 0L
+		}
+
+		// Recursively add sizes of subfolders
+		folderContent.folders.forEach { subFolder ->
+			folderSize += calculateFolderSize(subFolder)
+		}
+
+		return folderSize
+	}
+
+	private fun updateSize(totalSize: Long) {
+
+		Timber.tag("BrowseFilesPresenter").w("THE NAME ${effectiveMoveTitle()}")
+
+		if (vaultModel == null || intent.folder().name.isNotEmpty()) {
+			Timber.tag("BrowseFilesPresenter").w("Vault model is null, cannot update vault size ${intent.folder().name.isNotEmpty()}")
+			return
+		}else{
+			updateVaultSizeUseCase
+				.withVault(vaultModel!!.toVault())
+				.andSize(totalSize)
+				.run(object : DefaultResultHandler<Vault>() {
+					override fun onSuccess(vaults: Vault) {
+						Timber.tag("BrowseFilesPresenter").d("Updated vault size to ${vaults.size}")
+					}
+
+					override fun onError(e: Throwable) {
+						Timber.tag("BrowseFilesPresenter").e(e, "Failed to update vault size")
+
+					}
+				})
+		}
+	}
+
+	// end get recursive size
+
+	fun checkPlan() {
+		val currentPlan = sharedPreferencesHandler.getCurrentPlan()
+		val isPremium = currentPlan == "apremium"
+		if (vaultModel == null || isPremium) {
+			return;
+		}
+		view?.showProgress(ProgressModel.GENERIC)
+		getPollVaultPolicyIdUseCase
+			.withVault(vaultModel?.toVault()!!) //
+			.run(object : DefaultResultHandler<Vault>() {
+				override fun onSuccess(vault: Vault) {
+					handlePlanLimit(isPremium, vault)
+				}
+
+				override fun onError(e: Throwable) {
+					view?.showProgress(ProgressModel.COMPLETED)
+				}
+
+				override fun onFinished() {
+					super.onFinished()
+					view?.showProgress(ProgressModel.COMPLETED)
+				}
+			})
+	}
+
+	private fun handlePlanLimit(isPremium: Boolean, vault: Vault) {
+		if (!isPremium) {
+			if(currentSize > vault.driveQuota) {
+				view?.showMessage("EXCEEDED YOUR PLAN LIMIT")
+				view?.updatePlaneLimit(vault);
+				return
+			}else{
+				view?.showMessage("R.string.screen_file_browser_premium_plan")
+
+			}
+		} else {
+			view?.showMessage("YOU ARE PREMIUM")
+		}
+	}
+
+
 	companion object {
 
 		const val OPEN_FILE_FINISHED = 12
@@ -1274,7 +1446,11 @@ class BrowseFilesPresenter @Inject constructor( //
 	}
 
 	init {
-		unsubscribeOnDestroy( //
+		unsubscribeOnDestroy(
+			getPollVaultPolicyIdUseCase,//
+			getCachedUserProfileUseCase,//
+			getVaultRemoteDetailUseCase,//
+			uploadFilesUseCase,//
 			getCloudListUseCase,  //
 			createFolderUseCase,  //
 			downloadFilesUseCase,  //

@@ -9,7 +9,7 @@
 	<string name="error_no_network_connection">Sem ligação à rede</string>
 	<string name="error_invalid_passphrase">Palavra-chave errada</string>
 	<string name="error_file_or_folder_exists">Um ficheiro ou uma pasta já existe.</string>
-	<string name="error_vault_version_not_supported">A versão do cofre %1$s não é compatível. Este cofre foi criado com uma versão mais antiga ou mais recente do Cryptomator.</string>
+	<string name="error_vault_version_not_supported">A versão do cofre %1$s não é compatível. Este cofre foi criado com uma versão mais antiga ou mais recente do nCryptor.</string>
 	<string name="error_vault_config_file_missing_due_to_format_999">%1$s ficheiro está faltando na pasta do seu cofre. Certifique-se que esse ficheiro existe na pasta do cofre alojado na nuvem.</string>
 	<string name="error_vault_already_exists">O cofre já existe.</string>
 	<string name="error_no_such_file">O ficheiro não existe.</string>
@@ -31,7 +31,7 @@
 	<string name="error_vault_version_mismatch">Versão especificada em %1$s difere de %2$s</string>
 	<string name="error_vault_key_invalid">%1$s não corresponde com esta %2$s</string>
 	<string name="error_vault_config_loading">Erro geral ao carregar a configuração do cofre</string>
-	<string name="error_file_not_found_after_opening_using_3party">O ficheiro local não está presente ao voltar para Cryptomator. Novas alterações não serão guardadas na nuvem.</string>
+	<string name="error_file_not_found_after_opening_using_3party">O ficheiro local não está presente ao voltar para nCryptor. Novas alterações não serão guardadas na nuvem.</string>
 	<string name="error_no_such_bucket">Bucket inexistente</string>
 	<string name="error_masterkey_location_not_supported">A localização de Chave-Mestra personalizada ainda não é suportada</string>
 	<string name="error_interact_with_fdroid_but_fdroid_missing">Falha em comunicar-se com a aplicação F-Droid. Não está instalado?</string>
@@ -46,10 +46,10 @@
 	<string name="cloud_names_local_storage">Armazenamento local</string>
 	<!-- # permission -->
 	<!-- ## permission messages -->
-	<string name="permission_message_export_file">Cryptomator precisa de acesso ao armazenamento para exportar arquivos</string>
-	<string name="permission_message_upload_file">Cryptomator precisa de acesso ao armazenamento para carregar arquivos</string>
-	<string name="permission_message_share_file">Cryptomator precisa de acesso ao armazenamento para partilhar arquivos</string>
-	<string name="permission_revoked_re_request_permission">Cryptomator perdeu acesso a esta localização. Por favor, selecione a pasta novamente para restaurar a permissão.</string>
+	<string name="permission_message_export_file">nCryptor precisa de acesso ao armazenamento para exportar arquivos</string>
+	<string name="permission_message_upload_file">nCryptor precisa de acesso ao armazenamento para carregar arquivos</string>
+	<string name="permission_message_share_file">nCryptor precisa de acesso ao armazenamento para partilhar arquivos</string>
+	<string name="permission_revoked_re_request_permission">nCryptor perdeu acesso a esta localização. Por favor, selecione a pasta novamente para restaurar a permissão.</string>
 	<string name="snack_bar_action_title_settings">Definições</string>
 	<string name="snack_bar_action_title_search">Buscar</string>
 	<string name="snack_bar_action_title_search_previous">Anterior</string>
@@ -65,7 +65,7 @@
 	<string name="snack_bar_cryptomator_variants_hint">Nuvem não está na lista?</string>
 	<!-- # screens -->
 	<!-- # screen: vault list -->
-	<string name="screen_vault_list_actions_title">Adicionar ao Cryptomator</string>
+	<string name="screen_vault_list_actions_title">Adicionar ao nCryptor</string>
 	<string name="screen_vault_list_action_create_new_vault">Criar novo cofre</string>
 	<string name="screen_vault_list_action_add_existing_vault">Adicionar cofre existente</string>
 	<string name="screen_vault_list_vault_action_delete">Remover</string>
@@ -190,7 +190,7 @@
 	<string name="screen_settings_section_auto_photo_upload_only_wifi_toggle">Enviar apenas usando WIFI</string>
 	<string name="screen_settings_section_auto_photo_upload_including_videos">Enviar vídeos</string>
 	<string name="screen_settings_auto_photo_upload_title">Guardar arquivos enviados automaticamente em&#8230;</string>
-	<string name="screen_settings_website_label">Site do Cryptomator</string>
+	<string name="screen_settings_website_label">Site do nCryptor</string>
 	<string name="screen_settings_mastodon_label">Siga-nos no Mastodon</string>
 	<string name="screen_settings_facebook_label">Siga-nos no Facebook</string>
 	<string name="screen_settings_section_legal">Informação Legal</string>
@@ -223,15 +223,15 @@
 	<string name="screen_authenticate_auth_authentication_failed">%1$s não pôde ser autenticado.</string>
 	<string name="screen_update_pcloud_connections_title">Atualizar credenciais do pCloud</string>
 	<!-- ## screen: cryptomator app variants -->
-	<string name="screen_cryptomator_variants_title">Variantes do Cryptomator</string>
+	<string name="screen_cryptomator_variants_title">Variantes do nCryptor</string>
 	<string name="screen_cryptomator_variants_lite_title">Repositório principal no F-Droid</string>
 	<string name="screen_cryptomator_variants_lite_description">Excluídos porque requerem chaves API.</string>
 	<string name="screen_cryptomator_variants_lite_install">Instalar</string>
-	<string name="screen_cryptomator_variants_fdroid_title">Repositório do Cryptomator no F-Droid</string>
+	<string name="screen_cryptomator_variants_fdroid_title">Repositório do nCryptor no F-Droid</string>
 	<string name="screen_cryptomator_variants_fdroid_description">Excluído porque contém dependências proprietárias.</string>
-	<string name="screen_cryptomator_variants_fdroid_add_repo_hint">Adicione repositório de Cryptomator ao aplicativo F-Droid.</string>
+	<string name="screen_cryptomator_variants_fdroid_add_repo_hint">Adicione repositório de nCryptor ao aplicativo F-Droid.</string>
 	<string name="screen_cryptomator_variants_fdroid_add_repo">Adicionar</string>
-	<string name="screen_cryptomator_variants_fdroid_install_hint">Instalar o Cryptomator utilizando F-Droid.\nSe um erro de não encontrado for exibido, aguarde até que a sincronização do F-Droid termine.</string>
+	<string name="screen_cryptomator_variants_fdroid_install_hint">Instalar o nCryptor utilizando F-Droid.\nSe um erro de não encontrado for exibido, aguarde até que a sincronização do F-Droid termine.</string>
 	<string name="screen_cryptomator_variants_website_title">Página web</string>
 	<string name="screen_cryptomator_variants_website_description">Contém dependências proprietárias.</string>
 	<string name="screen_cryptomator_variants_installation_hint">Mudar de ou para a variante principal do repositório F-Droid requer uma nova configuração do aplicativo.</string>
@@ -261,7 +261,7 @@
 	<string name="dialog_replace_title_single_file_exists">Substituir ficheiro?</string>
 	<string name="dialog_replace_title_multiple_files_exist">Substituir ficheiros?</string>
 	<string name="dialog_unable_to_share_title">Não foi possível partilhar os ficheiros</string>
-	<string name="dialog_unable_to_share_message">Você não configurou nenhum cofre. Por favor, crie primeiro um novo cofre com o aplicativo Cryptomator.</string>
+	<string name="dialog_unable_to_share_message">Você não configurou nenhum cofre. Por favor, crie primeiro um novo cofre com o aplicativo nCryptor.</string>
 	<string name="dialog_unable_to_share_positive_button">OK</string>
 	<string name="dialog_unable_to_share_negative_button">Criar cofre</string>
 	<string name="dialog_filetype_not_supported_title">Não é possível abrir %1$s</string>
@@ -312,18 +312,18 @@
 	<string name="dialog_debug_mode_disclaimer_hint">Neste modo, dados confidenciais podem ser gravados num arquivo de registo alojado no seu dispositivo (por exemplo, nomes de arquivos e caminhos). Palavras-passe, cookies, etc. são explicitamente excluídos.\n\nLembre-se de desativar o modo de depuração o mais rápido possível.</string>
 	<string name="dialog_debug_mode_disclaimer_title">Atenção</string>
 	<string name="dialog_debug_mode_positive_button">Ativar</string>
-	<string name="dialog_microsoft_workaround_disclaimer_hint">Devido a um erro nas apps da Microsoft, o arquivo a ser editado deve ser partilhado com esses aplicativos numa pasta de média pública no seu dispositivo. Depois que o Cryptomator é retomado, o arquivo acessível ao público é apagado novamente, mas o Cryptomator não pode influenciar o que acontece a este arquivo, enquanto isso decore. Esteja ciente desse comportamento ao ativar esta opção. Isso só se aplicará aos tipos de arquivos da Microsoft.\n\nCryptomator reiniciará após a ativação.</string>
-	<string name="dialog_disable_app_obscured_disclaimer_hint">Esta definição é uma funcionalidade de segurança e impede que outras aplicações enganem os utilizadores e os levem a fazer coisas que não querem.\n\nAo desativar, o utilizador confirma <a href="https://docs.cryptomator.org/en/latest/android/settings/#block-app-when-obscured"> que está ciente dos riscos</a>.</string>
+	<string name="dialog_microsoft_workaround_disclaimer_hint">Devido a um erro nas apps da Microsoft, o arquivo a ser editado deve ser partilhado com esses aplicativos numa pasta de média pública no seu dispositivo. Depois que o nCryptor é retomado, o arquivo acessível ao público é apagado novamente, mas o nCryptor não pode influenciar o que acontece a este arquivo, enquanto isso decore. Esteja ciente desse comportamento ao ativar esta opção. Isso só se aplicará aos tipos de arquivos da Microsoft.\n\nnCryptor reiniciará após a ativação.</string>
+	<string name="dialog_disable_app_obscured_disclaimer_hint">Esta definição é uma funcionalidade de segurança e impede que outras aplicações enganem os utilizadores e os levem a fazer coisas que não querem.\n\nAo desativar, o utilizador confirma <a href="https://docs.ncryptor.com/en/latest/android/settings/#block-app-when-obscured"> que está ciente dos riscos</a>.</string>
 	<string name="dialog_disable_app_obscured_disclaimer_title">Atenção</string>
 	<string name="dialog_disable_app_obscured_positive_button">Desativar</string>
 	<string name="dialog_app_is_obscured_info_title">O aplicativo está obscurecido</string>
-	<string name="dialog_app_is_obscured_info_hint">Outra aplicação está a apresentar algo em cima do Cryptomator (por exemplo, um filtro de luz azul ou uma aplicação de modo noturno). Por motivos de segurança, o Cryptomator está desativado.\n\n<a href="https://docs.cryptomator.org/en/latest/android/settings/#block-app-when-obscured">Como ativar o Cryptomator</a></string>
+	<string name="dialog_app_is_obscured_info_hint">Outra aplicação está a apresentar algo em cima do nCryptor (por exemplo, um filtro de luz azul ou uma aplicação de modo noturno). Por motivos de segurança, o nCryptor está desativado.\n\n<a href="https://docs.ncryptor.com/en/latest/android/settings/#block-app-when-obscured">Como ativar o nCryptor</a></string>
 	<string name="dialog_app_is_obscured_info_neutral_button">Fechar</string>
 	<string name="dialog_vaults_removed_during_migration_title">Por favor, adicionar novamente os cofres para a nuvem %1s</string>
 	<string name="dialog_vaults_removed_during_migration_hint">Durante a migração para esta versão do aplicativo, precisamos remover os seguintes cofres do aplicativo:\n%2s \n\nEsses cofres não são removidos da nuvem, somente deste aplicativo. Desculpe o inconveniente e por favor adicione novamente esses cofres para continuar a trabalhar com eles.</string>
 	<string name="dialog_vault_is_root_folder_of_cloud_title">O cofre é a pasta raiz da ligação com a nuvem</string>
 	<string name="dialog_vault_is_root_folder_of_cloud_hint">Criar uma nova ligação com a nuvem onde deve selecionar pelo menos a pasta principal, desta pasta de cofre, como o diretório raiz para adicionar este cofre.</string>
-	<string name="dialog_disable_secure_screen_disclaimer_hint">Esta definição é uma funcionalidade de segurança e impede que outras aplicações enganem os utilizadores para que façam coisas que não querem fazer.\n\nAo desativar, o utilizador confirma <a href="https://docs.cryptomator.org/en/latest/android/settings/#screen-security"> que está ciente dos riscos</a>.</string>
+	<string name="dialog_disable_secure_screen_disclaimer_hint">Esta definição é uma funcionalidade de segurança e impede que outras aplicações enganem os utilizadores para que façam coisas que não querem fazer.\n\nAo desativar, o utilizador confirma <a href="https://docs.ncryptor.com/en/latest/android/settings/#screen-security"> que está ciente dos riscos</a>.</string>
 	<string name="dialog_delete_cloud_connection_with_vaults_message">Tem certeza de que deseja remover esta ligação com a nuvem?</string>
 	<string name="dialog_delete_cloud_connection_with_vaults_hint">Esta ação removerá a ligação com a nuvem e todos os cofres desta nuvem.</string>
 	<string name="dialog_confirm_delete_multiple_title">Apagar %1$d ficheiros?</string>
@@ -331,9 +331,9 @@
 	<string name="dialog_confirm_delete_file_message">Temba certeza que deseja apagar este ficheiro?</string>
 	<string name="dialog_confirm_delete_folder_message">Isto irá apagar todo o conteúdo da pasta. Tem certeza que deseja apagar esta pasta?</string>
 	<string name="dialog_biometric_auth_key_invalidated_title">Autenticação biométrica desativada</string>
-	<string name="dialog_biometric_auth_key_invalidated_message">Como a chave foi invalidada, o recurso de autenticação biométrica foi desativado. Para reativar, abra as configurações do Cryptomator.</string>
+	<string name="dialog_biometric_auth_key_invalidated_message">Como a chave foi invalidada, o recurso de autenticação biométrica foi desativado. Para reativar, abra as configurações do nCryptor.</string>
 	<string name="dialog_enter_license_title">Fornecer uma licença válida</string>
-	<string name="dialog_enter_license_content">Detectamos que instalou o Cryptomator sem usar a Google Play Store. Forneça uma licença válida que pode ser comprada em <a href="https://cryptomator.org/android/">https://cryptomator.org/android/</a></string>
+	<string name="dialog_enter_license_content">Detectamos que instalou o nCryptor sem usar a Google Play Store. Forneça uma licença válida que pode ser comprada em <a href="https://ncryptor.com/android/">https://ncryptor.com/android/</a></string>
 	<string name="dialog_enter_license_not_valid_content">A licença fornecida não é válida. Verifique se a digitou corretamente.</string>
 	<string name="dialog_enter_license_not_valid_content_desktop_supporter_certificate">A chave fornecida é um certificado de apoiante para computador/portátil. Por favor, insira uma licença válida.</string>
 	<string name="dialog_enter_license_no_content">Nenhuma licença fornecida. Por favor insira uma licença válida.</string>
@@ -341,12 +341,12 @@
 	<string name="dialog_license_confirmation_title">Confirmação de licença</string>
 	<string name="dialog_license_confirmation_message">Obrigado %1$s por fornecer a sua licença válida.</string>
 	<string name="dialog_update_available_title">Atualização disponível</string>
-	<string name="dialog_update_available_message">Atualize o Cryptomator para a versão mais recente. Pressionando OK, vamos descarregar o aplicativo em segundo plano e pediremos que você o instale.</string>
+	<string name="dialog_update_available_message">Atualize o nCryptor para a versão mais recente. Pressionando OK, vamos descarregar o aplicativo em segundo plano e pediremos que você o instale.</string>
 	<string name="dialog_update_available_update">Atualizar agora</string>
 	<string name="dialog_update_available_download_site">Ir para a página de transferências</string>
 	<string name="dialog_update_available_cancel">Mais tarde</string>
 	<string name="dialog_download_update_title">Descarga em execução</string>
-	<string name="dialog_download_update_message">Descarregando a versão mais recente do Cryptomator</string>
+	<string name="dialog_download_update_message">Descarregando a versão mais recente do nCryptor</string>
 	<string name="dialog_sym_link_title">A pasta é um link simbólico</string>
 	<string name="dialog_sym_link_message">Não é possível ir para este link simbólico</string>
 	<string name="dialog_sym_link_back_button">Anterior</string>
@@ -369,15 +369,15 @@
 	<string name="dialog_hub_vault_access_forbidden_title">Acesso negado</string>
 	<string name="dialog_hub_vault_access_forbidden_hint">O seu utilizador ainda não foi autorizado a aceder este cofre. Peça ao proprietário do cofre para autorizá-lo.\"</string>
 	<string name="dialog_hub_license_upgrade_required_title">Verificar a licença do Hub</string>
-	<string name="dialog_hub_license_upgrade_required_hint">A sua instância do Cryptomator Hub possui uma licença inválida. Por favor, informe o administrador do Hub para atualizar ou renovar a sua licença.\"</string>
+	<string name="dialog_hub_license_upgrade_required_hint">A sua instância do nCryptor Hub possui uma licença inválida. Por favor, informe o administrador do Hub para atualizar ou renovar a sua licença.\"</string>
 	<string name="dialog_hub_vault_archived_title">Cofre arquivado</string>
 	<string name="dialog_hub_vault_archived_hint">Este cofre está arquivado e não pode ser desbloqueado. Para desbloqueá-lo, o proprietário do cofre deve desarquivá-lo.</string>
 	<string name="dialog_hub_user_setup_required_title">Configuração do utilizador necessária</string>
 	<string name="dialog_hub_user_setup_required_hint">Para continuar, por favor conclua as etapas exigidas no seu perfil de utilizador no Hub.</string>
 	<string name="dialog_hub_user_setup_required_neutral_button">Vá para o Perfil</string>
-	<string name="permission_snackbar_auth_local_vault">Cryptomator precisa de acesso ao armazenamento para usar cofres locais</string>
-	<string name="permission_snackbar_auth_auto_upload">Cryptomator precisa de acesso ao armazenamento para usar o envio automático de fotos</string>
-	<string name="permission_snackbar_notifications">O Cryptomator precisa de permissões de notificação para exibir, como exemplo, o estado do cofre</string>
+	<string name="permission_snackbar_auth_local_vault">nCryptor precisa de acesso ao armazenamento para usar cofres locais</string>
+	<string name="permission_snackbar_auth_auto_upload">nCryptor precisa de acesso ao armazenamento para usar o envio automático de fotos</string>
+	<string name="permission_snackbar_notifications">O nCryptor precisa de permissões de notificação para exibir, como exemplo, o estado do cofre</string>
 	<!-- # error reports -->
 	<!-- # misc -->
 	<!-- ## file size helper -->
@@ -458,4 +458,23 @@
 	<string name="dark">Escuro</string>
 	<!-- update interval names -->
 	<string name="update_interval_1d">Uma vez por dia</string>
+	<string name="screen_sign_in_title">User Profile</string>
+	<string name="failed_to_start_authorization">Failed to start authorization: %1$s</string>
+	<string name="no_authentication_data_received">No authentication data received</string>
+	<string name="authentication_cancelled_by_user">Authentication cancelled by user</string>
+	<string name="authentication_failed">Authentication failed: %1$s</string>
+	<string name="network_error_occurred">Network error occurred</string>
+	<string name="no_response_or_error_received">No response or error received</string>
+	<string name="service_not_configured_yet">Service not configured yet</string>
+	<string name="failed_to_start_logout">Failed to start logout: %1$s</string>
+	<string name="no_logout_data_received">No logout data received</string>
+	<string name="successfully_logged_out">Successfully logged out</string>
+	<string name="token_exchange_completed_successfully">Token exchange completed successfully</string>
+	<string name="token_exchange_failed">Token exchange failed: %1$s</string>
+	<string name="authorization_failed">Authorization failed: %1$s</string>
+	<string name="next_billing">Next billing</string>
+	<string name="renewal_amount">Renewal Amount: %1$s plus applicable taxes</string>
+	<string name="keep_vaults_data">Keep vaults data</string>
+	<string name="sign_in">Sign in</string>
+	<string name="create_account">Create Account</string>
 </resources>

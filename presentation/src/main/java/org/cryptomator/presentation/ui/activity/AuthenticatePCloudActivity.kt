@@ -37,7 +37,7 @@ class AuthenticatePCloudActivity : BaseActivity<ActivityLayoutBinding>(ActivityL
 		if (requestCode == startAuthenticationRequestCode) {
 			cancelAuthenticationHandler.postDelayed({
 				if (!oAuthResultReceived) {
-					Timber.tag("AuthenticatePCloudActivity").i("Authentication canceled or no redirect received after resuming Cryptomator since 1.5s")
+					Timber.tag("AuthenticatePCloudActivity").i("Authentication canceled or no redirect received after resuming nCryptor since 1.5s")
 					Toast.makeText(context(), R.string.error_authentication_failed, Toast.LENGTH_SHORT).show()
 					finish()
 				}

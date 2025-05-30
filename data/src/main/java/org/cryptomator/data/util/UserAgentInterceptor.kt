@@ -11,7 +11,7 @@ class UserAgentInterceptor : Interceptor {
 	@Throws(IOException::class)
 	override fun intercept(chain: Interceptor.Chain): Response {
 		val originalRequest: Request = chain.request()
-		val userAgent = "Cryptomator-Android/" + BuildConfig.VERSION_NAME + " " + System.getProperty("http.agent")
+		val userAgent = "nCryptor-Android/" + BuildConfig.VERSION_NAME + " " + System.getProperty("http.agent")
 		val requestWithUserAgent = originalRequest.newBuilder().header("User-Agent", userAgent).build()
 		return chain.proceed(requestWithUserAgent)
 	}

@@ -19,5 +19,6 @@ interface UnlockVaultView : View, EnterPasswordDialog.Callback {
 	fun showHubLicenseUpgradeRequiredDialog()
 	fun showHubVaultAccessForbiddenDialog()
 	fun showHubVaultIsArchivedDialog()
+	fun showVaultIsDisableNotice()
 
 }

@@ -11,6 +11,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import org.cryptomator.domain.CloudNode
+import org.cryptomator.domain.Vault
 import org.cryptomator.domain.exception.ParentFolderIsNullException
 import org.cryptomator.generator.Activity
 import org.cryptomator.generator.InjectIntent
@@ -26,6 +27,7 @@ import org.cryptomator.presentation.model.CloudFolderModel
 import org.cryptomator.presentation.model.CloudNodeModel
 import org.cryptomator.presentation.model.ProgressModel
 import org.cryptomator.presentation.model.ProgressModel.Companion.COMPLETED
+import org.cryptomator.presentation.model.VaultModel
 import org.cryptomator.presentation.model.comparator.CloudNodeModelDateNewestFirstComparator
 import org.cryptomator.presentation.model.comparator.CloudNodeModelDateOldestFirstComparator
 import org.cryptomator.presentation.model.comparator.CloudNodeModelNameAZComparator
@@ -52,6 +54,7 @@ import org.cryptomator.presentation.ui.dialog.UploadCloudFileDialog
 import org.cryptomator.presentation.ui.fragment.BrowseFilesFragment
 import java.util.regex.Pattern
 import javax.inject.Inject
+import timber.log.Timber
 
 @Activity
 class BrowseFilesActivity : BaseActivity<ActivityLayoutBinding>(ActivityLayoutBinding::inflate), //
@@ -102,10 +105,14 @@ class BrowseFilesActivity : BaseActivity<ActivityLayoutBinding>(ActivityLayoutBi
 	override val folder: CloudFolderModel
 		get() = browseFilesFragment().folder
 
+	val vault: VaultModel?
+		get() = browseFilesIntent.vault()
+
 	override fun createFragment(): Fragment =
 		BrowseFilesFragment.newInstance(
 			browseFilesIntent.folder(),
-			browseFilesIntent.chooseCloudNodeSettings()
+			browseFilesIntent.chooseCloudNodeSettings(),
+			browseFilesIntent.vault()
 		)
 
 	override fun onDestroy() {
@@ -361,9 +368,9 @@ class BrowseFilesActivity : BaseActivity<ActivityLayoutBinding>(ActivityLayoutBi
 
 	override fun showNodeSettingsDialog(node: CloudNodeModel<*>) {
 		val cloudNodeSettingDialog: DialogFragment = if (node.isFolder) {
-			FolderSettingsBottomSheet.newInstance(node as CloudFolderModel, currentFolderPath())
+			FolderSettingsBottomSheet.newInstance(node as CloudFolderModel, currentFolderPath(), vault)
 		} else {
-			FileSettingsBottomSheet.newInstance(node as CloudFileModel, currentFolderPath())
+			FileSettingsBottomSheet.newInstance(node as CloudFileModel, currentFolderPath(), vault)
 		}
 		cloudNodeSettingDialog.show(supportFragmentManager, "CloudNodeSettings")
 	}
@@ -420,11 +427,14 @@ class BrowseFilesActivity : BaseActivity<ActivityLayoutBinding>(ActivityLayoutBi
 		navigationMode?.let { browseFilesFragment().navigationModeChanged(it) }
 	}
 
+	val TAG = "BrowseFilesActivity"
 	override fun navigateTo(folder: CloudFolderModel) {
+		Timber.tag(TAG).d("Navigate to folder: %s", folder.name + " " + vault?.toVault())
 		replaceFragment(
 			BrowseFilesFragment.newInstance(
 				folder,
-				browseFilesIntent.chooseCloudNodeSettings()
+				browseFilesIntent.chooseCloudNodeSettings(),
+				browseFilesIntent.vault()
 			),
 			FragmentAnimation.NAVIGATE_IN_TO_FOLDER
 		)
@@ -452,6 +462,7 @@ class BrowseFilesActivity : BaseActivity<ActivityLayoutBinding>(ActivityLayoutBi
 
 	override fun showCloudNodes(nodes: List<CloudNodeModel<*>>) {
 		browseFilesFragment().show(nodes)
+		browseFilesPresenter.calculateTotalFileSize();
 	}
 
 	override fun addOrUpdateCloudNode(node: CloudNodeModel<*>) {
@@ -514,7 +525,8 @@ class BrowseFilesActivity : BaseActivity<ActivityLayoutBinding>(ActivityLayoutBi
 		replaceFragment(
 			BrowseFilesFragment.newInstance(
 				sourceParent,
-				browseFilesIntent.chooseCloudNodeSettings()
+				browseFilesIntent.chooseCloudNodeSettings(),
+				browseFilesIntent.vault()
 			),
 			FragmentAnimation.NAVIGATE_OUT_OF_FOLDER,
 			false
@@ -603,6 +615,19 @@ class BrowseFilesActivity : BaseActivity<ActivityLayoutBinding>(ActivityLayoutBi
 
 	override fun updateActiveFolderDueToAuthenticationProblem(folder: CloudFolderModel) {
 		browseFilesFragment().folder = folder
+	}
+
+	override fun showTotalFileSize(formattedSize: String) {
+		// Only show total size in root folder
+		if (folder.path == "/") {
+		binding.mtToolbar.toolbar.subtitle = formattedSize
+		} else {
+			binding.mtToolbar.toolbar.subtitle = effectiveSubtitle()
+		}
+	}
+
+	override fun updatePlaneLimit(vault: Vault) {
+		browseFilesFragment().updatePlanLimited(vault)
 	}
 
 	override fun navigateFolderBackBecauseSymlink() {

@@ -8,7 +8,7 @@ public class OnedriveCloud implements Cloud {
 	private final String accessToken;
 	private final String username;
 
-	private OnedriveCloud(Builder builder) {
+	public OnedriveCloud(Builder builder) {
 		this.id = builder.id;
 		this.accessToken = builder.accessToken;
 		this.username = builder.username;

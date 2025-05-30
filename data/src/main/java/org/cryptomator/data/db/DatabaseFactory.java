@@ -16,7 +16,7 @@ import static org.cryptomator.data.db.entities.DaoMaster.SCHEMA_VERSION;
 @Singleton
 class DatabaseFactory extends DaoMaster.OpenHelper {
 
-	private static final String DATABASE_NAME = "Cryptomator";
+	private static final String DATABASE_NAME = "nCryptor";
 
 	private final DatabaseUpgrades databaseUpgrades;
 

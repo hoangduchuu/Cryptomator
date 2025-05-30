@@ -15,6 +15,7 @@ import org.cryptomator.presentation.ui.activity.CloudConnectionListActivity;
 import org.cryptomator.presentation.ui.activity.CloudSettingsActivity;
 import org.cryptomator.presentation.ui.activity.CreateVaultActivity;
 import org.cryptomator.presentation.ui.activity.CryptomatorVariantsActivity;
+import org.cryptomator.presentation.ui.activity.DebugActivity;
 import org.cryptomator.presentation.ui.activity.ImagePreviewActivity;
 import org.cryptomator.presentation.ui.activity.LicenseCheckActivity;
 import org.cryptomator.presentation.ui.activity.LicensesActivity;
@@ -126,5 +127,7 @@ public interface ActivityComponent {
 	void inject(S3AddOrChangeFragment s3AddOrChangeFragment);
 
 	void inject(CryptomatorVariantsActivity cryptomatorVariantsActivity);
+
+	void inject(DebugActivity debugActivity);
 
 }

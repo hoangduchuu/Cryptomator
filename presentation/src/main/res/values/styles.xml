@@ -26,11 +26,15 @@
 		<item name="bottomSheetDialogTheme">@style/ModalBottomSheetDialog</item>
 
 		<item name="popupMenuBackground">@color/popupMenuBackgroundColor</item>
+		<item name="textInputStyle">@style/CustomTextInputLayout</item>
+		<item name="alertDialogTheme">@style/AlertDialogTheme</item>
+		<item name="android:textColorLink">@color/hyperlink_color</item>
+		<item name="switchPreferenceStyle">@style/CustomSwitchPreferenceStyle</item>
 	</style>
 
 	<style name="AppTheme.Starting" parent="Theme.SplashScreen.IconBackground">
-		<item name="windowSplashScreenBackground">@color/colorPrimary</item>
-		<item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+		<item name="windowSplashScreenBackground">@color/colorWhite</item>
+		<item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_foreground</item>
 		<item name="windowSplashScreenIconBackgroundColor">@color/colorWhite</item>
 		<item name="postSplashScreenTheme">@style/AppTheme</item>
 	</style>
@@ -133,7 +137,7 @@
 	</style>
 
 	<style name="PreferenceTheme" parent="@style/BasePreferenceThemeOverlay">
-		<item name="preferenceCategoryTitleTextColor">@color/colorPrimary</item>
+		<item name="preferenceCategoryTitleTextColor">@color/preferenceCategoryTitleColor</item>
 		<item name="android:textColor">@color/textColorPrimary</item>
 	</style>
 
@@ -173,5 +177,49 @@
 		<item name="android:windowBackground">@android:color/transparent</item>
 		<item name="android:windowIsTranslucent">true</item>
 	</style>
+
+
+	<style name="CustomTextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+		<item name="boxStrokeColor">@color/text_inputlayout_color_selector</item>
+		<item name="colorSurface">@color/textInputLayoutColor</item>
+		<item name="hintTextColor">@color/textInputLayoutColor</item>
+		<item name="android:textColorHint">@color/textInputLayoutColor</item>
+		<item name="errorTextColor">@color/textInputLayoutColor</item>
+		<item name="helperTextTextColor">@color/textInputLayoutColor</item>
+		<item name="boxStrokeErrorColor">@color/textColorError</item>
+	</style>
+
+	<style name="AlertDialogTheme" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+		<item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+		<item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+	</style>
+
+	<style name="NegativeButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+		<item name="android:textColor">@color/negative_button_color</item>
+	</style>
+
+	<style name="PositiveButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+		<item name="android:textColor">@color/positive_button_color</item>
+	</style>
+
+	<!-- Switch preference styles -->
+	<style name="CustomSwitchPreferenceStyle" parent="Preference.SwitchPreference">
+		<item name="android:widgetLayout">@layout/preference_widget_switch_compat</item>
+	</style>
+
+
+	<style name="SCBSwitch" parent="Theme.AppCompat.Light">
+		<!-- active thumb & track color (30% transparency) -->
+		<item name="colorControlActivated">#46bdbf</item>
+
+		<!-- inactive thumb color -->
+		<item name="colorSwitchThumbNormal">#f1f1f1
+		</item>
+
+		<!-- inactive track color (30% transparency) -->
+		<item name="android:colorForeground">#42221f1f
+		</item>
+	</style>
+
 
 </resources>

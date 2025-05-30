@@ -31,7 +31,17 @@ class DatabaseUpgrades {
 			Upgrade9To10 upgrade9To10, //
 			Upgrade10To11 upgrade10To11, //
 			Upgrade11To12 upgrade11To12, //
-			Upgrade12To13 upgrade12To13
+			Upgrade12To13 upgrade12To13, //
+			Upgrade13To14 upgrade13To14, //
+			Upgrade14To15 upgrade14To15,//
+			Upgrade15To16 upgrade15To16,//
+			Upgrade16To17 upgrade16To17,//
+			Upgrade17To18 upgrade17To18,//
+			Upgrade18To19 upgrade18To19,//
+			Upgrade19To20 upgrade19To20,
+			Upgrade20To21 upgrade20To21,//
+			Upgrade21To22 upgrade21To22,//
+			Upgrade22To23 upgrade22To23//
 	) {
 
 		availableUpgrades = defineUpgrades( //
@@ -47,7 +57,18 @@ class DatabaseUpgrades {
 				upgrade9To10, //
 				upgrade10To11, //
 				upgrade11To12, //
-				upgrade12To13);
+				upgrade12To13, //
+				upgrade13To14, //
+				upgrade14To15, //
+				upgrade15To16, //
+				upgrade16To17, //
+				upgrade17To18, //
+				upgrade18To19, //
+				upgrade19To20, //
+				upgrade20To21, //
+				upgrade21To22, //
+				upgrade22To23 //
+		);
 	}
 
 	private Map<Integer, List<DatabaseUpgrade>> defineUpgrades(DatabaseUpgrade... upgrades) {

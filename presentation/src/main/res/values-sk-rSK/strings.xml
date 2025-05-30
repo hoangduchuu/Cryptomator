@@ -9,7 +9,7 @@
 	<string name="error_no_network_connection">Chýba sieťové pripojenie</string>
 	<string name="error_invalid_passphrase">Nesprávne heslo</string>
 	<string name="error_file_or_folder_exists">Súbor alebo adresár už existuje.</string>
-	<string name="error_vault_version_not_supported">Verzia trezora %1$s je nepodporovaná. Tento trezor bol vytvorený staršou alebo novšou verziou Cryptomator-a.</string>
+	<string name="error_vault_version_not_supported">Verzia trezora %1$s je nepodporovaná. Tento trezor bol vytvorený staršou alebo novšou verziou nCryptor-a.</string>
 	<string name="error_vault_config_file_missing_due_to_format_999">%1$s súbor chýba vo Vašom adresári trezora. Uistite sa že požadovaný súbor existuje vo Vašom adresári trezora v cloude.</string>
 	<string name="error_vault_already_exists">Trezor už existuje.</string>
 	<string name="error_no_such_file">Súbor neexistuje.</string>
@@ -31,7 +31,7 @@
 	<string name="error_vault_version_mismatch">Verzia definovaná v %1$s je odlišná od %2$s</string>
 	<string name="error_vault_key_invalid">%1$s nezodpovedá s týmto %2$s</string>
 	<string name="error_vault_config_loading">Chyba počas zavádzania konfigurácie trezora</string>
-	<string name="error_file_not_found_after_opening_using_3party">Lokálny súbor nie je viac prezentovaný po prepnutí naspäť do Cryptomator-a. Možné zmeny sa neprenesú späť do cloudu.</string>
+	<string name="error_file_not_found_after_opening_using_3party">Lokálny súbor nie je viac prezentovaný po prepnutí naspäť do nCryptor-a. Možné zmeny sa neprenesú späť do cloudu.</string>
 	<string name="error_no_such_bucket">Bucket neexistuje</string>
 	<string name="error_masterkey_location_not_supported">Voliteľnost umiestnenia hlavného kľúča zatiaľ nie je podporovaná</string>
 	<string name="error_interact_with_fdroid_but_fdroid_missing">Komunikácia s aplikáciou F-Droid zlyhala. Nie je nainštalovaná?</string>
@@ -41,10 +41,10 @@
 	<string name="cloud_names_local_storage">Lokálne úložisko</string>
 	<!-- # permission -->
 	<!-- ## permission messages -->
-	<string name="permission_message_export_file">Cryptomator vyžaduje prístup k úložisku pre export súborov</string>
-	<string name="permission_message_upload_file">Cryptomator vyžaduje prístup k úložisku pre nahratie súborov</string>
-	<string name="permission_message_share_file">Cryptomator vyžaduje prístup k úložisku pre zdieľanie súborov</string>
-	<string name="permission_revoked_re_request_permission">Cryptomator stratil oprávnia k prístupu tejto lokality. Prosím vyberte tento akresár znovu pre obnovenie povoleni.</string>
+	<string name="permission_message_export_file">nCryptor vyžaduje prístup k úložisku pre export súborov</string>
+	<string name="permission_message_upload_file">nCryptor vyžaduje prístup k úložisku pre nahratie súborov</string>
+	<string name="permission_message_share_file">nCryptor vyžaduje prístup k úložisku pre zdieľanie súborov</string>
+	<string name="permission_revoked_re_request_permission">nCryptor stratil oprávnia k prístupu tejto lokality. Prosím vyberte tento akresár znovu pre obnovenie povoleni.</string>
 	<string name="snack_bar_action_title_settings">Nastavenia</string>
 	<string name="snack_bar_action_title_search">Hľadať</string>
 	<string name="snack_bar_action_title_search_previous">Predošlý</string>
@@ -60,7 +60,7 @@
 	<string name="snack_bar_cryptomator_variants_hint">Cloud nie je v ponuke?</string>
 	<!-- # screens -->
 	<!-- # screen: vault list -->
-	<string name="screen_vault_list_actions_title">Pridať do Cryptomator-a</string>
+	<string name="screen_vault_list_actions_title">Pridať do nCryptor-a</string>
 	<string name="screen_vault_list_action_create_new_vault">Vytvoriť nový trezor</string>
 	<string name="screen_vault_list_action_add_existing_vault">Pridať existujúci trezor</string>
 	<string name="screen_vault_list_vault_action_delete">Odstrániť</string>
@@ -186,7 +186,7 @@
 	<string name="screen_settings_section_auto_photo_upload_only_wifi_toggle">Nahrať iba s použitím Wi-Fi</string>
 	<string name="screen_settings_section_auto_photo_upload_including_videos">Nahrať videá</string>
 	<string name="screen_settings_auto_photo_upload_title">Uložiť auto ukladanie súborov do&#8230;</string>
-	<string name="screen_settings_website_label">Webstránky Cryptomator-a</string>
+	<string name="screen_settings_website_label">Webstránky nCryptor-a</string>
 	<string name="screen_settings_facebook_label">Likujte nás na Facebooku</string>
 	<string name="screen_settings_section_legal">Právne informácie</string>
 	<string name="screen_settings_licenses_label">Licencie</string>
@@ -222,11 +222,11 @@
 	<string name="screen_cryptomator_variants_lite_title">Hlavný F-Droid repozitár</string>
 	<string name="screen_cryptomator_variants_lite_description">Vynechané z dôvodu vyžadovaných API kľúčov.</string>
 	<string name="screen_cryptomator_variants_lite_install">Inštalovať</string>
-	<string name="screen_cryptomator_variants_fdroid_title">Cryptomator F-Droid repozitár</string>
+	<string name="screen_cryptomator_variants_fdroid_title">nCryptor F-Droid repozitár</string>
 	<string name="screen_cryptomator_variants_fdroid_description">Vynechané z dôvodu, že obsahuje proprietárne závislosti.</string>
-	<string name="screen_cryptomator_variants_fdroid_add_repo_hint">Pridať Cryptomator depozitár do F-Droid aplikácie.</string>
+	<string name="screen_cryptomator_variants_fdroid_add_repo_hint">Pridať nCryptor depozitár do F-Droid aplikácie.</string>
 	<string name="screen_cryptomator_variants_fdroid_add_repo">Pridať</string>
-	<string name="screen_cryptomator_variants_fdroid_install_hint">Inštalovať Cryptomator použitím F-Droid.\nAk sa zobrazí nájdená chyba, počkajte kým sa dokončí synchronizácia F-Droid.</string>
+	<string name="screen_cryptomator_variants_fdroid_install_hint">Inštalovať nCryptor použitím F-Droid.\nAk sa zobrazí nájdená chyba, počkajte kým sa dokončí synchronizácia F-Droid.</string>
 	<string name="screen_cryptomator_variants_website_title">Webstránka</string>
 	<string name="screen_cryptomator_variants_website_description">Obsahuje proprietárne závislosti.</string>
 	<string name="screen_cryptomator_variants_installation_hint">Prepnutie z alebo do hlavného F-Droid repozitára vyžaduje čerstvé nastavenie aplikácie.</string>
@@ -256,7 +256,7 @@
 	<string name="dialog_replace_title_single_file_exists">Nahradiť súbor?</string>
 	<string name="dialog_replace_title_multiple_files_exist">Nahradiť súbory?</string>
 	<string name="dialog_unable_to_share_title">Nie je možné zdieľať súbory</string>
-	<string name="dialog_unable_to_share_message">Nemáte nastavené žiadne trezory. Prosím vytvorte najprv nový trezor s aplikáciou Cryptomator.</string>
+	<string name="dialog_unable_to_share_message">Nemáte nastavené žiadne trezory. Prosím vytvorte najprv nový trezor s aplikáciou nCryptor.</string>
 	<string name="dialog_unable_to_share_positive_button">OK</string>
 	<string name="dialog_unable_to_share_negative_button">Vytvoriť trezor</string>
 	<string name="dialog_filetype_not_supported_title">Nie je možné otvoriť %1$s</string>
@@ -307,18 +307,18 @@
 	<string name="dialog_debug_mode_disclaimer_hint">V tomto móde, môžu byť zapisované citlivé dáta do logovacieho súboru na Vašom zariadení (ako napr. mená súborov a cesty). Heslá, cookies, a pod. sú explicitne vynechané.\n\nPamätajte na vypnutie debug módu ako najskôr to pôjde.</string>
 	<string name="dialog_debug_mode_disclaimer_title">Upozornenie</string>
 	<string name="dialog_debug_mode_positive_button">Povoliť</string>
-	<string name="dialog_microsoft_workaround_disclaimer_hint">Kvôli chybe v aplikáciách spoločnosti Microsoft musí byť upravovaný súbor zdieľaný s týmito aplikáciami vo verejnom priečinku médií vo vašom zariadení. Po obnovení programu Cryptomator sa verejne prístupný súbor opäť odstráni, ale program Cryptomator nemôže ovplyvniť, čo sa s týmto súborom medzitým stalo. Pri aktivácii tejto možnosti sa uistite, že ste si vedomí tohto správania. Toto sa vzťahuje len na typy súborov spoločnosti Microsoft.\n\nCryptomator sa po aktivácii znovu spustí.</string>
-	<string name="dialog_disable_app_obscured_disclaimer_hint">Toto nastavenie je bezpečnostná vlastnosť a zabraňuje ostatným aplikáciám klamať užívateľov robiť veci čo nechcú robiť.\n\nVypnutím súhlasíte s tým že<a href="https://docs.cryptomator.org/en/latest/android/settings/#block-app-when-obscured">ste si vedomí rizika</a>.</string>
+	<string name="dialog_microsoft_workaround_disclaimer_hint">Kvôli chybe v aplikáciách spoločnosti Microsoft musí byť upravovaný súbor zdieľaný s týmito aplikáciami vo verejnom priečinku médií vo vašom zariadení. Po obnovení programu nCryptor sa verejne prístupný súbor opäť odstráni, ale program nCryptor nemôže ovplyvniť, čo sa s týmto súborom medzitým stalo. Pri aktivácii tejto možnosti sa uistite, že ste si vedomí tohto správania. Toto sa vzťahuje len na typy súborov spoločnosti Microsoft.\n\nnCryptor sa po aktivácii znovu spustí.</string>
+	<string name="dialog_disable_app_obscured_disclaimer_hint">Toto nastavenie je bezpečnostná vlastnosť a zabraňuje ostatným aplikáciám klamať užívateľov robiť veci čo nechcú robiť.\n\nVypnutím súhlasíte s tým že<a href="https://docs.ncryptor.com/en/latest/android/settings/#block-app-when-obscured">ste si vedomí rizika</a>.</string>
 	<string name="dialog_disable_app_obscured_disclaimer_title">Upozornenie</string>
 	<string name="dialog_disable_app_obscured_positive_button">Zakázať</string>
 	<string name="dialog_app_is_obscured_info_title">Aplikácia je zatmavená</string>
-	<string name="dialog_app_is_obscured_info_hint">Ďalšia aplikácia zobrazuje niečo na vrchu Cryptomator-a (ako napr. modré svetlo alebo nočný režim). Z bezpečnostných dôvodov je Cryptomator zakázaný.\n\n<a href="https://docs.cryptomator.org/en/latest/android/settings/#block-app-when-obscured">Ako povoliť Cryptomator</a></string>
+	<string name="dialog_app_is_obscured_info_hint">Ďalšia aplikácia zobrazuje niečo na vrchu nCryptor-a (ako napr. modré svetlo alebo nočný režim). Z bezpečnostných dôvodov je nCryptor zakázaný.\n\n<a href="https://docs.ncryptor.com/en/latest/android/settings/#block-app-when-obscured">Ako povoliť nCryptor</a></string>
 	<string name="dialog_app_is_obscured_info_neutral_button">Zavrieť</string>
 	<string name="dialog_vaults_removed_during_migration_title">Prosím zadajte znovu trezory pre %1s cloud</string>
 	<string name="dialog_vaults_removed_during_migration_hint">Počas migrácie na túto verziu aplikácie potrebujeme odstrániť nasledujúce trezory z aplikácie:\n%2s \n\n Tieto trezory nebudú odstránené z cloudu, ale len z tejto aplikácie. Prepáčte za nepohodlie a prosím znovu zadajte trezory pre pokračovanie ich používania.</string>
 	<string name="dialog_vault_is_root_folder_of_cloud_title">Trezor je koreňovým adresárom cloudového spojenia</string>
 	<string name="dialog_vault_is_root_folder_of_cloud_hint">Vytvorte nové cloudové pripojenie kde vyberiete minimálne nadradený adresár tohto trezora ako koreňový adresár pre pridanie tohot trezora.</string>
-	<string name="dialog_disable_secure_screen_disclaimer_hint">Toto nastavenie je bezpečnostná vlastnosť a chráni ostatné aplikácie pred klamaním užívateľov robiť veci, ktoré nechcú obiť.\n\nVypnutím súhlasíte, že &lt;a href="https://docs.cryptomator.org/en/latest/android/settings/#screen-security"&gt;ste si vedomí rizika.</string>
+	<string name="dialog_disable_secure_screen_disclaimer_hint">Toto nastavenie je bezpečnostná vlastnosť a chráni ostatné aplikácie pred klamaním užívateľov robiť veci, ktoré nechcú obiť.\n\nVypnutím súhlasíte, že &lt;a href="https://docs.ncryptor.com/en/latest/android/settings/#screen-security"&gt;ste si vedomí rizika.</string>
 	<string name="dialog_delete_cloud_connection_with_vaults_message">Ste si istý že chcete odstrániť toto cloudové pripojenie?</string>
 	<string name="dialog_delete_cloud_connection_with_vaults_hint">Táto akcia odstráni pripojenie cloudu a všetky trezory tohto cloudu.</string>
 	<string name="dialog_confirm_delete_multiple_title">Odstrániť %1$d položky?</string>
@@ -326,9 +326,9 @@
 	<string name="dialog_confirm_delete_file_message">Naozaj chcete odstrániť tento súbor?</string>
 	<string name="dialog_confirm_delete_folder_message">Toto zmaže obsah celého adresára. Ste si istý že chcete zmazať tento adresár?</string>
 	<string name="dialog_biometric_auth_key_invalidated_title">Funkcia biometrickej autentikácie je deaktivovaná</string>
-	<string name="dialog_biometric_auth_key_invalidated_message">Pretože kľúč bol zneplatnený, funkcia biometrickej autentikácie bola deaktivovaná. Pre opätovné povolenie, otvorte nastavenia Cryptomator-a.</string>
+	<string name="dialog_biometric_auth_key_invalidated_message">Pretože kľúč bol zneplatnený, funkcia biometrickej autentikácie bola deaktivovaná. Pre opätovné povolenie, otvorte nastavenia nCryptor-a.</string>
 	<string name="dialog_enter_license_title">Zadajte platný licenčný kľúč</string>
-	<string name="dialog_enter_license_content">Detekovali sme že máte nainštalovaný Cryptomator bez použitia Google Play Store. Poskytnite platnú licenciu, ktorá bola zakúpená v <a href="https://cryptomator.org/android/">https://cryptomator.org/android/</a></string>
+	<string name="dialog_enter_license_content">Detekovali sme že máte nainštalovaný nCryptor bez použitia Google Play Store. Poskytnite platnú licenciu, ktorá bola zakúpená v <a href="https://ncryptor.com/android/">https://ncryptor.com/android/</a></string>
 	<string name="dialog_enter_license_not_valid_content">Poskytnutá licencia nie je platná. Uistite sa či bola zadaná korektne.</string>
 	<string name="dialog_enter_license_not_valid_content_desktop_supporter_certificate">Poskytnuty kľúč je pracovná plocha certifikátu podporovateľa. Prosím zadajte platnú licenciu.</string>
 	<string name="dialog_enter_license_no_content">Licencia neposkytnutá. Prosím zadajte platnú licenciu.</string>
@@ -336,12 +336,12 @@
 	<string name="dialog_license_confirmation_title">Potvrdenie licencie</string>
 	<string name="dialog_license_confirmation_message">Ďakujeme %1$s za poskytnutie Vašej platnej licencie.</string>
 	<string name="dialog_update_available_title">Aktualizácia k dispozícii</string>
-	<string name="dialog_update_available_message">Aktualizujte Cryptomator na najnovšiu verziu. Stlačením OK sa stiahne aplikácia na pozadí a opýta Vás pre inštalovanie.</string>
+	<string name="dialog_update_available_message">Aktualizujte nCryptor na najnovšiu verziu. Stlačením OK sa stiahne aplikácia na pozadí a opýta Vás pre inštalovanie.</string>
 	<string name="dialog_update_available_update">Aktualizovať teraz</string>
 	<string name="dialog_update_available_download_site">Prejsť na stránku sťahovania</string>
 	<string name="dialog_update_available_cancel">Neskôr</string>
 	<string name="dialog_download_update_title">Prebieha sťahovanie</string>
-	<string name="dialog_download_update_message">Sťahovanie najnovšej verzie Cryptomator-a</string>
+	<string name="dialog_download_update_message">Sťahovanie najnovšej verzie nCryptor-a</string>
 	<string name="dialog_sym_link_title">Adresár je symbolická linka</string>
 	<string name="dialog_sym_link_message">Nemožno prejsť na túto symbolickú linku</string>
 	<string name="dialog_sym_link_back_button">Späť</string>
@@ -362,9 +362,9 @@
 	<string name="dialog_hub_user_setup_required_title">Vyžaduje sa nastavenie užívateľom</string>
 	<string name="dialog_hub_user_setup_required_hint">Pre pokračovanie, prosím splňte kroky požadované vo Vašom užívateľskom Hub profile.</string>
 	<string name="dialog_hub_user_setup_required_neutral_button">Prejsť na profil</string>
-	<string name="permission_snackbar_auth_local_vault">Cryptomator potrebuje prístup k úložisku pre prácu s lokálnymi trezormy</string>
-	<string name="permission_snackbar_auth_auto_upload">Cryptomator potrebuje prístup k úložisku pre automatické nahrávanie fotografii</string>
-	<string name="permission_snackbar_notifications">Cryptomator potrebuje povolenie notifikácií, napríklad na zobrazenie stavu trezoru</string>
+	<string name="permission_snackbar_auth_local_vault">nCryptor potrebuje prístup k úložisku pre prácu s lokálnymi trezormy</string>
+	<string name="permission_snackbar_auth_auto_upload">nCryptor potrebuje prístup k úložisku pre automatické nahrávanie fotografii</string>
+	<string name="permission_snackbar_notifications">nCryptor potrebuje povolenie notifikácií, napríklad na zobrazenie stavu trezoru</string>
 	<!-- # error reports -->
 	<!-- # misc -->
 	<!-- ## file size helper -->
@@ -445,4 +445,23 @@
 	<string name="dark">Tmavý</string>
 	<!-- update interval names -->
 	<string name="update_interval_1d">Raz za deň</string>
+	<string name="screen_sign_in_title">User Profile</string>
+	<string name="failed_to_start_authorization">Failed to start authorization: %1$s</string>
+	<string name="no_authentication_data_received">No authentication data received</string>
+	<string name="authentication_cancelled_by_user">Authentication cancelled by user</string>
+	<string name="authentication_failed">Authentication failed: %1$s</string>
+	<string name="network_error_occurred">Network error occurred</string>
+	<string name="no_response_or_error_received">No response or error received</string>
+	<string name="service_not_configured_yet">Service not configured yet</string>
+	<string name="failed_to_start_logout">Failed to start logout: %1$s</string>
+	<string name="no_logout_data_received">No logout data received</string>
+	<string name="successfully_logged_out">Successfully logged out</string>
+	<string name="token_exchange_completed_successfully">Token exchange completed successfully</string>
+	<string name="token_exchange_failed">Token exchange failed: %1$s</string>
+	<string name="authorization_failed">Authorization failed: %1$s</string>
+	<string name="next_billing">Next billing</string>
+	<string name="renewal_amount">Renewal Amount: %1$s plus applicable taxes</string>
+	<string name="keep_vaults_data">Keep vaults data</string>
+	<string name="sign_in">Sign in</string>
+	<string name="create_account">Create Account</string>
 </resources>

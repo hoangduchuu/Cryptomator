@@ -8,7 +8,7 @@ public class DropboxCloud implements Cloud {
 	private final String accessToken;
 	private final String username;
 
-	private DropboxCloud(Builder builder) {
+	public DropboxCloud(Builder builder) {
 		this.id = builder.id;
 		this.accessToken = builder.accessToken;
 		this.username = builder.username;

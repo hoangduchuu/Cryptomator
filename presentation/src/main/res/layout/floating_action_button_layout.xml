@@ -3,6 +3,7 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:id="@+id/floating_action_button"
 	android:layout_width="54dp"
+	android:visibility="visible"
 	android:layout_height="54dp"
 	android:layout_gravity="bottom|end"
 	android:layout_marginEnd="@dimen/fab_margin"

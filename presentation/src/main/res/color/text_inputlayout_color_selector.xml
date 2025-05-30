@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+	<!-- Khi TextInputLayout có focus -->
+	<item android:color="@color/textInputLayoutColor" android:state_focused="true" />
+
+	<!-- Khi TextInputLayout có lỗi -->
+	<item android:color="@color/textColorError" android:state_active="true" />
+
+	<!-- Khi TextInputLayout bị vô hiệu hóa -->
+	<item android:color="#757575" android:state_enabled="false" />
+
+	<!-- Trạng thái mặc định (không focus) -->
+	<item android:color="#757575" />
+</selector>

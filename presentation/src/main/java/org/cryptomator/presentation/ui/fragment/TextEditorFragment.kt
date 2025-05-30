@@ -1,5 +1,6 @@
 package org.cryptomator.presentation.ui.fragment
 
+import android.os.Bundle
 import android.text.Spannable
 import android.text.style.BackgroundColorSpan
 import androidx.annotation.NonNull
@@ -8,7 +9,10 @@ import com.google.android.material.textfield.TextInputEditText
 import org.cryptomator.generator.Fragment
 import org.cryptomator.presentation.R
 import org.cryptomator.presentation.databinding.FragmentTextEditorBinding
+import org.cryptomator.presentation.model.CloudFileModel
+import org.cryptomator.presentation.model.VaultModel
 import org.cryptomator.presentation.presenter.TextEditorPresenter
+import org.cryptomator.util.VaultStatus
 import javax.inject.Inject
 
 @Fragment
@@ -21,7 +25,13 @@ class TextEditorFragment : BaseFragment<FragmentTextEditorBinding>(FragmentTextE
 		get() = binding.textEditor.text.toString()
 
 	override fun setupView() {
-		// no-op
+		if(vault?.getVaultStatus() == VaultStatus.ReadOnly){
+			binding.textEditor.isEnabled = false
+			binding.textEditor.isFocusable = false
+			binding.textEditor.isFocusableInTouchMode = false
+			binding.textEditor.isCursorVisible = false
+			binding.textEditor.isLongClickable = false
+		}
 	}
 
 	override fun loadContent() {
@@ -106,4 +116,24 @@ class TextEditorFragment : BaseFragment<FragmentTextEditorBinding>(FragmentTextE
 	}
 
 	enum class Direction { PREVIOUS, NEXT }
+
+	companion object {
+		private const val ARG_TEXT_FILE = "textFile"
+		private const val ARG_VAULT = "vault"
+
+		fun newInstance(textFile: CloudFileModel, vault: VaultModel?): TextEditorFragment {
+			val result = TextEditorFragment()
+			val args = Bundle()
+			args.putSerializable(ARG_TEXT_FILE, textFile)
+			args.putSerializable(ARG_VAULT, vault)
+			result.arguments = args
+			return result
+		}
+	}
+
+	var vault: VaultModel?
+		get() = requireArguments().getSerializable(ARG_VAULT) as VaultModel?
+		set(value) {
+			arguments?.putSerializable(ARG_VAULT, value)
+		}
 }

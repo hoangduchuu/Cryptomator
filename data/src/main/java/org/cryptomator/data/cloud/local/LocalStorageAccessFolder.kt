@@ -37,4 +37,16 @@ open class LocalStorageAccessFolder(override val parent: LocalStorageAccessFolde
 	override fun withCloud(cloud: Cloud?): LocalStorageAccessFolder? {
 		return LocalStorageAccessFolder(parent?.withCloud(cloud), name, path, documentId, documentUri)
 	}
+
+	fun getLocalFolder(): String {
+		// Extract the full path from documentId
+		return documentId?.let {
+			if (it.contains(":")) {
+				// Format: "primary:Ncriptors/Nest000/001/0002/0003/004/Localstore_Test/LocalstoreTest!"
+				it.substring(it.indexOf(":") + 1)
+			} else {
+				it
+			}
+		} ?: path
+	}
 }

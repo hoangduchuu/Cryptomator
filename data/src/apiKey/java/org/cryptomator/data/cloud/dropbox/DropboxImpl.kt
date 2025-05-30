@@ -369,7 +369,7 @@ internal class DropboxImpl(cloud: DropboxCloud, context: Context) {
 	@Throws(AuthenticationException::class, DbxException::class)
 	fun currentAccount(): String {
 		val currentAccount = client().users().currentAccount
-		return currentAccount.name.displayName
+		return currentAccount.email
 	}
 
 	fun logout() {

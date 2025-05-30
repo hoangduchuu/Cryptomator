@@ -54,7 +54,7 @@ class CryptomatorApp : MultiDexApplication(), HasComponent<ApplicationComponent>
 			else -> "Google Play Edition"
 		}
 		Timber.tag("App").i(
-			"Cryptomator v%s (%d) \"%s\" started on android %s / API%d using a %s",  //
+			"nCryptor v%s (%d) \"%s\" started on android %s / API%d using a %s",  //
 			BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE, flavor,  //
 			Build.VERSION.RELEASE, Build.VERSION.SDK_INT,  //
 			Build.MODEL

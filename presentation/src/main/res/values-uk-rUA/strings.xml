@@ -9,7 +9,7 @@
 	<string name="error_no_network_connection">Відсутнє з\'єднання з мережею</string>
 	<string name="error_invalid_passphrase">Невірний пароль</string>
 	<string name="error_file_or_folder_exists">Файл чи папка вже існує.</string>
-	<string name="error_vault_version_not_supported">Сховище %1$s-ї версії не підтримується. Це сховище було створено старішою або новішою версією Cryptomator.</string>
+	<string name="error_vault_version_not_supported">Сховище %1$s-ї версії не підтримується. Це сховище було створено старішою або новішою версією nCryptor.</string>
 	<string name="error_vault_config_file_missing_due_to_format_999">Файл %1$s відсутній у вашому сховищі. Переконайтеся, що цей файл існує у папці вашого сховища у хмарі.</string>
 	<string name="error_vault_already_exists">Сховище вже існує.</string>
 	<string name="error_no_such_file">Файлу не існує.</string>
@@ -31,7 +31,7 @@
 	<string name="error_vault_version_mismatch">Версія вказана у %1$s відрізняється від %2$s</string>
 	<string name="error_vault_key_invalid">%1$s та %2$s не відповідають одне одному</string>
 	<string name="error_vault_config_loading">Помилка при завантаженні конфігурації сховища</string>
-	<string name="error_file_not_found_after_opening_using_3party">Локальний файл більше не існує після перепідключення до Cryptomator. Можливі зміни не можуть бути збережені у хмарі.</string>
+	<string name="error_file_not_found_after_opening_using_3party">Локальний файл більше не існує після перепідключення до nCryptor. Можливі зміни не можуть бути збережені у хмарі.</string>
 	<string name="error_no_such_bucket">Немає такого кошика (сховища)</string>
 	<string name="error_masterkey_location_not_supported">Користувацьке розташування універсального ключа ще не підтримується</string>
 	<string name="error_interact_with_fdroid_but_fdroid_missing">Не вдалося зв\'язатися із застосунком F-Droid. Його встановлено?</string>
@@ -46,10 +46,10 @@
 	<string name="cloud_names_local_storage">Локальне сховище</string>
 	<!-- # permission -->
 	<!-- ## permission messages -->
-	<string name="permission_message_export_file">Cryptomator потребує доступу до сховища для експорту файлів</string>
-	<string name="permission_message_upload_file">Cryptomator потребує доступу до сховища для завантаження файлів</string>
-	<string name="permission_message_share_file">Cryptomator потребує доступу до сховища, щоб ділитися файлами</string>
-	<string name="permission_revoked_re_request_permission">Cryptomator втратив дозвіл на доступ до цього розташування. Будь ласка, оберіть цю папку ще раз, щоб відновити дозвіл.</string>
+	<string name="permission_message_export_file">nCryptor потребує доступу до сховища для експорту файлів</string>
+	<string name="permission_message_upload_file">nCryptor потребує доступу до сховища для завантаження файлів</string>
+	<string name="permission_message_share_file">nCryptor потребує доступу до сховища, щоб ділитися файлами</string>
+	<string name="permission_revoked_re_request_permission">nCryptor втратив дозвіл на доступ до цього розташування. Будь ласка, оберіть цю папку ще раз, щоб відновити дозвіл.</string>
 	<string name="snack_bar_action_title_settings">Налаштування</string>
 	<string name="snack_bar_action_title_search">Пошук</string>
 	<string name="snack_bar_action_title_search_previous">Попередній</string>
@@ -65,7 +65,7 @@
 	<string name="snack_bar_cryptomator_variants_hint">Хмара не у списку?</string>
 	<!-- # screens -->
 	<!-- # screen: vault list -->
-	<string name="screen_vault_list_actions_title">Додати до Cryptomator</string>
+	<string name="screen_vault_list_actions_title">Додати до nCryptor</string>
 	<string name="screen_vault_list_action_create_new_vault">Створити нове сховище</string>
 	<string name="screen_vault_list_action_add_existing_vault">Додати існуюче сховище</string>
 	<string name="screen_vault_list_vault_action_delete">Прибрати</string>
@@ -192,7 +192,7 @@
 	<string name="screen_settings_section_auto_photo_upload_only_wifi_toggle">Вивантажувати лише за допомогою Wi-Fi</string>
 	<string name="screen_settings_section_auto_photo_upload_including_videos">Вивантажувати відео</string>
 	<string name="screen_settings_auto_photo_upload_title">Зберігати автовивантажені файли до&#8230;</string>
-	<string name="screen_settings_website_label">Веб-сайт Cryptomator</string>
+	<string name="screen_settings_website_label">Веб-сайт nCryptor</string>
 	<string name="screen_settings_mastodon_label">Слідкуйте за нами на Mastodon</string>
 	<string name="screen_settings_facebook_label">Вподобайте нас на Facebook</string>
 	<string name="screen_settings_section_legal">Правова інформація</string>
@@ -225,15 +225,15 @@
 	<string name="screen_authenticate_auth_authentication_failed">%1$s не може бути авторизовано.</string>
 	<string name="screen_update_pcloud_connections_title">Оновити облікові дані pCloud</string>
 	<!-- ## screen: cryptomator app variants -->
-	<string name="screen_cryptomator_variants_title">Різновиди Cryptomator</string>
+	<string name="screen_cryptomator_variants_title">Різновиди nCryptor</string>
 	<string name="screen_cryptomator_variants_lite_title">Головний репозиторій F-Droid</string>
 	<string name="screen_cryptomator_variants_lite_description">Виключені, тому що потребують API ключі.</string>
 	<string name="screen_cryptomator_variants_lite_install">Встановити</string>
-	<string name="screen_cryptomator_variants_fdroid_title">Репозиторій Cryptomator на F-Droid</string>
+	<string name="screen_cryptomator_variants_fdroid_title">Репозиторій nCryptor на F-Droid</string>
 	<string name="screen_cryptomator_variants_fdroid_description">Виключено, тому що він містить власні залежності.</string>
-	<string name="screen_cryptomator_variants_fdroid_add_repo_hint">Додати репозиторій Cryptomator у додаток F-Droid.</string>
+	<string name="screen_cryptomator_variants_fdroid_add_repo_hint">Додати репозиторій nCryptor у додаток F-Droid.</string>
 	<string name="screen_cryptomator_variants_fdroid_add_repo">Додати</string>
-	<string name="screen_cryptomator_variants_fdroid_install_hint">Встановити Cryptomator використовуючи F-Droid.\nЯкщо відображається помилка \"Не знайдено\", зачекайте поки синхронізацію F-Droid буде завершено.</string>
+	<string name="screen_cryptomator_variants_fdroid_install_hint">Встановити nCryptor використовуючи F-Droid.\nЯкщо відображається помилка \"Не знайдено\", зачекайте поки синхронізацію F-Droid буде завершено.</string>
 	<string name="screen_cryptomator_variants_website_title">Вебсайт</string>
 	<string name="screen_cryptomator_variants_website_description">Містить власні залежності.</string>
 	<string name="screen_cryptomator_variants_installation_hint">Перемикання з головного репозиторію F-Droid або на нього потребує нового налаштування додатку.</string>
@@ -263,7 +263,7 @@
 	<string name="dialog_replace_title_single_file_exists">Замінити файл?</string>
 	<string name="dialog_replace_title_multiple_files_exist">Замінити файли?</string>
 	<string name="dialog_unable_to_share_title">Неможливо поділитись файлами</string>
-	<string name="dialog_unable_to_share_message">Ви не налаштували жодного сховища. Спочатку створіть нове сховище за допомогою програми Cryptomator.</string>
+	<string name="dialog_unable_to_share_message">Ви не налаштували жодного сховища. Спочатку створіть нове сховище за допомогою програми nCryptor.</string>
 	<string name="dialog_unable_to_share_positive_button">Гаразд</string>
 	<string name="dialog_unable_to_share_negative_button">Створити сховище</string>
 	<string name="dialog_filetype_not_supported_title">Неможливо відкрити %1$s</string>
@@ -314,18 +314,18 @@
 	<string name="dialog_debug_mode_disclaimer_hint">У цьому режимі чутливі дані можуть бути записані в файл журналу на вашому пристрої (наприклад, імена файлів і шляхи). Але це не стосується паролів, файлів cookie тощо.\n\nНе забудьте вимкнути режим налагодження якнайшвидше.</string>
 	<string name="dialog_debug_mode_disclaimer_title">Увага</string>
 	<string name="dialog_debug_mode_positive_button">Увімкнути</string>
-	<string name="dialog_microsoft_workaround_disclaimer_hint">Через помилку в додатках Microsoft, для редагування файлу, доступ до нього має бути надано таким додаткам у публічній папці на вашому пристрої. Після того, як Cryptomator припинить роботу - публічно доступний файл буде видалено, але водночас Cryptomator не впливає на те, що відбувалось з цим файлом, поки він є публічно доступним. Активовуючи цю опцію, ви маєте усвідомлювати наслідки таких дій з файлами. Її буде застосовано лише до типів файлів Microsoft.\n\nCryptomator буде перезавантажений після активації.</string>
-	<string name="dialog_disable_app_obscured_disclaimer_hint">Цей параметр є функцією безпеки та не дозволяє іншим програмам обманом змусити користувачів робити те, чого вони не хочуть робити.\n\nВимикаючи його ви підтверджуєте, що <a href="https://docs.cryptomator.org/en/latest/android/settings/#block-app-when-obscured">усвідомлюєте та приймаєте ризики</a>.</string>
+	<string name="dialog_microsoft_workaround_disclaimer_hint">Через помилку в додатках Microsoft, для редагування файлу, доступ до нього має бути надано таким додаткам у публічній папці на вашому пристрої. Після того, як nCryptor припинить роботу - публічно доступний файл буде видалено, але водночас nCryptor не впливає на те, що відбувалось з цим файлом, поки він є публічно доступним. Активовуючи цю опцію, ви маєте усвідомлювати наслідки таких дій з файлами. Її буде застосовано лише до типів файлів Microsoft.\n\nnCryptor буде перезавантажений після активації.</string>
+	<string name="dialog_disable_app_obscured_disclaimer_hint">Цей параметр є функцією безпеки та не дозволяє іншим програмам обманом змусити користувачів робити те, чого вони не хочуть робити.\n\nВимикаючи його ви підтверджуєте, що <a href="https://docs.ncryptor.com/en/latest/android/settings/#block-app-when-obscured">усвідомлюєте та приймаєте ризики</a>.</string>
 	<string name="dialog_disable_app_obscured_disclaimer_title">Увага</string>
 	<string name="dialog_disable_app_obscured_positive_button">Вимкнути</string>
 	<string name="dialog_app_is_obscured_info_title">Інтерфейс додатка перекрито</string>
-	<string name="dialog_app_is_obscured_info_hint">Інша програма відображає щось поверх Cryptomator (наприклад, фільтр синього світла або нічний режим). З міркувань безпеки Cryptomator вимкнено.\n\n<a href="https://docs.cryptomator.org/en/latest/android/settings/#block-app-when-obscured">Як увімкнути Cryptomator</a></string>
+	<string name="dialog_app_is_obscured_info_hint">Інша програма відображає щось поверх nCryptor (наприклад, фільтр синього світла або нічний режим). З міркувань безпеки nCryptor вимкнено.\n\n<a href="https://docs.ncryptor.com/en/latest/android/settings/#block-app-when-obscured">Як увімкнути nCryptor</a></string>
 	<string name="dialog_app_is_obscured_info_neutral_button">Закрити</string>
 	<string name="dialog_vaults_removed_during_migration_title">Будь ласка, знову додайте сховища з хмари для %1s</string>
 	<string name="dialog_vaults_removed_during_migration_hint">Переходячи на цю версію додатка ми були змушені прибрати такі сховища з додатка:\n%2s\n\nЦі сховища не видаляються з хмари, а лише прибрано з цього додатка. Перепрошуємо за незручності. Будь ласка, додайте ці сховища повторно, щоб продовжити роботу з ними.</string>
 	<string name="dialog_vault_is_root_folder_of_cloud_title">Сховище є кореневим каталогом хмарного підключення</string>
 	<string name="dialog_vault_is_root_folder_of_cloud_hint">Для додавання цього сховища - створіть нове хмарне підключення, в якому оберіть в якості батьківського каталога цього сховища кореневий каталог або будь-яку іншу папку у хмарі.</string>
-	<string name="dialog_disable_secure_screen_disclaimer_hint">Цей параметр є функцією безпеки та не дозволяє іншим програмам обманом змусити користувачів робити те, чого вони не хочуть робити.\n\nВимикаючи його ви підтверджуєте, що <a href="https://docs.cryptomator.org/en/latest/android/settings/#screen-security">усвідомлюєте та приймаєте ризики</a>.</string>
+	<string name="dialog_disable_secure_screen_disclaimer_hint">Цей параметр є функцією безпеки та не дозволяє іншим програмам обманом змусити користувачів робити те, чого вони не хочуть робити.\n\nВимикаючи його ви підтверджуєте, що <a href="https://docs.ncryptor.com/en/latest/android/settings/#screen-security">усвідомлюєте та приймаєте ризики</a>.</string>
 	<string name="dialog_delete_cloud_connection_with_vaults_message">Ви дійсно хочете видалити це хмарне підключення?</string>
 	<string name="dialog_delete_cloud_connection_with_vaults_hint">Ця дія видалить підключення до хмари та всі сховища з цієї хмари.</string>
 	<string name="dialog_confirm_delete_multiple_title">Видалити %1$d об\'єкт(-и, -ів)?</string>
@@ -333,9 +333,9 @@
 	<string name="dialog_confirm_delete_file_message">Ви впевнені, що бажаєте видалити цей файл?</string>
 	<string name="dialog_confirm_delete_folder_message">Це призведе до видалення усього вмісту директорії. Ви дійсно хочете видалити цю директорію?</string>
 	<string name="dialog_biometric_auth_key_invalidated_title">Функція біометричної автентифікації деактивована</string>
-	<string name="dialog_biometric_auth_key_invalidated_message">Оскільки ключ було анульовано, біометрична аутентифікація була деактивована. Для повторного увімкнення відкрийте налаштування Cryptomator.</string>
+	<string name="dialog_biometric_auth_key_invalidated_message">Оскільки ключ було анульовано, біометрична аутентифікація була деактивована. Для повторного увімкнення відкрийте налаштування nCryptor.</string>
 	<string name="dialog_enter_license_title">Вкажіть дійсну ліцензію</string>
-	<string name="dialog_enter_license_content">Ми виявили, що ви встановили Cryptomator без використання Google Play Store. Надайте дійсну ліцензію, яку можна придбати на <a href="https://cryptomator.org/android/">https://cryptomator.org/android/</a></string>
+	<string name="dialog_enter_license_content">Ми виявили, що ви встановили nCryptor без використання Google Play Store. Надайте дійсну ліцензію, яку можна придбати на <a href="https://ncryptor.com/android/">https://ncryptor.com/android/</a></string>
 	<string name="dialog_enter_license_not_valid_content">Вказана ліцензія недійсна. Переконайтеся, що введено правильні дані.</string>
 	<string name="dialog_enter_license_not_valid_content_desktop_supporter_certificate">Вказаний ключ призначений лише для комп\'ютерної версії (сертифікат спонсора). Будь ласка, вкажіть правильний ключ.</string>
 	<string name="dialog_enter_license_no_content">Відсутня ліцензія. Будь ласка, вкажіть ключ чинної ліцензії.</string>
@@ -343,12 +343,12 @@
 	<string name="dialog_license_confirmation_title">Ліцензію підтверджено</string>
 	<string name="dialog_license_confirmation_message">Дякуємо %1$s за надання Вашої чинної ліцензії.</string>
 	<string name="dialog_update_available_title">Доступне оновлення</string>
-	<string name="dialog_update_available_message">Оновіть Cryptomator до останньої версії. Натисніть ОК, щоб завантажити додаток у фоновому режимі, після чого з\'явиться запит на встановлення.</string>
+	<string name="dialog_update_available_message">Оновіть nCryptor до останньої версії. Натисніть ОК, щоб завантажити додаток у фоновому режимі, після чого з\'явиться запит на встановлення.</string>
 	<string name="dialog_update_available_update">Оновити зараз</string>
 	<string name="dialog_update_available_download_site">Перейти на сторінку завантаження</string>
 	<string name="dialog_update_available_cancel">Пізніше</string>
 	<string name="dialog_download_update_title">Завантаження в процесі</string>
-	<string name="dialog_download_update_message">Завантаження останньої версії Cryptomator</string>
+	<string name="dialog_download_update_message">Завантаження останньої версії nCryptor</string>
 	<string name="dialog_sym_link_title">Папка є символічним посиланням</string>
 	<string name="dialog_sym_link_message">Ви не можете перейти за цим символічним посиланням</string>
 	<string name="dialog_sym_link_back_button">Назад</string>
@@ -371,15 +371,15 @@
 	<string name="dialog_hub_vault_access_forbidden_title">У доступі відмовлено</string>
 	<string name="dialog_hub_vault_access_forbidden_hint">Ваш користувач ще не авторизований для доступу до цього сховища. Попросіть власника сховища авторизувати вас.\"</string>
 	<string name="dialog_hub_license_upgrade_required_title">Перевірити ліцензію Hub</string>
-	<string name="dialog_hub_license_upgrade_required_hint">Ваш Cryptomator Hub має недійсну ліцензію. Будь ласка, повідомте адміністратору Hub про необхідність оновлення або заміни ліцензії.\"</string>
+	<string name="dialog_hub_license_upgrade_required_hint">Ваш nCryptor Hub має недійсну ліцензію. Будь ласка, повідомте адміністратору Hub про необхідність оновлення або заміни ліцензії.\"</string>
 	<string name="dialog_hub_vault_archived_title">Сховище заархівовано</string>
 	<string name="dialog_hub_vault_archived_hint">Це сховище заархівовано і не може бути розблоковано. Для розблокування його власник сховища повинен розархівувати його.</string>
 	<string name="dialog_hub_user_setup_required_title">Необхідне налаштування користувача</string>
 	<string name="dialog_hub_user_setup_required_hint">Щоб продовжити, будь ласка, завершіть обов\'язкові кроки у вашому профілі користувача Hub.</string>
 	<string name="dialog_hub_user_setup_required_neutral_button">Перейти до профілю</string>
-	<string name="permission_snackbar_auth_local_vault">Для використання локальних сховищ необхідно надати Cryptomator доступ до місця зберігання</string>
-	<string name="permission_snackbar_auth_auto_upload">Для автоматичного завантаження фото необхідно надати Cryptomator доступ до місця зберігання</string>
-	<string name="permission_snackbar_notifications">Для відображення статусу сховища необхідно надати Cryptomator дозвіл на сповіщення</string>
+	<string name="permission_snackbar_auth_local_vault">Для використання локальних сховищ необхідно надати nCryptor доступ до місця зберігання</string>
+	<string name="permission_snackbar_auth_auto_upload">Для автоматичного завантаження фото необхідно надати nCryptor доступ до місця зберігання</string>
+	<string name="permission_snackbar_notifications">Для відображення статусу сховища необхідно надати nCryptor дозвіл на сповіщення</string>
 	<!-- # error reports -->
 	<!-- # misc -->
 	<!-- ## file size helper -->
@@ -460,4 +460,23 @@
 	<string name="dark">Темний</string>
 	<!-- update interval names -->
 	<string name="update_interval_1d">Раз на день</string>
+	<string name="screen_sign_in_title">User Profile</string>
+	<string name="failed_to_start_authorization">Failed to start authorization: %1$s</string>
+	<string name="no_authentication_data_received">No authentication data received</string>
+	<string name="authentication_cancelled_by_user">Authentication cancelled by user</string>
+	<string name="authentication_failed">Authentication failed: %1$s</string>
+	<string name="network_error_occurred">Network error occurred</string>
+	<string name="no_response_or_error_received">No response or error received</string>
+	<string name="service_not_configured_yet">Service not configured yet</string>
+	<string name="failed_to_start_logout">Failed to start logout: %1$s</string>
+	<string name="no_logout_data_received">No logout data received</string>
+	<string name="successfully_logged_out">Successfully logged out</string>
+	<string name="token_exchange_completed_successfully">Token exchange completed successfully</string>
+	<string name="token_exchange_failed">Token exchange failed: %1$s</string>
+	<string name="authorization_failed">Authorization failed: %1$s</string>
+	<string name="next_billing">Next billing</string>
+	<string name="renewal_amount">Renewal Amount: %1$s plus applicable taxes</string>
+	<string name="keep_vaults_data">Keep vaults data</string>
+	<string name="sign_in">Sign in</string>
+	<string name="create_account">Create Account</string>
 </resources>

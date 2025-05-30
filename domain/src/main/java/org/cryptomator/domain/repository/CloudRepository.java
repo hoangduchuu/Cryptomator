@@ -20,6 +20,7 @@ public interface CloudRepository {
 	List<Cloud> allClouds() throws BackendException;
 
 	Cloud store(Cloud cloud) throws BackendException;
+	Cloud getOrCreate(Cloud cloud) throws BackendException;
 
 	void delete(Cloud cloud) throws BackendException;
 

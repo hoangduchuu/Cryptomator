@@ -9,6 +9,7 @@ import org.cryptomator.domain.repository.CloudContentRepository;
 import org.cryptomator.domain.repository.CloudRepository;
 import org.cryptomator.generator.Parameter;
 import org.cryptomator.generator.UseCase;
+import org.cryptomator.util.SharedPreferencesHandler;
 
 @UseCase
 class LogoutCloud {
@@ -17,10 +18,13 @@ class LogoutCloud {
 	private final CloudRepository cloudRepository;
 	private final Cloud cloud;
 
-	public LogoutCloud(CloudContentRepository cloudContentRepository, CloudRepository cloudRepository, @Parameter Cloud cloud) {
+	private final SharedPreferencesHandler sharedPreferencesHandler;
+
+	public LogoutCloud(CloudContentRepository cloudContentRepository, CloudRepository cloudRepository, @Parameter Cloud cloud,SharedPreferencesHandler sharedPreferencesHandler) {
 		this.cloudContentRepository = cloudContentRepository;
 		this.cloudRepository = cloudRepository;
 		this.cloud = cloud;
+		this.sharedPreferencesHandler = sharedPreferencesHandler;
 	}
 
 	public Cloud execute() throws BackendException {
@@ -30,12 +34,14 @@ class LogoutCloud {
 
 	private Cloud cloudWithUsernameAndAccessTokenRemoved(Cloud cloud) {
 		if (cloud instanceof DropboxCloud) {
+			sharedPreferencesHandler.clearDropboxEmail();
 			return DropboxCloud //
 					.aCopyOf((DropboxCloud) cloud) //
 					.withUsername(null) //
 					.withAccessToken(null) //
 					.build();
 		} else if (cloud instanceof GoogleDriveCloud) {
+			sharedPreferencesHandler.clearGoogleDriverEmail();
 			return GoogleDriveCloud //
 					.aCopyOf((GoogleDriveCloud) cloud) //
 					.withUsername(null) //

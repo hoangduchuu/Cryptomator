@@ -6,7 +6,7 @@
 		<package android:name="org.fdroid.fdroid" />
 	</queries>
 
-	<!-- Required to self update Cryptomator in the F-Droid main variant -->
+	<!-- Required to self update nCryptor in the F-Droid main variant -->
 	<uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
 </manifest>

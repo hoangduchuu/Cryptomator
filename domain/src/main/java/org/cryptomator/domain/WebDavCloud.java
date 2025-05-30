@@ -10,7 +10,7 @@ public class WebDavCloud implements Cloud {
 	private final String password;
 	private final String certificate;
 
-	private WebDavCloud(Builder builder) {
+	public WebDavCloud(Builder builder) {
 		this.id = builder.id;
 		this.url = builder.url;
 		this.username = builder.username;

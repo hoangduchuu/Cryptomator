@@ -13,6 +13,7 @@ import net.openid.appauth.AuthorizationServiceConfiguration
 import net.openid.appauth.ResponseTypeValues
 import org.cryptomator.data.cloud.crypto.CryptoConstants
 import org.cryptomator.domain.Cloud
+import org.cryptomator.domain.DeviceArgs
 import org.cryptomator.domain.KeyLoadingStrategy
 import org.cryptomator.domain.UnverifiedHubVaultConfig
 import org.cryptomator.domain.UnverifiedVaultConfig
@@ -31,7 +32,9 @@ import org.cryptomator.domain.usecases.vault.ChangePasswordUseCase
 import org.cryptomator.domain.usecases.vault.CreateHubDeviceUseCase
 import org.cryptomator.domain.usecases.vault.DeleteVaultUseCase
 import org.cryptomator.domain.usecases.vault.GetUnverifiedVaultConfigUseCase
+import org.cryptomator.domain.usecases.vault.GetVaultStatusUseCase
 import org.cryptomator.domain.usecases.vault.LockVaultUseCase
+import org.cryptomator.domain.usecases.vault.LogDeviceEventUseCase
 import org.cryptomator.domain.usecases.vault.PrepareUnlockUseCase
 import org.cryptomator.domain.usecases.vault.RemoveStoredVaultPasswordsAndDisableBiometricAuthUseCase
 import org.cryptomator.domain.usecases.vault.SaveVaultUseCase
@@ -53,13 +56,17 @@ import org.cryptomator.presentation.ui.dialog.EnterPasswordDialog
 import org.cryptomator.presentation.workflow.ActivityResult
 import org.cryptomator.presentation.workflow.AuthenticationExceptionHandler
 import org.cryptomator.util.SharedPreferencesHandler
+import org.cryptomator.util.VaultStatus
 import org.cryptomator.util.crypto.CryptoMode
+import org.cryptomator.util.shouldRejectUnlock
 import java.io.Serializable
 import javax.inject.Inject
 import timber.log.Timber
 
 @PerView
 class UnlockVaultPresenter @Inject constructor(
+	private val logdeviceEventUsecase: LogDeviceEventUseCase,
+	private val getVaultStatusUseCase: GetVaultStatusUseCase,
 	private val changePasswordUseCase: ChangePasswordUseCase,
 	private val deleteVaultUseCase: DeleteVaultUseCase,
 	private val getUnverifiedVaultConfigUseCase: GetUnverifiedVaultConfigUseCase,
@@ -278,9 +285,30 @@ class UnlockVaultPresenter @Inject constructor(
 			}
 			view?.showBiometricDialog(vaultModel)
 		} else {
-			view?.showEnterPasswordDialog(vaultModel)
-			startPrepareUnlockUseCase(vaultModel.toVault())
+			checkVaultAndOpenUnlock(vaultModel)
 		}
+	}
+
+	private fun checkVaultAndOpenUnlock(vaultModel: VaultModel) {
+		view?.showProgress(ProgressModel.GENERIC)
+		getVaultStatusUseCase.withDeviceId(vaultModel.toVault().deviceID)
+			.run(object : DefaultResultHandler<VaultStatus>() {
+				override fun onSuccess(status: VaultStatus) {
+					view?.showProgress(ProgressModel.COMPLETED)
+					if (status.shouldRejectUnlock()) {
+						view?.showVaultIsDisableNotice()
+						view?.finish()
+					} else {
+						view?.showEnterPasswordDialog(vaultModel)
+						startPrepareUnlockUseCase(vaultModel.toVault())
+					}
+				}
+
+				override fun onError(e: Throwable) {
+					view?.showProgress(ProgressModel.COMPLETED)
+					e.localizedMessage?.let { view?.showError(it) }
+				}
+			})
 	}
 
 	// FIXME why is this method not used?
@@ -406,6 +434,7 @@ class UnlockVaultPresenter @Inject constructor(
 			.andPassword(password) //
 			.run(object : DefaultResultHandler<Cloud>() {
 				override fun onSuccess(cloud: Cloud) {
+					logActivity("login")
 					when (intent.vaultAction()) {
 						UnlockVaultIntent.VaultAction.ENCRYPT_PASSWORD, UnlockVaultIntent.VaultAction.UNLOCK_FOR_BIOMETRIC_AUTH -> {
 							handleUnlockVaultSuccess(token.vault, cloud, password)
@@ -418,11 +447,34 @@ class UnlockVaultPresenter @Inject constructor(
 				override fun onError(e: Throwable) {
 					super.onError(e)
 					// finish in case of biometric auth, otherwise show error in dialog
+					logActivity("invalid")
 					if (view?.isShowingDialog(EnterPasswordDialog::class) == false) {
 						finishWithResult(null)
 					}
 				}
 			})
+	}
+	private fun logActivity(type:String) {
+		logdeviceEventUsecase //
+			.withType(type)
+			.andDeviceId(intent.vaultModel().toVault().deviceID)
+			.andDeviceArgs(buildDeviceArgs())
+			.run(object : DefaultResultHandler<Any>() {
+				override fun onSuccess(cloud: Any) {
+
+				}
+
+				override fun onError(e: Throwable) {
+
+				}
+			})
+	}
+
+	private fun buildDeviceArgs(): DeviceArgs {
+		var args =  DeviceArgs.buildFromDevice(context());
+		Timber.tag("UnLockVaultPresenter").d("Device args: ${args.toJsonRequest()}")
+		sharedPreferencesHandler.setComputerId(args.serial)
+		return args
 	}
 
 	private fun handleUnlockVaultSuccess(vault: Vault, cloud: Cloud, password: String) {

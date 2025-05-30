@@ -125,12 +125,12 @@ platform :android do |options|
       metadata_path: "src/playstore/fastlane/metadata/android/"
     )
 
-    FileUtils.cp(lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH], "release/Cryptomator-#{version}_playstore_signed.apk")
+    FileUtils.cp(lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH], "release/nCryptor-#{version}_playstore_signed.apk")
   end
 
   desc "Deploy new version to Lenotra AG"
   private_lane :deployToLenotraAG do |options|
-    apk_path = "fastlane/release/Cryptomator-#{version}_playstore_signed.apk"
+    apk_path = "fastlane/release/nCryptor-#{version}_playstore_signed.apk"
     if File.exist?("../#{apk_path}")
       puts "APK found"
     else
@@ -149,7 +149,7 @@ platform :android do |options|
         region: ENV['S3_LENOTRA_AG_REGION'],
         access_key: ENV['S3_LENOTRA_AG_ACCESS_KEY'],
         secret_access_key: ENV['S3_LENOTRA_AG_SECRET_ACCESS_KEY'],
-        path: "Cryptomator",
+        path: "nCryptor",
         files: [
           apk_path,
         ],
@@ -179,12 +179,12 @@ platform :android do |options|
     checkTrackingAddedInDependencyUsingIzzyScript(alpha:options[:alpha], beta:options[:beta], flavor: 'apkstore')
     checkTrackingAddedInDependencyUsingExodus(alpha:options[:alpha], beta:options[:beta], flavor: 'apkstore')
 
-    FileUtils.cp(lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH], "release/Cryptomator-#{version}.apk")
+    FileUtils.cp(lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH], "release/nCryptor-#{version}.apk")
 
     server_host = ENV["APK_STORE_BASIC_URL"]
     base_url = "https://#{server_host}/android/"
-    apk_url = "#{base_url}#{version}/Cryptomator-#{version}.apk"
-    apk_sha_256 = Digest::SHA256.hexdigest File.read "release/Cryptomator-#{version}.apk"
+    apk_url = "#{base_url}#{version}/nCryptor-#{version}.apk"
+    apk_sha_256 = Digest::SHA256.hexdigest File.read "release/nCryptor-#{version}.apk"
     release_note_url = "#{base_url}#{version}/release-notes.html"
 
     claims = {
@@ -216,7 +216,7 @@ platform :android do |options|
         secret_access_key: ENV['S3_SECRET_ACCESS_KEY'],
         path: "android/#{version}",
         files: [
-          "fastlane/release/Cryptomator-#{version}.apk",
+          "fastlane/release/nCryptor-#{version}.apk",
           "fastlane/release-notes.html"
         ],
         skip_html_upload: true,
@@ -241,7 +241,7 @@ platform :android do |options|
       )
     end
 
-    FileUtils.mv("release/Cryptomator-#{version}.apk", "release/Cryptomator-#{version}_signed.apk")
+    FileUtils.mv("release/nCryptor-#{version}.apk", "release/nCryptor-#{version}_signed.apk")
   end
 
   desc "Deploy new version to F-Droid"
@@ -269,7 +269,7 @@ platform :android do |options|
     else
       puts "Updating F-Droid"
 
-      FileUtils.cp(lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH], "repo/Cryptomator.apk")
+      FileUtils.cp(lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH], "repo/nCryptor.apk")
 
       sh("cp -r #{fdroidMetadataDir} metadata/org.cryptomator/")
       FileUtils.cp("metadata/org.cryptomator/en-US/changelogs/default.txt", "metadata/org.cryptomator/en-US/changelogs/#{version}.txt")
@@ -290,7 +290,7 @@ platform :android do |options|
       )
     end
 
-    FileUtils.cp(lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH], "release/Cryptomator-#{version}_fdroid_signed.apk")
+    FileUtils.cp(lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH], "release/nCryptor-#{version}_fdroid_signed.apk")
   end
 
   desc "Deploy new version to Accrescent"
@@ -310,7 +310,7 @@ platform :android do |options|
       }
     )
 
-    FileUtils.cp(lane_context[SharedValues::GRADLE_AAB_OUTPUT_PATH], "release/Cryptomator-#{version}_signed.aab")
+    FileUtils.cp(lane_context[SharedValues::GRADLE_AAB_OUTPUT_PATH], "release/nCryptor-#{version}_signed.aab")
 
     bundletool(
       ks_path: ENV["SIGNING_KEYSTORE_PATH"],
@@ -319,13 +319,13 @@ platform :android do |options|
       ks_key_alias_password: ENV["SIGNING_KEY_PASSWORD"],
       bundletool_version: '1.10.0',
       aab_path: lane_context[SharedValues::GRADLE_AAB_OUTPUT_PATH],
-      apk_output_path: "fastlane/release/Cryptomator-#{version}_signed.apks",
+      apk_output_path: "fastlane/release/nCryptor-#{version}_signed.apks",
       verbose: true,
       cache_path: "~/.cache/bundletool",
       universal_apk: false
     )
 
-    puts "Upload fastlane/release/Cryptomator-#{version}_signed.apks to Accrescent"
+    puts "Upload fastlane/release/nCryptor-#{version}_signed.apks to Accrescent"
   end
 
   desc "Deploy new lite version"
@@ -334,10 +334,10 @@ platform :android do |options|
     sh("docker run -u $(id -u):$(id -g) --rm -v $(cd .. && pwd):/project -w /project cryptomator-android ./gradlew clean assembleLiteRelease")
 
     sh("zipalign -v -p 4 ../presentation/build/outputs/apk/lite/release/presentation-lite-release-unsigned.apk presentation-lite-release-unsigned-aligned.apk")
-    sh("apksigner sign --ks #{ENV["SIGNING_KEYSTORE_PATH"]} --ks-key-alias #{ENV["SIGNING_KEY_ALIAS"]} --ks-pass env:SIGNING_KEYSTORE_PASSWORD --key-pass env:SIGNING_KEY_PASSWORD --out release/Cryptomator-#{version}_lite_signed.apk presentation-lite-release-unsigned-aligned.apk")
+    sh("apksigner sign --ks #{ENV["SIGNING_KEYSTORE_PATH"]} --ks-key-alias #{ENV["SIGNING_KEY_ALIAS"]} --ks-pass env:SIGNING_KEYSTORE_PASSWORD --key-pass env:SIGNING_KEY_PASSWORD --out release/nCryptor-#{version}_lite_signed.apk presentation-lite-release-unsigned-aligned.apk")
     sh("rm presentation-lite-release-unsigned-aligned.apk")
 
-    lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH] = File.join(Dir.pwd, 'release', "Cryptomator-#{version}_lite_signed.apk")
+    lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH] = File.join(Dir.pwd, 'release', "nCryptor-#{version}_lite_signed.apk")
 
     checkTrackingAddedInDependencyUsingIzzyScript(alpha:options[:alpha], beta:options[:beta], flavor: 'lite')
     checkTrackingAddedInDependencyUsingExodus(alpha:options[:alpha], beta:options[:beta], flavor: 'lite')
@@ -408,8 +408,8 @@ platform :android do |options|
 
       FileUtils.mkdir("#{fluidattacks_apks_path}")
       apk_types.each do |type|
-        FileUtils.mkdir("#{fluidattacks_apks_path}/Cryptomator-#{version}_#{type}/")
-        FileUtils.cp("release/Cryptomator-#{version}_#{type}.apk", "#{fluidattacks_apks_path}/Cryptomator-#{version}_#{type}/")
+        FileUtils.mkdir("#{fluidattacks_apks_path}/nCryptor-#{version}_#{type}/")
+        FileUtils.cp("release/nCryptor-#{version}_#{type}.apk", "#{fluidattacks_apks_path}/nCryptor-#{version}_#{type}/")
       end
     end
 
@@ -431,9 +431,9 @@ platform :android do |options|
       prerelease = true
     end
 
-    website_apk_sha256 = Digest::SHA256.hexdigest File.read "release/Cryptomator-#{version}_signed.apk"
-    fdroid_apk_sha256 = Digest::SHA256.hexdigest File.read "release/Cryptomator-#{version}_fdroid_signed.apk"
-    lite_sha256 = Digest::SHA256.hexdigest File.read "release/Cryptomator-#{version}_lite_signed.apk"
+    website_apk_sha256 = Digest::SHA256.hexdigest File.read "release/nCryptor-#{version}_signed.apk"
+    fdroid_apk_sha256 = Digest::SHA256.hexdigest File.read "release/nCryptor-#{version}_fdroid_signed.apk"
+    lite_sha256 = Digest::SHA256.hexdigest File.read "release/nCryptor-#{version}_lite_signed.apk"
 
     release_note = "## What's New\n\n" + File.read(releaseNotePathEn) + "\n\n---\n\nSHA256 Signature: `#{website_apk_sha256}`\nSHA256 Signature fdroid: `#{fdroid_apk_sha256}`\nSHA256 Signature lite: `#{lite_sha256}`\n"
 
@@ -448,7 +448,7 @@ platform :android do |options|
       commitish: target_branch,
       is_draft: true,
       is_prerelease: prerelease,
-      upload_assets: ["fastlane/release/Cryptomator-#{version}_fdroid_signed.apk", "fastlane/release/Cryptomator-#{version}_lite_signed.apk", "fastlane/release/Cryptomator-#{version}_signed.apk"]
+      upload_assets: ["fastlane/release/nCryptor-#{version}_fdroid_signed.apk", "fastlane/release/nCryptor-#{version}_lite_signed.apk", "fastlane/release/nCryptor-#{version}_signed.apk"]
     )
   end
 
@@ -463,7 +463,7 @@ platform :android do |options|
 
     FileUtils.mkdir("#{fluidattacks_apks_path}")
     apk_types.each do |type|
-      FileUtils.mkdir("#{fluidattacks_apks_path}/Cryptomator-#{version}_#{type}/")
+      FileUtils.mkdir("#{fluidattacks_apks_path}/nCryptor-#{version}_#{type}/")
     end
 
     gradle(task: "clean")
@@ -484,7 +484,7 @@ platform :android do |options|
     checkTrackingAddedInDependencyUsingIzzyScript(alpha:options[:alpha], beta:options[:beta], flavor: 'playstore')
     checkTrackingAddedInDependencyUsingExodus(alpha:options[:alpha], beta:options[:beta], flavor: 'playstore')
 
-    FileUtils.cp(lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH], "#{fluidattacks_apks_path}/Cryptomator-#{version}_playstore_signed/Cryptomator-#{version}_playstore_signed.apk")
+    FileUtils.cp(lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH], "#{fluidattacks_apks_path}/nCryptor-#{version}_playstore_signed/nCryptor-#{version}_playstore_signed.apk")
 
     gradle(task: "clean")
 
@@ -504,7 +504,7 @@ platform :android do |options|
     checkTrackingAddedInDependencyUsingIzzyScript(alpha:options[:alpha], beta:options[:beta], flavor: 'apkstore')
     checkTrackingAddedInDependencyUsingExodus(alpha:options[:alpha], beta:options[:beta], flavor: 'apkstore')
 
-    FileUtils.cp(lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH], "#{fluidattacks_apks_path}/Cryptomator-#{version}_signed/Cryptomator-#{version}_signed.apk")
+    FileUtils.cp(lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH], "#{fluidattacks_apks_path}/nCryptor-#{version}_signed/nCryptor-#{version}_signed.apk")
 
     gradle(task: "clean")
 
@@ -524,7 +524,7 @@ platform :android do |options|
     checkTrackingAddedInDependencyUsingIzzyScript(alpha:options[:alpha], beta:options[:beta], flavor: 'fdroid')
     checkTrackingAddedInDependencyUsingExodus(alpha:options[:alpha], beta:options[:beta], flavor: 'fdroid')
 
-    FileUtils.cp(lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH], "#{fluidattacks_apks_path}/Cryptomator-#{version}_fdroid_signed/Cryptomator-#{version}_fdroid_signed.apk")
+    FileUtils.cp(lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH], "#{fluidattacks_apks_path}/nCryptor-#{version}_fdroid_signed/nCryptor-#{version}_fdroid_signed.apk")
 
     gradle(task: "clean")
 
@@ -544,7 +544,7 @@ platform :android do |options|
     checkTrackingAddedInDependencyUsingIzzyScript(alpha:options[:alpha], beta:options[:beta], flavor: 'lite')
     checkTrackingAddedInDependencyUsingExodus(alpha:options[:alpha], beta:options[:beta], flavor: 'lite')
 
-    FileUtils.cp(lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH], "#{fluidattacks_apks_path}/Cryptomator-#{version}_lite_signed/Cryptomator-#{version}_lite_signed.apk")
+    FileUtils.cp(lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH], "#{fluidattacks_apks_path}/nCryptor-#{version}_lite_signed/nCryptor-#{version}_lite_signed.apk")
 
     runFluidattacks(verifyOnly:true)
 

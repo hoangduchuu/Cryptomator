@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:paddingStart="16dp"
 	android:paddingEnd="16dp">
 
@@ -27,7 +28,9 @@
 				android:text="@string/screen_settings_activate_biometric_auth"
 				android:textSize="18sp" />
 
-			<Switch
+			<androidx.appcompat.widget.SwitchCompat
+				app:trackTint="@color/switch_track_color_selector"
+				app:thumbTint="@color/switch_thumb_color_selector"
 				android:id="@+id/toggle_biometric_auth"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
@@ -52,7 +55,9 @@
 				android:text="@string/screen_settings_confirm_face_unlock"
 				android:textSize="18sp" />
 
-			<Switch
+			<androidx.appcompat.widget.SwitchCompat
+				app:trackTint="@color/switch_track_color_selector"
+				app:thumbTint="@color/switch_thumb_color_selector"
 				android:id="@+id/toggle_face_unlock_confirmation"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
